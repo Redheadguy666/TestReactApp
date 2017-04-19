@@ -4,7 +4,7 @@ import { Well } from "./components/well";
 
 ReactDOM.render
 (
-    <div id="root"> 
+    <div id="root">  
         <Well text="Well, well, well"/>
     </div>,
     document.getElementById("content")
