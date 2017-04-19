@@ -8313,7 +8313,8 @@ var ReactMount = {
 
   /**
    * Renders a React component into the DOM in the supplied `container`.
-   * See https://facebook.github.io/react/docs/top-level-api.html#reactdom.render
+   * See https://facebook.github.io/react/docs/top-level-api.html#
+
    *
    * If the React component was previously rendered into `container`, this will
    * perform an update on it and only mutate the DOM as necessary to reflect the
@@ -21997,7 +21998,7 @@ const React = __webpack_require__(50);
 const ReactDOM = __webpack_require__(81);
 const well_1 = __webpack_require__(82);
 ReactDOM.render(React.createElement("div", null,
-    React.createElement(well_1.Well, { text: "Well, well, well" })), document.getElementById("body"));
+    React.createElement(well_1.Well, { text: "Well, well, well" })), document.getElementById("content"));
 
 
 /***/ }

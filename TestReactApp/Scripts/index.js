@@ -4,5 +4,6 @@ const React = require("react");
 const ReactDOM = require("react-dom");
 const well_1 = require("./components/well");
 ReactDOM.render(React.createElement("div", { id: "root" },
-    React.createElement(well_1.Well, { text: "Well, well, well" })), document.getElementById("content"));
+    React.createElement(well_1.Well, { text: "Well, well, well" })), document.getElementById("gcontent"));
+console.log("dfsf");
 //# sourceMappingURL=index.js.map
