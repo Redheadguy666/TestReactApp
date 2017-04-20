@@ -2,7 +2,7 @@
 
 export interface IFooter
 {
-    text: string
+    text: string;
 }
 
 export class Footer extends React.Component<IFooter, {}>

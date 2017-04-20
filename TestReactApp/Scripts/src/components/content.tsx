@@ -2,7 +2,7 @@
 
 export interface IContent
 {
-    text: string
+    text: string;
 }
 
 export class Content extends React.Component<IContent, {}>

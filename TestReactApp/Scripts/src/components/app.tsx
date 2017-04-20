@@ -6,7 +6,7 @@ import { Footer } from "./footer";
 
 export interface IApp
 {
-    text: string
+    text: string;
 }
 
 export class App extends React.Component<IApp, {}>
