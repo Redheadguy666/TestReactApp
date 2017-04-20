@@ -450,7 +450,10 @@
     <Content Include="Scripts\jquery-1.10.2.min.map" />
   </ItemGroup>
   <ItemGroup>
-    <TypeScriptCompile Include="Scripts\src\components\well.tsx" />
+    <TypeScriptCompile Include="Scripts\src\components\app.tsx" />
+    <TypeScriptCompile Include="Scripts\src\components\content.tsx" />
+    <TypeScriptCompile Include="Scripts\src\components\footer.tsx" />
+    <TypeScriptCompile Include="Scripts\src\components\header.tsx" />
     <TypeScriptCompile Include="Scripts\src\index.tsx" />
   </ItemGroup>
   <ItemGroup>

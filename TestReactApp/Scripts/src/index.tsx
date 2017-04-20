@@ -1,12 +1,11 @@
 ﻿import * as React from "react";
 import * as ReactDOM from "react-dom";
-import { Well } from "./components/well";
-
+import { App } from "./components/app";
 
 ReactDOM.render
 (
     <div id="root">  
-        <Well text="Well, well, well"/>
+        <App />
     </div>,
     document.getElementById("content")
 );

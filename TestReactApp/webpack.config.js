@@ -1,8 +1,5 @@
 module.exports = {
   entry: "./Scripts/src/index.tsx",
-  output: {
-    filename: "./Scripts/dist/bundle.js",
-  },
 
   // Enable sourcemaps for debugging webpack's output.
   devtool: "source-map",
@@ -25,8 +22,8 @@ module.exports = {
   },
 
   output: {
-      path: path.join(__dirname, 'deployment/deployment/js'),
-      filename: 'bundle.js',
+      path: "./Scripts/dist", //__dirname + "/dist",
+      filename: "bundle.js",
       publicPath: '/js/'
   },
       
