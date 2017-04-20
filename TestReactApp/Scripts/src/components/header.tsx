@@ -9,6 +9,6 @@ export class Header extends React.Component<IHeader, {}>
 {
     render()
     {
-        return <div className="header"><h1>Welcome to the React.js!</h1></div>
+        return <div className="header"><h1>Welcome to the Typescript!</h1></div>
     }
 }

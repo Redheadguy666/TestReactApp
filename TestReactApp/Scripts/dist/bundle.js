@@ -22059,7 +22059,7 @@ const React = __webpack_require__(17);
 class Header extends React.Component {
     render() {
         return React.createElement("div", { className: "header" },
-            React.createElement("h1", null, "Welcome to the React.js!"));
+            React.createElement("h1", null, "Welcome to the Typescript!"));
     }
 }
 exports.Header = Header;
