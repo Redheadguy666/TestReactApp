@@ -13,13 +13,7 @@ class TreeNode extends React.Component {
                     React.createElement("tr", null,
                         React.createElement("td", null, this.props.id)),
                     React.createElement("tr", null,
-                        React.createElement("td", null, this.props.name)),
-                    React.createElement("tr", null,
-                        React.createElement("td", null, this.props.isActive)),
-                    React.createElement("tr", null,
-                        React.createElement("td", null, this.props.isCollapsed)),
-                    React.createElement("tr", null,
-                        React.createElement("td", null, this.props.isFolder))))));
+                        React.createElement("td", null, this.props.name))))));
     }
 }
 exports.TreeNode = TreeNode;

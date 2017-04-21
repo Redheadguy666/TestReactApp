@@ -9,7 +9,9 @@ class EquipmentApp extends React.Component {
         return (React.createElement("div", null,
             React.createElement(header_1.Header, null),
             React.createElement(content_1.Content, null),
-            React.createElement(treeNode_1.TreeNode, { id: 1, name: "Ivan", isActive: true, isCollapsed: true, isFolder: true })));
+            React.createElement(treeNode_1.TreeNode, { id: 1, name: "Ivan" }),
+            React.createElement(treeNode_1.TreeNode, { id: 2, name: "Petr" }),
+            React.createElement(treeNode_1.TreeNode, { id: 3, name: "Serega" })));
     }
 }
 exports.EquipmentApp = EquipmentApp;

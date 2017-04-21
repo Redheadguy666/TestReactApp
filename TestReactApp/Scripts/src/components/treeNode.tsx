@@ -4,9 +4,11 @@ export interface ITreeNode
 {
     id: number;
     name: string;
-    isActive: boolean;
-    isCollapsed: boolean;
-    isFolder: boolean;
+    children?: Array<TreeNode>;
+    isActive?: boolean;
+    isCollapsed?: boolean;
+    isFolder?: boolean;
+    
 }
 
 export class TreeNode extends React.Component<ITreeNode, {}>
@@ -24,9 +26,6 @@ export class TreeNode extends React.Component<ITreeNode, {}>
                     <tbody>
                         <tr><td>{this.props.id}</td></tr>
                         <tr><td>{this.props.name}</td></tr>
-                        <tr><td>{this.props.isActive}</td></tr>
-                        <tr><td>{this.props.isCollapsed}</td></tr>
-                        <tr><td>{this.props.isFolder}</td></tr>
                     </tbody>
                 </table>
             </div>

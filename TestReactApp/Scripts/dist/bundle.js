@@ -9533,7 +9533,9 @@ class EquipmentApp extends React.Component {
         return (React.createElement("div", null,
             React.createElement(header_1.Header, null),
             React.createElement(content_1.Content, null),
-            React.createElement(treeNode_1.TreeNode, { id: 1, name: "Ivan", isActive: true, isCollapsed: true, isFolder: true })));
+            React.createElement(treeNode_1.TreeNode, { id: 1, name: "Ivan" }),
+            React.createElement(treeNode_1.TreeNode, { id: 2, name: "Petr" }),
+            React.createElement(treeNode_1.TreeNode, { id: 3, name: "Serega" })));
     }
 }
 exports.EquipmentApp = EquipmentApp;
@@ -22056,13 +22058,7 @@ class TreeNode extends React.Component {
                     React.createElement("tr", null,
                         React.createElement("td", null, this.props.id)),
                     React.createElement("tr", null,
-                        React.createElement("td", null, this.props.name)),
-                    React.createElement("tr", null,
-                        React.createElement("td", null, this.props.isActive)),
-                    React.createElement("tr", null,
-                        React.createElement("td", null, this.props.isCollapsed)),
-                    React.createElement("tr", null,
-                        React.createElement("td", null, this.props.isFolder))))));
+                        React.createElement("td", null, this.props.name))))));
     }
 }
 exports.TreeNode = TreeNode;

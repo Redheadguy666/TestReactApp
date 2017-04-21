@@ -18,9 +18,14 @@ export class EquipmentApp extends React.Component<IEquipmentApp, {}>
                 <TreeNode
                     id = {1}
                     name = "Ivan"
-                    isActive = {true}
-                    isCollapsed = {true}
-                    isFolder = {true}
+                />
+                <TreeNode
+                    id={2}
+                    name="Petr"
+                />
+                <TreeNode
+                    id={3}
+                    name="Serega"
                 />
             </div>
         );
