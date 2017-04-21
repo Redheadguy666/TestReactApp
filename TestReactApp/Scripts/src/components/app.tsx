@@ -1,24 +1,19 @@
 ﻿import * as React from "react";
 import { Header } from "./header";
 import { Content } from "./content";
-import { Form } from "./form";
-import { Footer } from "./footer";
 
-export interface IApp
+export interface IEquipmentApp
 {
-    text: string;
 }
 
-export class App extends React.Component<IApp, {}>
+export class EquipmentApp extends React.Component<IEquipmentApp, {}>
 {
     render()
     {
         return (
             <div>
-                <Header text="" />
-                <Content text="" />
-                <Form text=""/>
-                <Footer text="" />
+                <Header />
+                <Content />
             </div>
         );
     }
