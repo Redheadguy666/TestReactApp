@@ -2,7 +2,7 @@
 
 export interface IHeader
 {
-
+    
 }
 
 export class Header extends React.Component<IHeader, {}>
