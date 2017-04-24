@@ -1,4 +1,5 @@
 ﻿import * as React from "react";
+import { EquipmentElement } from "./equipmentElement";
 
 interface IEquipmentListProps
 {
@@ -20,7 +21,11 @@ export class EquipmentList extends React.Component<IEquipmentListProps, {}>
                         </tr>
                     </thead>
                     <tbody>
-                        <tr><td>gdfs</td></tr>
+                        <EquipmentElement name="Комната" number={6} />
+                        <EquipmentElement name="Кровать" number={10} />
+                        <EquipmentElement name="Диван" number={1} />
+                        <EquipmentElement name="Котик" number={6} />
+                        <EquipmentElement name="Андройд" number={2} />
                     </tbody>
                 </table>
             </div>

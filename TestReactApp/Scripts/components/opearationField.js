@@ -16,6 +16,8 @@ class OperationField extends React.Component {
                 React.createElement("div", { className: "form-group" },
                     React.createElement("label", { htmlFor: "updatingNode" }, "\u0418\u0437\u043C\u0435\u043D\u0438\u0442\u044C:"),
                     React.createElement("input", { type: "text", className: "form-control", id: "updatingNodeName" }),
+                    React.createElement("label", { htmlFor: "nodeInfo" }, "\u041D\u043E\u0432\u043E\u0435 \u0437\u043D\u0430\u0447\u0435\u043D\u0438\u0435:"),
+                    React.createElement("input", { type: "text", className: "form-control", id: "nodeInfo" }),
                     React.createElement("button", { className: "btn btn-default" }, "OK")))));
     }
 }

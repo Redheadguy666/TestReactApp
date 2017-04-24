@@ -438,6 +438,7 @@
   <ItemGroup>
     <TypeScriptCompile Include="Scripts\src\components\app.tsx" />
     <TypeScriptCompile Include="Scripts\src\components\content.tsx" />
+    <TypeScriptCompile Include="Scripts\src\components\equipmentElement.tsx" />
     <TypeScriptCompile Include="Scripts\src\components\equipmentList.tsx" />
     <TypeScriptCompile Include="Scripts\src\components\header.tsx" />
     <TypeScriptCompile Include="Scripts\src\components\opearationField.tsx" />

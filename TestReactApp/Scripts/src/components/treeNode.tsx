@@ -23,7 +23,7 @@ export class TreeNode extends React.Component<ITreeNodeProps, {}>
     {
         return (
             <ul className="list-group">
-                <li className="list-group-item">
+                <li className="lit-group-item">
                     <img src={this.props.icon} style={style} /><a href="#">{this.props.name}</a>
                 </li>
             </ul>

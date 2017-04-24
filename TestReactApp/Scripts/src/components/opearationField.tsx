@@ -25,6 +25,8 @@ export class OperationField extends React.Component<IOperationFieldProps, {}>
                     <div className="form-group">
                         <label htmlFor="updatingNode">Изменить:</label>
                         <input type="text" className="form-control" id="updatingNodeName" />
+                        <label htmlFor="nodeInfo">Новое значение:</label>
+                        <input type="text" className="form-control" id="nodeInfo" />
                         <button className="btn btn-default">OK</button>
                     </div>
                 </form>
