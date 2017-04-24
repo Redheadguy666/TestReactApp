@@ -1,12 +1,12 @@
 ﻿import * as React from "react";
 
-interface IEquipmentList
+interface IEquipmentListProps
 {
     id?: number;
     name?: string;
 }
 
-export class EquipmentList extends React.Component<IEquipmentList, {}>
+export class EquipmentList extends React.Component<IEquipmentListProps, {}>
 {
     render()
     {

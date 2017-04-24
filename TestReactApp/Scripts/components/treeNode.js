@@ -1,9 +1,15 @@
 "use strict";
 Object.defineProperty(exports, "__esModule", { value: true });
 const React = require("react");
+var style = {
+    width: "5%"
+};
 class TreeNode extends React.Component {
     render() {
-        return (React.createElement("div", { className: "container" }, this.props.name));
+        return (React.createElement("ul", { className: "list-group" },
+            React.createElement("li", { className: "list-group-item" },
+                React.createElement("img", { src: this.props.icon, style: style }),
+                React.createElement("a", { href: "#" }, this.props.name))));
     }
 }
 exports.TreeNode = TreeNode;

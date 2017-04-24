@@ -1,24 +1,32 @@
 ﻿import * as React from "react";
 
-export interface ITreeNode
+export interface ITreeNodeProps
 {
     id?: number;
     name: string;
     children?: Array<TreeNode>;
+    numberOfChildren?: number;
     isActive?: boolean;
     isCollapsed?: boolean;
     isFolder?: boolean; 
-    icon?: HTMLImageElement;   
+    icon?: string;   
 }
 
-export class TreeNode extends React.Component<ITreeNode, {}>
+var style =
+{
+    width: "5%"
+};
+
+export class TreeNode extends React.Component<ITreeNodeProps, {}>
 {
     render()
     {
         return (
-            <div className="container">
-                {this.props.name}
-            </div>
+            <ul className="list-group">
+                <li className="list-group-item">
+                    <img src={this.props.icon} style={style} /><a href="#">{this.props.name}</a>
+                </li>
+            </ul>
         );
     }
 }
