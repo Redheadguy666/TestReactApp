@@ -11,26 +11,46 @@ export class OperationField extends React.Component<IOperationFieldProps, {}>
     {
         return (
             <div>
-                <form className="form-inline">
-                    <div className="form-group">
-                        <label htmlFor="addingNode">Добавить:</label>
-                        <input type="text" className="form-control" id="addingNodeName" />
-                        <button className="btn btn-default">OK</button>
-                    </div>
-                    <div className="form-group">
-                        <label htmlFor="delitingNode">Удалить:</label>
-                        <input type="text" className="form-control" id="delitingNodeName" />
-                        <button className="btn btn-default">OK</button>
-                    </div>
-                    <div className="form-group">
-                        <label htmlFor="updatingNode">Изменить:</label>
-                        <input type="text" className="form-control" id="updatingNodeName" />
-                        <label htmlFor="nodeInfo">Новое значение:</label>
-                        <input type="text" className="form-control" id="nodeInfo" />
-                        <button className="btn btn-default">OK</button>
+                <div className="col-md-3 col-sm-3 col-xs-3 col-3">
+                <form>
+                    <div className="panel-group">
+                        <div className="panel panel-default">
+                            <div className="panel-heading">Добавить:</div>
+                                <div className="panel-body">
+                                    <label htmlFor="addingNodeName">Название:</label>
+                                    <input type="text" className="form-control" id="addingNodeName" />
+                                    <label htmlFor="addingNodeNumber">Количество:</label>
+                                    <input type="text" className="form-control" id="addingNodeNameField" />
+                                    <button type="submit" className="btn btn-info">OK</button>
+                                </div>
+                            </div>
+                        </div>
+                </form>
+                <form>
+                    <div className="panel panel-default">
+                        <div className="panel-heading">Удалить:</div>
+                            <div className="panel-body">
+                                <label htmlFor="deletingNodeId">Ид:</label>
+                                <input type="text" className="form-control" id="deletingNodeId" />
+                                <button type="submit" className="btn btn-info">OK</button>
+                            </div>
+                        </div>
+                </form>
+                <form>
+                    <div className="panel panel-default">
+                        <div className="panel-heading">Изменить:</div>
+                        <div className="panel-body">
+                            <label htmlFor="updatingNodeName">Название:</label>
+                            <input type="text" className="form-control" id="updatingNodeName" />
+                            <label htmlFor="updatingNodeNumber">Название:</label>
+                            <input type="text" className="form-control" id="updatingNodeNumber" />
+                            <button type="submit" className="btn btn-info">OK</button>
+                        </div>
                     </div>
                 </form>
-            </div>
+
+                    </div>
+              </div>
         );
     }
 }

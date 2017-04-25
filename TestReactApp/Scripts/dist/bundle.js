@@ -22027,6 +22027,7 @@ const React = __webpack_require__(12);
 class EquipmentElement extends React.Component {
     render() {
         return (React.createElement("tr", null,
+            React.createElement("td", null, this.props.id),
             React.createElement("td", null, this.props.name),
             React.createElement("td", null, this.props.number)));
     }
@@ -22050,15 +22051,17 @@ class EquipmentList extends React.Component {
                 React.createElement("thead", null,
                     React.createElement("tr", null,
                         React.createElement("th", { className: "text-center" },
-                            React.createElement("h4", null, "\u041D\u0430\u0437\u0432\u0430\u043D\u0438\u0435 \u043E\u0431\u043E\u0440\u0443\u0434\u043E\u0432\u0430\u043D\u0438\u044F")),
+                            React.createElement("h4", null, "\u0418\u0434")),
+                        React.createElement("th", { className: "text-center" },
+                            React.createElement("h4", null, "\u041D\u0430\u0438\u043C\u0435\u043D\u043E\u0432\u0430\u043D\u0438\u0435")),
                         React.createElement("th", { className: "text-center" },
                             React.createElement("h4", null, "\u041A\u043E\u043B\u0438\u0447\u0435\u0441\u0442\u0432\u043E")))),
                 React.createElement("tbody", null,
-                    React.createElement(equipmentElement_1.EquipmentElement, { name: "Комната", number: 6 }),
-                    React.createElement(equipmentElement_1.EquipmentElement, { name: "Кровать", number: 10 }),
-                    React.createElement(equipmentElement_1.EquipmentElement, { name: "Диван", number: 1 }),
-                    React.createElement(equipmentElement_1.EquipmentElement, { name: "Котик", number: 6 }),
-                    React.createElement(equipmentElement_1.EquipmentElement, { name: "Андройд", number: 2 })))));
+                    React.createElement(equipmentElement_1.EquipmentElement, { id: 0, name: "Комната", number: 6 }),
+                    React.createElement(equipmentElement_1.EquipmentElement, { id: 1, name: "Кровать", number: 10 }),
+                    React.createElement(equipmentElement_1.EquipmentElement, { id: 2, name: "Диван", number: 1 }),
+                    React.createElement(equipmentElement_1.EquipmentElement, { id: 3, name: "Котик", number: 6 }),
+                    React.createElement(equipmentElement_1.EquipmentElement, { id: 4, name: "Андройд", number: 2 })))));
     }
 }
 exports.EquipmentList = EquipmentList;
@@ -22096,21 +22099,34 @@ const React = __webpack_require__(12);
 class OperationField extends React.Component {
     render() {
         return (React.createElement("div", null,
-            React.createElement("form", { className: "form-inline" },
-                React.createElement("div", { className: "form-group" },
-                    React.createElement("label", { htmlFor: "addingNode" }, "\u0414\u043E\u0431\u0430\u0432\u0438\u0442\u044C:"),
-                    React.createElement("input", { type: "text", className: "form-control", id: "addingNodeName" }),
-                    React.createElement("button", { className: "btn btn-default" }, "OK")),
-                React.createElement("div", { className: "form-group" },
-                    React.createElement("label", { htmlFor: "delitingNode" }, "\u0423\u0434\u0430\u043B\u0438\u0442\u044C:"),
-                    React.createElement("input", { type: "text", className: "form-control", id: "delitingNodeName" }),
-                    React.createElement("button", { className: "btn btn-default" }, "OK")),
-                React.createElement("div", { className: "form-group" },
-                    React.createElement("label", { htmlFor: "updatingNode" }, "\u0418\u0437\u043C\u0435\u043D\u0438\u0442\u044C:"),
-                    React.createElement("input", { type: "text", className: "form-control", id: "updatingNodeName" }),
-                    React.createElement("label", { htmlFor: "nodeInfo" }, "\u041D\u043E\u0432\u043E\u0435 \u0437\u043D\u0430\u0447\u0435\u043D\u0438\u0435:"),
-                    React.createElement("input", { type: "text", className: "form-control", id: "nodeInfo" }),
-                    React.createElement("button", { className: "btn btn-default" }, "OK")))));
+            React.createElement("div", { className: "row" },
+                React.createElement("div", { className: "col-md-3 col-sm-3 col-xs-3 col-3" },
+                    React.createElement("form", null,
+                        React.createElement("div", { className: "panel-group" },
+                            React.createElement("div", { className: "panel panel-default" },
+                                React.createElement("div", { className: "panel-heading" }, "\u0414\u043E\u0431\u0430\u0432\u0438\u0442\u044C:"),
+                                React.createElement("div", { className: "panel-body" },
+                                    React.createElement("label", { htmlFor: "addingNodeName" }, "\u041D\u0430\u0437\u0432\u0430\u043D\u0438\u0435:"),
+                                    React.createElement("input", { type: "text", className: "form-control", id: "addingNodeName" }),
+                                    React.createElement("label", { htmlFor: "addingNodeNumber" }, "\u041A\u043E\u043B\u0438\u0447\u0435\u0441\u0442\u0432\u043E:"),
+                                    React.createElement("input", { type: "text", className: "form-control", id: "addingNodeNameField" }),
+                                    React.createElement("button", { type: "submit", className: "btn btn-info" }, "OK"))))),
+                    React.createElement("form", null,
+                        React.createElement("div", { className: "panel panel-default" },
+                            React.createElement("div", { className: "panel-heading" }, "\u0423\u0434\u0430\u043B\u0438\u0442\u044C:"),
+                            React.createElement("div", { className: "panel-body" },
+                                React.createElement("label", { htmlFor: "deletingNodeId" }, "\u0418\u0434:"),
+                                React.createElement("input", { type: "text", className: "form-control", id: "deletingNodeId" }),
+                                React.createElement("button", { type: "submit", className: "btn btn-info" }, "OK")))),
+                    React.createElement("form", null,
+                        React.createElement("div", { className: "panel panel-default" },
+                            React.createElement("div", { className: "panel-heading" }, "\u0418\u0437\u043C\u0435\u043D\u0438\u0442\u044C:"),
+                            React.createElement("div", { className: "panel-body" },
+                                React.createElement("label", { htmlFor: "updatingNodeName" }, "\u041D\u0430\u0437\u0432\u0430\u043D\u0438\u0435:"),
+                                React.createElement("input", { type: "text", className: "form-control", id: "updatingNodeName" }),
+                                React.createElement("label", { htmlFor: "updatingNodeNumber" }, "\u041D\u0430\u0437\u0432\u0430\u043D\u0438\u0435:"),
+                                React.createElement("input", { type: "text", className: "form-control", id: "updatingNodeNumber" }),
+                                React.createElement("button", { type: "submit", className: "btn btn-info" }, "OK"))))))));
     }
 }
 exports.OperationField = OperationField;
