@@ -12,7 +12,6 @@ export class Tree extends React.Component<ITreeProps, {}>
     {
         return (
             <div>
-                <TreeNode name="Здание 1" icon="/Content/Images/blue-folder.ico"/>
                 <TreeNode name="Здание 2" icon="/Content/Images/blue-folder.ico"/>
                 <TreeNode name="Здание 3" icon="/Content/Images/blue-folder.ico"/>
                 <TreeNode name="Здание 4" icon="/Content/Images/blue-folder.ico"/>

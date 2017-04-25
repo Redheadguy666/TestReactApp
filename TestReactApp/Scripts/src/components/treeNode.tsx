@@ -3,7 +3,7 @@
 export interface ITreeNodeProps
 {
     id?: number;
-    name: string;
+    name?: string;
     children?: Array<TreeNode>;
     numberOfChildren?: number;
     isActive?: boolean;
