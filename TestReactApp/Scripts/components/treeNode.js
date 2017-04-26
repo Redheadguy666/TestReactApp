@@ -13,4 +13,4 @@ class TreeNode extends React.Component {
     }
 }
 exports.TreeNode = TreeNode;
-//# sourceMappingURL=treeNode.js.map
+//# sourceMappingURL=TreeNode.js.map

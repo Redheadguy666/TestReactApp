@@ -1,8 +1,10 @@
 "use strict";
 Object.defineProperty(exports, "__esModule", { value: true });
 const React = require("react");
-const equipmentElement_1 = require("./equipmentElement");
+const EquipmentElement_1 = require("./EquipmentElement");
 class EquipmentList extends React.Component {
+    renderNode(props) {
+    }
     render() {
         return (React.createElement("div", { className: "container" },
             React.createElement("table", { className: "table-bordered" },
@@ -15,12 +17,12 @@ class EquipmentList extends React.Component {
                         React.createElement("th", { className: "text-center" },
                             React.createElement("h4", null, "\u041A\u043E\u043B\u0438\u0447\u0435\u0441\u0442\u0432\u043E")))),
                 React.createElement("tbody", null,
-                    React.createElement(equipmentElement_1.EquipmentElement, { id: 0, name: "Комната", number: 6 }),
-                    React.createElement(equipmentElement_1.EquipmentElement, { id: 1, name: "Кровать", number: 10 }),
-                    React.createElement(equipmentElement_1.EquipmentElement, { id: 2, name: "Диван", number: 1 }),
-                    React.createElement(equipmentElement_1.EquipmentElement, { id: 3, name: "Котик", number: 6 }),
-                    React.createElement(equipmentElement_1.EquipmentElement, { id: 4, name: "Андройд", number: 2 })))));
+                    React.createElement(EquipmentElement_1.EquipmentElement, { id: 0, name: "Комната", number: 6 }),
+                    React.createElement(EquipmentElement_1.EquipmentElement, { id: 1, name: "Кровать", number: 10 }),
+                    React.createElement(EquipmentElement_1.EquipmentElement, { id: 2, name: "Диван", number: 1 }),
+                    React.createElement(EquipmentElement_1.EquipmentElement, { id: 3, name: "Котик", number: 6 }),
+                    React.createElement(EquipmentElement_1.EquipmentElement, { id: 4, name: "Андройд", number: 2 })))));
     }
 }
 exports.EquipmentList = EquipmentList;
-//# sourceMappingURL=equipmentList.js.map
+//# sourceMappingURL=EquipmentList.js.map

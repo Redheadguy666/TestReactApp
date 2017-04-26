@@ -10,4 +10,4 @@ class EquipmentElement extends React.Component {
     }
 }
 exports.EquipmentElement = EquipmentElement;
-//# sourceMappingURL=equipmentElement.js.map
+//# sourceMappingURL=EquipmentElement.js.map

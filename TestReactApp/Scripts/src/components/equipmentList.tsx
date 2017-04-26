@@ -1,5 +1,5 @@
 ﻿import * as React from "react";
-import { EquipmentElement } from "./equipmentElement";
+import { EquipmentElement } from "./EquipmentElement";
 
 interface IEquipmentListProps
 {
@@ -8,8 +8,16 @@ interface IEquipmentListProps
 
 export class EquipmentList extends React.Component<IEquipmentListProps, {}>
 {
+    renderNode(props: any)
+    {
+        
+    }
+
     render()
     {
+
+
+
         return (
             <div className="container">
                 <table className="table-bordered">

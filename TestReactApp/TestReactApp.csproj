@@ -436,14 +436,14 @@
     <Content Include="packages.config" />
   </ItemGroup>
   <ItemGroup>
-    <TypeScriptCompile Include="Scripts\src\components\app.tsx" />
-    <TypeScriptCompile Include="Scripts\src\components\content.tsx" />
-    <TypeScriptCompile Include="Scripts\src\components\equipmentElement.tsx" />
-    <TypeScriptCompile Include="Scripts\src\components\equipmentList.tsx" />
-    <TypeScriptCompile Include="Scripts\src\components\header.tsx" />
-    <TypeScriptCompile Include="Scripts\src\components\opearationField.tsx" />
-    <TypeScriptCompile Include="Scripts\src\components\tree.tsx" />
-    <TypeScriptCompile Include="Scripts\src\components\treeNode.tsx" />
+    <TypeScriptCompile Include="Scripts\src\components\App.tsx" />
+    <TypeScriptCompile Include="Scripts\src\components\Content.tsx" />
+    <TypeScriptCompile Include="Scripts\src\components\EquipmentElement.tsx" />
+    <TypeScriptCompile Include="Scripts\src\components\EquipmentList.tsx" />
+    <TypeScriptCompile Include="Scripts\src\components\Header.tsx" />
+    <TypeScriptCompile Include="Scripts\src\components\OpearationField.tsx" />
+    <TypeScriptCompile Include="Scripts\src\components\Tree.tsx" />
+    <TypeScriptCompile Include="Scripts\src\components\TreeNode.tsx" />
     <TypeScriptCompile Include="Scripts\src\index.tsx" />
   </ItemGroup>
   <ItemGroup>

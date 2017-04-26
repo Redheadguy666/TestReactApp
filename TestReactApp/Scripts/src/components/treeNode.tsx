@@ -2,7 +2,7 @@
 
 export interface ITreeNodeProps
 {
-    id?: number;
+    id: number;
     name?: string;
     children?: Array<TreeNode>;
     numberOfChildren?: number;
@@ -21,6 +21,7 @@ export class TreeNode extends React.Component<ITreeNodeProps, {}>
 {
     render()
     {
+
         return (
             <ul className="list-group">
                 <li className="lit-group-item">
