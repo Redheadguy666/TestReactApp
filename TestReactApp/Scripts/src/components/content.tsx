@@ -13,36 +13,35 @@ export interface IContentState
 {
     selectedNode: ITreeNodeProps
     model: any;
-    intValue: number;
 }
 
 export class Content extends React.Component<IContentProps, IContentState>
 {
+    state: IContentState = {} as any;
+
     constructor(props : any) {
         super(props);
         this.setSelectedNode = this.setSelectedNode.bind(this);
+    }
 
-        //this.setState({
-        //    model: {
-        //        treeItems: [{
-        //            id: 1,
-        //            name: "Здание 1",
-        //            treeItems: [{
-        //                id: 1,
-        //                name: "Комната 1",
-        //                treeItems: [],
-        //                equipment: [{
-        //                    name: "Свитч",
-        //                    quantity: 5
-        //                }]
-        //            }],
-        //            equipment: []
-        //        }]
-        //    }
-        //});
-
+    componentDidMount() {
         this.setState({
-            intValue: -1
+            model: {
+                treeItems: [{
+                    id: 1,
+                    name: "Здание 1",
+                    treeItems: [{
+                        id: 2,
+                        name: "Комната 1",
+                        treeItems: [],
+                        equipment: [{
+                            name: "Свитч",
+                            quantity: 5
+                        }]
+                    }],
+                    equipment: []
+                }]
+            }
         });
     }
 
@@ -53,49 +52,40 @@ export class Content extends React.Component<IContentProps, IContentState>
         }, () => console.log(this.state.model));
     }
 
-    setIntegerValue(intV: number)
-    {
-        this.setState({
-            intValue: intV
-        }, () => console.log(this.state.intValue));
+    onButtonClick(event: any) {
+        this.setSelectedNode({
+            id: 1,
+            name: "Some value"
+        });
     }
-
-    //onButtonClick(event: any) {
-    //    this.setIntegerValue({
-    //        intValue : 666
-    //    });
-    //}
-
-
-    //onButtonClick(event: any) {
-    //    this.setSelectedNode({
-    //        id: 1
-    //    });
-    //}
 
     render()
     {
+        console.log(this.state);
         return (
-            <div>{this.state.intValue}</div>
-            //<div>
-            //    {this.state.model}
-            //</div>
-
-
 
             //<div>
-            //    <div classname="container-fluid">
-            //        <div classname="row">
-            //            <div classname="col-md-6 col-sm-6 col-xs-6 col-3">
-            //                <Tree />
-            //            </div>
-            //            <div classname="col-md-6 col-sm-6 col-xs-6 col-4">
-            //                <EquipmentList />
-            //            </div>
-            //        </div>
-            //    </div>
-            //    <OperationField />
+            //    {this.state.selectedNode.name}
             //</div>
+
+            //<div>
+            //    <button onClick={this.onButtonClick.bind(this)}>Click me</button>
+
+            //</div>
+
+            <div>
+                <div className="container-fluid">
+                    <div className="row">
+                        <div className="col-md-6 col-sm-6 col-xs-6 col-3">
+                            <Tree />
+                        </div>
+                        <div className="col-md-6 col-sm-6 col-xs-6 col-4">
+                            <EquipmentList />
+                        </div>
+                    </div>
+                </div>
+                <OperationField />
+            </div>
         );
     }
 }
