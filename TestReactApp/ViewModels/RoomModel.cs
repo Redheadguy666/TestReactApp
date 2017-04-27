@@ -1,20 +1,20 @@
 ﻿using System;
-using TraineeshipWebApp.Models;
 using System.Collections.Generic;
-using System.Linq;
-using System.Web;
+using TraineeshipWebApp.ViewModels;
 
-namespace TraineeshipWebApp.ViewModels
+
+namespace TestReactApp.ViewModels
 {
     public class RoomModel
     {
-        public int Id { get; set; }
-        public string title { get; set; }
-
-        public void Initialize(Room room)
+        public RoomModel()
         {
-            this.Id = room.Id;
-            this.title = room.Title;
+            var equipment = new EquipmentModel();
         }
+
+        public int RoomId { get; set; }
+        public string Name { get; set; }
+
+        public List<EquipmentModel> Equipment { get; set; }
     }
 }

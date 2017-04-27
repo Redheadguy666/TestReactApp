@@ -19,7 +19,6 @@ namespace TraineeshipWebApp
 
             var buildings = factoryContext.Buildings.Include(p => p.Children);//.Include(p => p.Children.;
 
-
             foreach (var item in buildings)
             {
                 var buildingModel = new BuildingModel();
@@ -28,54 +27,6 @@ namespace TraineeshipWebApp
             }
 
             return organizationModel;
-        }
-
-        public List<EquipmentModel> GetDataById(int id, bool isFolder)
-        {
-            var equipmentModels = new List<EquipmentModel>();
-
-            if (isFolder) //Запрос оборудования для всего здания
-            {
-                var equipment = (from b in factoryContext.Buildings
-                                 join r in factoryContext.Rooms
-                                 on b.Id equals r.BuildingId
-                                 join e in factoryContext.Equipment
-                                 on r.Id equals e.RoomId
-                                 where b.Id == id
-                                 select new Equipment
-                                 {
-                                     Title = e.Title,
-                                     Number = e.Number,
-                                     RoomId = e.RoomId
-                                 });
-
-                foreach (var item in equipment)
-                {
-                    var equipmentModel = new EquipmentModel();
-                    equipmentModel.Initialize(item);
-                    equipmentModels.Add(equipmentModel);
-                }
-
-            }
-
-            else            //Запрос оборудования комнаты
-            {
-                var equipment = (from e in factoryContext.Equipment
-                                 where e.RoomId == id
-                                 select new Equipment
-                                 {
-                                     Id = e.Id,
-                                     Title = e.Title
-                                 });
-
-                foreach (var item in equipment)
-                {
-                    var equipmentModel = new EquipmentModel();
-                    equipmentModel.Initialize(item);
-                    equipmentModels.Add(equipmentModel);
-                }
-            }
-            return equipmentModels;
         }
 
         public void AddEquipment(EquipmentModel equipmentModel)
@@ -87,7 +38,6 @@ namespace TraineeshipWebApp
 
         public void UpdateEquipment(EquipmentModel equipmentModel)
         {
-
             Equipment equipment = factoryContext.Equipment.Find(equipmentModel.Id);
 
             if (equipment == null)

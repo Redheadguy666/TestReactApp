@@ -31,12 +31,6 @@ namespace TraineeshipWebApp.Controllers
             return this.JsonSerializeObject(data);
         }
 
-        public string GetDataById(int id, bool isFolder)
-        {
-            var data = this.DataService.GetDataById(id, isFolder);
-            return this.JsonSerializeObject(data);
-        }
-
         public void AddEquipment(EquipmentModel equipmentModel)
         {
             this.DataService.AddEquipment(equipmentModel);

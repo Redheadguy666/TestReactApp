@@ -20,5 +20,7 @@ namespace TraineeshipWebApp.ViewModels
             this.Number = equipment.Number;
             this.RoomId = equipment.RoomId;
         }
+
+
     }
 }

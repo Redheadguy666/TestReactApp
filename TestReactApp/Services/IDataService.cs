@@ -10,7 +10,6 @@ namespace TraineeshipWebApp
     public interface IDataService
     {
         OrganizationModel GetData();
-        List<EquipmentModel> GetDataById(int id, bool isFolder);
         void AddEquipment(EquipmentModel equipmentModel);
         void UpdateEquipment(EquipmentModel equipmentModel);
         void DeleteEquipment(int equipmentId);
