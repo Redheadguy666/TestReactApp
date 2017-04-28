@@ -14,6 +14,5 @@ namespace TestReactApp.ViewModels
         }
         public List<BuildingModel> Buildings { get; set; }
 
-
     }
 }

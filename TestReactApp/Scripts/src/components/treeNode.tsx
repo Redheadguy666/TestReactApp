@@ -21,7 +21,6 @@ export class TreeNode extends React.Component<ITreeNodeProps, {}>
 {
     render()
     {
-
         return (
             <ul className="list-group">
                 <li className="lit-group-item">

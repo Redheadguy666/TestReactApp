@@ -7,6 +7,11 @@ namespace TraineeshipWebApp.ViewModels
 {
     public class BuildingModel
     {
+        public BuildingModel()
+        {
+            var room = new RoomModel();
+        }
+
         public int Id { get; set; }
         public string Title { get; set; }
         public List<RoomModel> Rooms { get; set; }
@@ -15,7 +20,5 @@ namespace TraineeshipWebApp.ViewModels
             this.Id = building.Id;
             this.Title = building.Title;
         }
-
-
     }
 }

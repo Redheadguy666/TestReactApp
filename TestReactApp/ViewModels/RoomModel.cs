@@ -1,7 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using TraineeshipWebApp.ViewModels;
-
+using TraineeshipWebApp.Models;
 
 namespace TestReactApp.ViewModels
 {
@@ -16,5 +16,10 @@ namespace TestReactApp.ViewModels
         public string Name { get; set; }
 
         public List<EquipmentModel> Equipment { get; set; }
+
+        public void Initialize(Room room)
+        {
+            this.Name = room.Title;
+        }
     }
 }
