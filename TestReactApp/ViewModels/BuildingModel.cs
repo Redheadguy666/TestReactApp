@@ -9,7 +9,7 @@ namespace TraineeshipWebApp.ViewModels
     {
         public BuildingModel()
         {
-            var room = new RoomModel();
+            this.Rooms = new List<RoomModel>();
         }
 
         public int Id { get; set; }
@@ -19,6 +19,14 @@ namespace TraineeshipWebApp.ViewModels
         {
             this.Id = building.Id;
             this.Title = building.Title;
+
+            foreach (var room in building.Children)
+            {
+                var roomModel = new RoomModel();
+                roomModel.Initialize(room);
+                this.Rooms.Add(roomModel);
+            }
+
         }
     }
 }

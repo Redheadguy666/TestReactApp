@@ -17,7 +17,7 @@ namespace TraineeshipWebApp
         {
             var organizationModel = new OrganizationModel();
 
-            var buildings = factoryContext.Buildings.Include(x => x.Children.Select(c => c.Children));
+            var buildings = factoryContext.Buildings.Include(x => x.Children.Select(c => c.Children)).ToList();
 
             foreach (var item in buildings)
             {
