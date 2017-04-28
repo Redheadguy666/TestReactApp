@@ -460,7 +460,6 @@
     </Content>
     <Content Include="package.json" />
     <Content Include="Scripts\dist\bundle.js" />
-    <Content Include="Scripts\getData.js" />
     <Content Include="Scripts\jquery-3.1.1.min.js" />
     <Content Include="webpack.config.js" />
     <Content Include="node_modules\react\LICENSE" />
@@ -503,6 +502,7 @@
     <TypeScriptCompile Include="Scripts\src\components\Tree.tsx" />
     <TypeScriptCompile Include="Scripts\src\components\TreeNode.tsx" />
     <TypeScriptCompile Include="Scripts\src\index.tsx" />
+    <TypeScriptCompile Include="Scripts\typings\jquery\jquery.d.ts" />
   </ItemGroup>
   <ItemGroup>
     <Service Include="{4A0DDDB5-7A95-4FBF-97CC-616D07737A77}" />
