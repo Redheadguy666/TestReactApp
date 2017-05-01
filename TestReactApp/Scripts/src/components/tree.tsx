@@ -1,31 +1,49 @@
 ﻿import * as React from "react";
 import { TreeNode } from "./TreeNode";
 
-export interface ITreeProps
+interface ITreeProps
 {
-    //source:
-     
+    //source:     
 }
 
-export class Tree extends React.Component<ITreeProps, {}>
+interface ITreeState
 {
-    getData()
-    {
-       let data = $.ajax
-       ({
-            type: "Get",
-            url: "Data/GetData",
-            data: "json"
-       });
+    class: string;
+    label: string;
+}
 
-       return data; 
+export class Tree extends React.Component<ITreeProps, ITreeState>
+{
+    constructor(props : any)
+    {
+        super(props);
+        this.press = this.press.bind(this);
+    }
+
+    componentDidMount()
+    {
+        this.setState
+            ({
+                class: "Нажми",
+                label: "на меня"
+            });
+    }
+
+    press()
+    {
+        var className = (this.state.class === "Нажми") ? "on"
+            : "off";
+        this.setState({ class: className });
     }
 
     render()
     {
         return (
             <div>
-                <TreeNode id={1} name="Здание 2" icon="/Content/Images/blue-folder.ico" {this.getData()} />
+                <button onClick={this.press} className={this.state.class}>
+                    {this.state.label}
+                </button>
+                <TreeNode id={1} name="Здание 2" icon="/Content/Images/blue-folder.ico" />
             </div>
         ); 
     }

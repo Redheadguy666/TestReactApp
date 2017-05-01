@@ -1,5 +1,4 @@
 "use strict";
-Object.defineProperty(exports, "__esModule", { value: true });
 const React = require("react");
 const EquipmentList_1 = require("./EquipmentList");
 const Tree_1 = require("./Tree");

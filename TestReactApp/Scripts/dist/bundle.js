@@ -238,6 +238,10 @@ process.off = noop;
 process.removeListener = noop;
 process.removeAllListeners = noop;
 process.emit = noop;
+process.prependListener = noop;
+process.prependOnceListener = noop;
+
+process.listeners = function (name) { return [] }
 
 process.binding = function (name) {
     throw new Error('process.binding is not supported');
@@ -22096,8 +22100,24 @@ Object.defineProperty(exports, "__esModule", { value: true });
 const React = __webpack_require__(12);
 const TreeNode_1 = __webpack_require__(186);
 class Tree extends React.Component {
+    constructor(props) {
+        super(props);
+        this.press = this.press.bind(this);
+    }
+    componentDidMount() {
+        this.setState({
+            class: "Нажми",
+            label: "на меня"
+        });
+    }
+    press() {
+        var className = (this.state.class === "Нажми") ? "on"
+            : "off";
+        this.setState({ class: className });
+    }
     render() {
         return (React.createElement("div", null,
+            React.createElement("button", { onClick: this.press, className: this.state.class }, this.state.label),
             React.createElement(TreeNode_1.TreeNode, { id: 1, name: "Здание 2", icon: "/Content/Images/blue-folder.ico" })));
     }
 }
