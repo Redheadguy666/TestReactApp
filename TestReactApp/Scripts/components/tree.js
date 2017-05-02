@@ -6,33 +6,27 @@ class Tree extends React.Component {
     constructor(props) {
         super(props);
         this.state = {};
+        this.getData = this.getData.bind(this);
     }
     componentWillMount() {
-        this.setState({
-            data: this.getData()
-        });
+        this.getData();
     }
     getData() {
-        var that = this;
         $.ajax({
             type: "Get",
             data: "json",
             dataType: "json",
             url: "Data/GetData",
-            success: function (resultData) {
-                that.setState({
+            success: (resultData) => {
+                this.setState({
                     data: resultData
                 });
-            },
-            error: function () {
-                return "An error has occured!";
             }
         });
     }
     render() {
-        return (React.createElement("div", null,
-            React.createElement("h3", null, this.state.data),
-            React.createElement(TreeNode_1.TreeNode, { id: 1, name: "Здание 2", icon: "/Content/Images/blue-folder.ico" })));
+        var buildings = this.state.data ? this.state.data.buildings.map((building) => React.createElement(TreeNode_1.TreeNode, { id: building.id, name: building.title, key: building.id, icon: "/Content/Images/blue-folder.ico" })) : null;
+        return (React.createElement("div", null, buildings));
     }
 }
 exports.Tree = Tree;

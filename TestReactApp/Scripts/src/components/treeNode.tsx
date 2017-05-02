@@ -14,7 +14,7 @@ export interface ITreeNodeProps
 
 var style =
 {
-        width: "5%"
+       width: "5%"
 };
 
 export class TreeNode extends React.Component<ITreeNodeProps, {}>

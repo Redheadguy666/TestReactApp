@@ -18,52 +18,39 @@ export class Tree extends React.Component<ITreeProps, ITreeState>
     constructor(props : any)
     {
         super(props);
+        this.getData = this.getData.bind(this);
     }
 
     componentWillMount()
     {
-        this.setState
-        ({
-            data: this.getData()
-        });
+        this.getData()
     }
 
     getData() : any
     {
-        var that = this;
-
         $.ajax
         ({
             type: "Get",
             data: "json",
             dataType: "json",
             url: "Data/GetData",
-            success: function (resultData)
+            success: (resultData) =>
             {
-                that.setState
+                this.setState
                 ({
                     data : resultData
                 })
-            },
-            error: function ()
-            {
-                return "An error has occured!";
             }
-        });
-    }
-
-    renderTree()
-    {
-        let children = null;
-  
+            });
     }
 
     render()
     {
+        var buildings = this.state.data ? this.state.data.buildings.map((building: any) => <TreeNode id={building.id}
+            name={building.title} key={building.id} icon="/Content/Images/blue-folder.ico" c/>) : null;
         return (
             <div>
-                <h3>{this.state.data}</h3>
-                <TreeNode id={1} name="Здание 2" icon="/Content/Images/blue-folder.ico" />
+                {buildings}
             </div>
         ); 
     }
