@@ -3,7 +3,7 @@ import { TreeNode } from "./TreeNode";
 
 interface ITreeProps
 {
-    nodes : Array<TreeNode>       
+
 }
 
 interface ITreeState
@@ -49,7 +49,7 @@ export class Tree extends React.Component<ITreeProps, ITreeState>
             {
                 return "An error has occured!";
             }
-            });
+        });
     }
 
     renderTree()
