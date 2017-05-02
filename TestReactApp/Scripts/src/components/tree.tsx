@@ -54,7 +54,8 @@ export class Tree extends React.Component<ITreeProps, ITreeState>
 
     renderTree()
     {
-        let children = 
+        let children = null;
+  
     }
 
     render()
