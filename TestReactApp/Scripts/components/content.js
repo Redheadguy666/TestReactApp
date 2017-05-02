@@ -1,4 +1,5 @@
 "use strict";
+Object.defineProperty(exports, "__esModule", { value: true });
 const React = require("react");
 const EquipmentList_1 = require("./EquipmentList");
 const Tree_1 = require("./Tree");
@@ -32,7 +33,7 @@ class Content extends React.Component {
     setSelectedNode(treeNode) {
         this.setState({
             selectedNode: treeNode
-        }, () => console.log(this.state.model));
+        });
     }
     onButtonClick(event) {
         this.setSelectedNode({
@@ -41,7 +42,6 @@ class Content extends React.Component {
         });
     }
     render() {
-        console.log(this.state);
         return (
         //<div>
         //    {this.state.selectedNode.name}

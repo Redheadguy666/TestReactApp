@@ -238,10 +238,6 @@ process.off = noop;
 process.removeListener = noop;
 process.removeAllListeners = noop;
 process.emit = noop;
-process.prependListener = noop;
-process.prependOnceListener = noop;
-
-process.listeners = function (name) { return [] }
 
 process.binding = function (name) {
     throw new Error('process.binding is not supported');
@@ -22102,22 +22098,33 @@ const TreeNode_1 = __webpack_require__(186);
 class Tree extends React.Component {
     constructor(props) {
         super(props);
-        this.press = this.press.bind(this);
+        this.state = {};
     }
-    componentDidMount() {
+    componentWillMount() {
         this.setState({
-            class: "Нажми",
-            label: "на меня"
+            data: this.getData()
         });
     }
-    press() {
-        var className = (this.state.class === "Нажми") ? "on"
-            : "off";
-        this.setState({ class: className });
+    getData() {
+        var that = this;
+        $.ajax({
+            type: "Get",
+            data: "json",
+            dataType: "json",
+            url: "Data/GetData",
+            success: function (resultData) {
+                that.setState({
+                    data: resultData
+                });
+            },
+            error: function () {
+                return "An error has occured!";
+            }
+        });
     }
     render() {
         return (React.createElement("div", null,
-            React.createElement("button", { onClick: this.press, className: this.state.class }, this.state.label),
+            React.createElement("h3", null, this.state.data),
             React.createElement(TreeNode_1.TreeNode, { id: 1, name: "Здание 2", icon: "/Content/Images/blue-folder.ico" })));
     }
 }
@@ -22186,7 +22193,7 @@ class Content extends React.Component {
     setSelectedNode(treeNode) {
         this.setState({
             selectedNode: treeNode
-        }, () => console.log(this.state.model));
+        });
     }
     onButtonClick(event) {
         this.setSelectedNode({
@@ -22195,7 +22202,6 @@ class Content extends React.Component {
         });
     }
     render() {
-        console.log(this.state);
         return (
         //<div>
         //    {this.state.selectedNode.name}

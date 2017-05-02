@@ -1,4 +1,5 @@
 "use strict";
+Object.defineProperty(exports, "__esModule", { value: true });
 const React = require("react");
 const EquipmentElement_1 = require("./EquipmentElement");
 class EquipmentList extends React.Component {

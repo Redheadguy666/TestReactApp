@@ -49,7 +49,7 @@ export class Content extends React.Component<IContentProps, IContentState>
     {
         this.setState({
             selectedNode : treeNode
-        }, () => console.log(this.state.model));
+        });
     }
 
     onButtonClick(event: any) {
@@ -61,7 +61,6 @@ export class Content extends React.Component<IContentProps, IContentState>
 
     render()
     {
-        console.log(this.state);
         return (
 
             //<div>
@@ -70,14 +69,13 @@ export class Content extends React.Component<IContentProps, IContentState>
 
             //<div>
             //    <button onClick={this.onButtonClick.bind(this)}>Click me</button>
-
             //</div>
 
             <div>
                 <div className="container-fluid">
                     <div className="row">
                         <div className="col-md-6 col-sm-6 col-xs-6 col-3">
-                            <Tree />
+                            <Tree nodes/>
                         </div>
                         <div className="col-md-6 col-sm-6 col-xs-6 col-4">
                             <EquipmentList />
