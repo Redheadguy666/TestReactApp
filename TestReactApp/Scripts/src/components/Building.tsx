@@ -26,11 +26,11 @@ export class Building extends React.Component<IBuildingProps, {}>
         this.sayHello = this.sayHello.bind(this);
     }
 
-    sayHello(): any
+    sayHello(e : any): any
     {
-        alert("Hello!");
+        e.preventDefault();
+        alert("Hello, " + this.props.name);
     }
-
 
     render()
     {
@@ -40,10 +40,9 @@ export class Building extends React.Component<IBuildingProps, {}>
             <div >
                 <ul className="list-group">
                     <li className="list-group-item">
-                        <img src={this.props.icon} style={style} /><a onClick={this.sayHello()} href="#">{this.props.name}</a>
+                        <img src={this.props.icon} style={style} /><a onClick={this.sayHello} href="#">{this.props.name}</a>
                         {rooms}
                     </li>
-
                 </ul>
             </div>
         );
