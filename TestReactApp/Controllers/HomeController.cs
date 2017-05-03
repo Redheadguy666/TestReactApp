@@ -10,6 +10,8 @@ namespace TestReactApp.Controllers
     {
         public ActionResult Index()
         {
+            //Ветка dev/
+
             return View();
         }
 
