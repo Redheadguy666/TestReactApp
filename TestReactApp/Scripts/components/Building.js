@@ -12,8 +12,8 @@ class Building extends React.Component {
             React.createElement("ul", { className: "list-group" },
                 React.createElement("li", { className: "list-group-item" },
                     React.createElement("img", { src: this.props.icon, style: style }),
-                    React.createElement("a", { href: "#" }, this.props.name)),
-                rooms)));
+                    React.createElement("a", { href: "#" }, this.props.name),
+                    rooms))));
     }
 }
 exports.Building = Building;

@@ -28,8 +28,9 @@ export class Building extends React.Component<IBuildingProps, {}>
                 <ul className="list-group">
                     <li className="list-group-item">
                         <img src={this.props.icon} style={style} /><a href="#">{this.props.name}</a>
+                        {rooms}
                     </li>
-                    {rooms}
+
                 </ul>
             </div>
         );
