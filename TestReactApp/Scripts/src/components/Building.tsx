@@ -1,4 +1,5 @@
 ﻿import * as React from "react";
+import { Room } from "./Room"
 
 export interface IBuildingProps
 {
@@ -20,8 +21,8 @@ export class Building extends React.Component<IBuildingProps, {}>
 {
     render()
     {
-        var rooms : any = this.props.rooms.map((room : any) => <li><Building id={room.id}
-            name={room.name} key={room.id} icon="/Content/Images/blue-folder.ico" /></li>);
+        var rooms : any = this.props.rooms.map((room : any) => <Room id={room.roomId}
+            name={room.name} key={room.id} icon="/Content/Images/blue-folder.ico" />);
         return (
             <div>
                 <ul className="list-group">
