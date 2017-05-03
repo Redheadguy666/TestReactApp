@@ -26,6 +26,5 @@ export class Room extends React.Component<IRoomPropes, IRoomState>
                 </li>
             </ul>
         )
-
     }
 }

@@ -24,27 +24,6 @@ export class Content extends React.Component<IContentProps, IContentState>
         this.setSelectedNode = this.setSelectedNode.bind(this);
     }
 
-    componentDidMount() {
-        this.setState({
-            model: {
-                treeItems: [{
-                    id: 1,
-                    name: "Здание 1",
-                    treeItems: [{
-                        id: 2,
-                        name: "Комната 1",
-                        treeItems: [],
-                        equipment: [{
-                            name: "Свитч",
-                            quantity: 5
-                        }]
-                    }],
-                    equipment: []
-                }]
-            }
-        });
-    }
-
     setSelectedNode(treeNode: IBuildingProps)
     {
         this.setState({
