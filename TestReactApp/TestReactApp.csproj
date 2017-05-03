@@ -500,7 +500,7 @@
     <TypeScriptCompile Include="Scripts\src\components\Header.tsx" />
     <TypeScriptCompile Include="Scripts\src\components\OpearationField.tsx" />
     <TypeScriptCompile Include="Scripts\src\components\Tree.tsx" />
-    <TypeScriptCompile Include="Scripts\src\components\TreeNode.tsx" />
+    <TypeScriptCompile Include="Scripts\src\components\Building.tsx" />
     <TypeScriptCompile Include="Scripts\src\index.tsx" />
     <TypeScriptCompile Include="Scripts\typings\jquery\jquery.d.ts" />
   </ItemGroup>

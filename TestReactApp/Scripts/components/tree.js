@@ -1,7 +1,7 @@
 "use strict";
 Object.defineProperty(exports, "__esModule", { value: true });
 const React = require("react");
-const TreeNode_1 = require("./TreeNode");
+const Building_1 = require("./Building");
 class Tree extends React.Component {
     constructor(props) {
         super(props);
@@ -25,7 +25,7 @@ class Tree extends React.Component {
         });
     }
     render() {
-        var buildings = this.state.data ? this.state.data.buildings.map((building) => React.createElement(TreeNode_1.TreeNode, { id: building.id, name: building.title, key: building.id, icon: "/Content/Images/blue-folder.ico" })) : null;
+        var buildings = this.state.data ? this.state.data.buildings.map((building) => React.createElement(Building_1.Building, { id: building.id, name: building.title, key: building.id, rooms: building.rooms, icon: "/Content/Images/blue-folder.ico" })) : null;
         return (React.createElement("div", null, buildings));
     }
 }

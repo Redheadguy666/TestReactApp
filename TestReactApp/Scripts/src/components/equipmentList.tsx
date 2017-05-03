@@ -15,9 +15,6 @@ export class EquipmentList extends React.Component<IEquipmentListProps, {}>
 
     render()
     {
-
-
-
         return (
             <div className="container">
                 <table className="table-bordered">

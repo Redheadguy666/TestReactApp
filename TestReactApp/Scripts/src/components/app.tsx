@@ -1,7 +1,6 @@
 ﻿import * as React from "react";
 import { Header } from "./header";
 import { Content } from "./content";
-import { TreeNode } from "./treeNode";
 import { EquipmentList } from "./equipmentList";
 
 export interface IEquipmentApp

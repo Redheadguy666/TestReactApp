@@ -1,7 +1,7 @@
 ﻿import * as React from "react";
 import { EquipmentList } from "./EquipmentList";
 import { Tree } from "./Tree";
-import { TreeNode, ITreeNodeProps } from "./TreeNode";
+import { Building, IBuildingProps } from "./Building";
 import { OperationField } from "./OpearationField";
 
 export interface IContentProps
@@ -11,7 +11,7 @@ export interface IContentProps
 
 export interface IContentState
 {
-    selectedNode: ITreeNodeProps
+    selectedNode: IBuildingProps
     model: any;
 }
 
@@ -45,7 +45,7 @@ export class Content extends React.Component<IContentProps, IContentState>
         });
     }
 
-    setSelectedNode(treeNode: ITreeNodeProps)
+    setSelectedNode(treeNode: IBuildingProps)
     {
         this.setState({
             selectedNode : treeNode
@@ -82,7 +82,7 @@ export class Content extends React.Component<IContentProps, IContentState>
                         </div>
                     </div>
                 </div>
-                <OperationField />
+
             </div>
         );
     }

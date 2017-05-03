@@ -6,6 +6,7 @@ var style = {
 };
 class TreeNode extends React.Component {
     render() {
+        console.log(this.props.children);
         return (React.createElement("ul", { className: "list-group" },
             React.createElement("li", { className: "lit-group-item" },
                 React.createElement("img", { src: this.props.icon, style: style }),
