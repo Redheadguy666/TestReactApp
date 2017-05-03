@@ -42,14 +42,6 @@ export class Content extends React.Component<IContentProps, IContentState>
     {
         return (
 
-            //<div>
-            //    {this.state.selectedNode.name}
-            //</div>
-
-            //<div>
-            //    <button onClick={this.onButtonClick.bind(this)}>Click me</button>
-            //</div>
-
             <div>
                 <div className="container-fluid">
                     <div className="row">

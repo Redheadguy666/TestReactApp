@@ -22003,13 +22003,21 @@ var style = {
     width: "5%"
 };
 class Building extends React.Component {
+    constructor(props) {
+        super(props);
+        this.props = {};
+        this.sayHello = this.sayHello.bind(this);
+    }
+    sayHello() {
+        alert("Hello!");
+    }
     render() {
         var rooms = this.props.rooms.map((room) => React.createElement(Room_1.Room, { id: room.roomId, name: room.name, key: room.id, icon: "/Content/Images/blue-folder.ico" }));
         return (React.createElement("div", null,
             React.createElement("ul", { className: "list-group" },
                 React.createElement("li", { className: "list-group-item" },
                     React.createElement("img", { src: this.props.icon, style: style }),
-                    React.createElement("a", { href: "#" }, this.props.name),
+                    React.createElement("a", { onClick: this.sayHello(), href: "#" }, this.props.name),
                     rooms))));
     }
 }
@@ -22119,6 +22127,8 @@ class Tree extends React.Component {
             }
         });
     }
+    handleClick() {
+    }
     render() {
         var buildings = this.state.data ? this.state.data.buildings.map((building) => React.createElement(Building_1.Building, { id: building.id, name: building.title, key: building.id, rooms: building.rooms, icon: "/Content/Images/blue-folder.ico" })) : null;
         return (React.createElement("div", null, buildings));
@@ -22143,26 +22153,6 @@ class Content extends React.Component {
         this.state = {};
         this.setSelectedNode = this.setSelectedNode.bind(this);
     }
-    componentDidMount() {
-        this.setState({
-            model: {
-                treeItems: [{
-                        id: 1,
-                        name: "Здание 1",
-                        treeItems: [{
-                                id: 2,
-                                name: "Комната 1",
-                                treeItems: [],
-                                equipment: [{
-                                        name: "Свитч",
-                                        quantity: 5
-                                    }]
-                            }],
-                        equipment: []
-                    }]
-            }
-        });
-    }
     setSelectedNode(treeNode) {
         this.setState({
             selectedNode: treeNode
@@ -22175,14 +22165,7 @@ class Content extends React.Component {
         });
     }
     render() {
-        return (
-        //<div>
-        //    {this.state.selectedNode.name}
-        //</div>
-        //<div>
-        //    <button onClick={this.onButtonClick.bind(this)}>Click me</button>
-        //</div>
-        React.createElement("div", null,
+        return (React.createElement("div", null,
             React.createElement("div", { className: "container-fluid" },
                 React.createElement("div", { className: "row" },
                     React.createElement("div", { className: "col-md-6 col-sm-6 col-xs-6 col-3" },

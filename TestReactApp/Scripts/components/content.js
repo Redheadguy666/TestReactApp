@@ -9,26 +9,6 @@ class Content extends React.Component {
         this.state = {};
         this.setSelectedNode = this.setSelectedNode.bind(this);
     }
-    componentDidMount() {
-        this.setState({
-            model: {
-                treeItems: [{
-                        id: 1,
-                        name: "Здание 1",
-                        treeItems: [{
-                                id: 2,
-                                name: "Комната 1",
-                                treeItems: [],
-                                equipment: [{
-                                        name: "Свитч",
-                                        quantity: 5
-                                    }]
-                            }],
-                        equipment: []
-                    }]
-            }
-        });
-    }
     setSelectedNode(treeNode) {
         this.setState({
             selectedNode: treeNode
@@ -41,14 +21,7 @@ class Content extends React.Component {
         });
     }
     render() {
-        return (
-        //<div>
-        //    {this.state.selectedNode.name}
-        //</div>
-        //<div>
-        //    <button onClick={this.onButtonClick.bind(this)}>Click me</button>
-        //</div>
-        React.createElement("div", null,
+        return (React.createElement("div", null,
             React.createElement("div", { className: "container-fluid" },
                 React.createElement("div", { className: "row" },
                     React.createElement("div", { className: "col-md-6 col-sm-6 col-xs-6 col-3" },

@@ -8,7 +8,8 @@ interface ITreeProps
 
 interface ITreeState
 {
-    data : any;
+    data: any;
+    selectedItem: any
 }
 
 export class Tree extends React.Component<ITreeProps, ITreeState>
@@ -42,6 +43,11 @@ export class Tree extends React.Component<ITreeProps, ITreeState>
                 })
             }
         });
+    }
+
+    handleClick(): any
+    {
+
     }
 
     render()
