@@ -22014,19 +22014,18 @@ class Building extends React.Component {
         });
     }
     handleClick(buildingId) {
-        //this.setState
-        //({
-        //    isSelected: true
-        //});
+        this.setState({
+            isSelected: true
+        });
         alert(buildingId);
     }
     render() {
         var rooms = this.props.rooms.map((room) => React.createElement(Room_1.Room, { id: room.roomId, name: room.name, key: room.id, icon: "/Content/Images/blue-folder.ico" }));
         return (React.createElement("div", null,
             React.createElement("ul", { className: "list-group" },
-                React.createElement("li", { className: "list-group-item" },
+                React.createElement("li", { className: "list-group-item", onClick: () => this.handleClick(this.props.id) },
                     React.createElement("img", { src: this.props.icon, style: style }),
-                    React.createElement("a", { onClick: () => this.handleClick(this.props.id), href: "#" }, this.props.name),
+                    React.createElement("a", { href: "#" }, this.props.name),
                     rooms))));
     }
 }

@@ -44,6 +44,8 @@ export class Building extends React.Component<IBuildingProps, {}>
         ({
             isSelected: true
         });
+        alert(buildingId);
+        
     }
 
     render()
@@ -53,8 +55,8 @@ export class Building extends React.Component<IBuildingProps, {}>
         return (
             <div >
                 <ul className="list-group">
-                    <li className="list-group-item">
-                        <img src={this.props.icon} style={style} /><a onClick={() => this.handleClick(this.props.id)} href="#">{this.props.name}</a>
+                    <li className="list-group-item" onClick={() => this.handleClick(this.props.id)}>
+                        <img src={this.props.icon} style={style} /><a href="#">{this.props.name}</a>
                         {rooms}
                     </li>
                 </ul>

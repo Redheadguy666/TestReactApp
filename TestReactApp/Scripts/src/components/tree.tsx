@@ -3,7 +3,7 @@ import { Building } from "./Building";
 
 interface ITreeProps
 {
-
+    handle?: any
 }
 
 interface ITreeState
@@ -47,7 +47,7 @@ export class Tree extends React.Component<ITreeProps, ITreeState>
 
     handleClick(): any
     {
-
+        
     }
 
     render()
