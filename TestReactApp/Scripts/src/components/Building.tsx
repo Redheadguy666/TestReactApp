@@ -6,10 +6,14 @@ export interface IBuildingProps
     id: number;
     name?: string;
     rooms?: Array<any>;
-    selected?: boolean;
     isCollapsed?: boolean;
     isFolder?: boolean; 
     icon?: string;   
+}
+
+interface IBuildingState
+{
+    isSelected?: boolean;
 }
 
 var style =
@@ -23,13 +27,23 @@ export class Building extends React.Component<IBuildingProps, {}>
 
     constructor(props: any) {
         super(props);
-        this.sayHello = this.sayHello.bind(this);
+        this.handleClick = this.handleClick.bind(this);
     }
 
-    sayHello(e : any): any
+    componentWillMount()
     {
-        e.preventDefault();
-        alert("Hello, " + this.props.name);
+        this.setState
+        ({
+            isSelected: false
+        })
+    }
+
+    handleClick(buildingId : number): any
+    {
+        this.setState
+        ({
+            isSelected: true
+        });
     }
 
     render()
@@ -40,7 +54,7 @@ export class Building extends React.Component<IBuildingProps, {}>
             <div >
                 <ul className="list-group">
                     <li className="list-group-item">
-                        <img src={this.props.icon} style={style} /><a onClick={this.sayHello} href="#">{this.props.name}</a>
+                        <img src={this.props.icon} style={style} /><a onClick={() => this.handleClick(this.props.id)} href="#">{this.props.name}</a>
                         {rooms}
                     </li>
                 </ul>
