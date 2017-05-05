@@ -20,7 +20,9 @@ class Building extends React.Component {
         this.setState({
             isSelected: true
         });
-        alert(buildingId);
+        var selectedId = this.props.id;
+        alert(selectedId);
+        //this.props.handleClick(selectedId);
     }
     render() {
         var rooms = this.props.rooms.map((room) => React.createElement(Room_1.Room, { id: room.roomId, name: room.name, key: room.id, icon: "/Content/Images/blue-folder.ico" }));

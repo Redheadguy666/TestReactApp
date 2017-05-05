@@ -25,7 +25,7 @@ class Content extends React.Component {
             React.createElement("div", { className: "container-fluid" },
                 React.createElement("div", { className: "row" },
                     React.createElement("div", { className: "col-md-6 col-sm-6 col-xs-6 col-3" },
-                        React.createElement(Tree_1.Tree, null)),
+                        React.createElement(Tree_1.Tree, { handle: this.onButtonClick })),
                     React.createElement("div", { className: "col-md-6 col-sm-6 col-xs-6 col-4" },
                         React.createElement(EquipmentList_1.EquipmentList, null))))));
     }

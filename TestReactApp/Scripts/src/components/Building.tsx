@@ -9,6 +9,7 @@ export interface IBuildingProps
     isCollapsed?: boolean;
     isFolder?: boolean; 
     icon?: string;   
+    handleTree?: any;
 }
 
 interface IBuildingState
@@ -44,7 +45,10 @@ export class Building extends React.Component<IBuildingProps, {}>
         ({
             isSelected: true
         });
-        alert(buildingId);
+
+        var selectedId = this.props.id;
+
+        this.props.handleTree(selectedId);
         
     }
 
@@ -55,8 +59,11 @@ export class Building extends React.Component<IBuildingProps, {}>
         return (
             <div >
                 <ul className="list-group">
-                    <li className="list-group-item" onClick={() => this.handleClick(this.props.id)}>
-                        <img src={this.props.icon} style={style} /><a href="#">{this.props.name}</a>
+                    <li className="list-group-item" >
+                        <div onClick={() => this.handleClick(this.props.id)}>
+                            <img src={this.props.icon} style={style} /><a href="#">{this.props.name}</a>
+                        </div>
+                        
                         {rooms}
                     </li>
                 </ul>

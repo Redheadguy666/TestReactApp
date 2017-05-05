@@ -22017,7 +22017,9 @@ class Building extends React.Component {
         this.setState({
             isSelected: true
         });
-        alert(buildingId);
+        var selectedId = this.props.id;
+        alert(selectedId);
+        //this.props.handleClick(selectedId);
     }
     render() {
         var rooms = this.props.rooms.map((room) => React.createElement(Room_1.Room, { id: room.roomId, name: room.name, key: room.id, icon: "/Content/Images/blue-folder.ico" }));
@@ -22135,10 +22137,12 @@ class Tree extends React.Component {
             }
         });
     }
-    handleClick() {
+    handleClick(dataFromChild) {
+        var buildingId = dataFromChild;
+        this.props.handle();
     }
     render() {
-        var buildings = this.state.data ? this.state.data.buildings.map((building) => React.createElement(Building_1.Building, { id: building.id, name: building.title, key: building.id, rooms: building.rooms, icon: "/Content/Images/blue-folder.ico" })) : null;
+        var buildings = this.state.data ? this.state.data.buildings.map((building) => React.createElement(Building_1.Building, { id: building.id, name: building.title, key: building.id, rooms: building.rooms, icon: "/Content/Images/blue-folder.ico", handleClick: this.handleClick })) : null;
         return (React.createElement("div", null, buildings));
     }
 }
@@ -22177,7 +22181,7 @@ class Content extends React.Component {
             React.createElement("div", { className: "container-fluid" },
                 React.createElement("div", { className: "row" },
                     React.createElement("div", { className: "col-md-6 col-sm-6 col-xs-6 col-3" },
-                        React.createElement(Tree_1.Tree, null)),
+                        React.createElement(Tree_1.Tree, { handle: this.onButtonClick })),
                     React.createElement("div", { className: "col-md-6 col-sm-6 col-xs-6 col-4" },
                         React.createElement(EquipmentList_1.EquipmentList, null))))));
     }
