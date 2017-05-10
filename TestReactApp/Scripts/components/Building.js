@@ -9,6 +9,7 @@ class Building extends React.Component {
     constructor(props) {
         super(props);
         this.props = {};
+        this.state = {};
         this.handleClick = this.handleClick.bind(this);
     }
     componentWillMount() {
@@ -21,16 +22,17 @@ class Building extends React.Component {
             isSelected: true
         });
         var selectedId = this.props.id;
-        alert(selectedId);
-        //this.props.handleClick(selectedId);
+        alert(this.state.isSelected);
+        this.props.handleTree(selectedId);
     }
     render() {
         var rooms = this.props.rooms.map((room) => React.createElement(Room_1.Room, { id: room.roomId, name: room.name, key: room.id, icon: "/Content/Images/blue-folder.ico" }));
         return (React.createElement("div", null,
             React.createElement("ul", { className: "list-group" },
-                React.createElement("li", { className: "list-group-item", onClick: () => this.handleClick(this.props.id) },
-                    React.createElement("img", { src: this.props.icon, style: style }),
-                    React.createElement("a", { href: "#" }, this.props.name),
+                React.createElement("li", { className: "list-group-item" },
+                    React.createElement("div", { onClick: () => this.handleClick(this.props.id) },
+                        React.createElement("img", { src: this.props.icon, style: style }),
+                        React.createElement("a", { href: "#" }, this.props.name)),
                     rooms))));
     }
 }

@@ -13,6 +13,7 @@ export interface IContentState
 {
     selectedNode: IBuildingProps
     model: any;
+    equipment?: any;
 }
 
 export class Content extends React.Component<IContentProps, IContentState>

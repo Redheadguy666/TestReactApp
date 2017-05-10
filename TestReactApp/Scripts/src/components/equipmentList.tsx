@@ -3,14 +3,14 @@ import { EquipmentElement } from "./EquipmentElement";
 
 interface IEquipmentListProps
 {
-
+    //equipment?: any
 }
 
 export class EquipmentList extends React.Component<IEquipmentListProps, {}>
 {
     renderNode(props: any)
     {
-        
+       
     }
 
     render()

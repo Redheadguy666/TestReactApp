@@ -24,12 +24,8 @@ class Tree extends React.Component {
             }
         });
     }
-    handleClick(dataFromChild) {
-        var buildingId = dataFromChild;
-        this.props.handle();
-    }
     render() {
-        var buildings = this.state.data ? this.state.data.buildings.map((building) => React.createElement(Building_1.Building, { id: building.id, name: building.title, key: building.id, rooms: building.rooms, icon: "/Content/Images/blue-folder.ico", handleClick: this.handleClick })) : null;
+        var buildings = this.state.data ? this.state.data.buildings.map((building) => React.createElement(Building_1.Building, { id: building.id, name: building.title, key: building.id, rooms: building.rooms, icon: "/Content/Images/blue-folder.ico", handleTree: this.props.handle })) : null;
         return (React.createElement("div", null, buildings));
     }
 }

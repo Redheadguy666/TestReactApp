@@ -25,6 +25,7 @@ var style =
 export class Building extends React.Component<IBuildingProps, {}>
 {
     props: IBuildingProps = {} as any;
+    state: IBuildingState = {} as any;
 
     constructor(props: any) {
         super(props);
@@ -47,9 +48,9 @@ export class Building extends React.Component<IBuildingProps, {}>
         });
 
         var selectedId = this.props.id;
+        alert(this.state.isSelected);
 
-        this.props.handleTree(selectedId);
-        
+        this.props.handleTree(selectedId);      
     }
 
     render()
@@ -62,8 +63,7 @@ export class Building extends React.Component<IBuildingProps, {}>
                     <li className="list-group-item" >
                         <div onClick={() => this.handleClick(this.props.id)}>
                             <img src={this.props.icon} style={style} /><a href="#">{this.props.name}</a>
-                        </div>
-                        
+                        </div>                      
                         {rooms}
                     </li>
                 </ul>
