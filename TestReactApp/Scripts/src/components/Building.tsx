@@ -19,7 +19,7 @@ interface IBuildingState
 
 var style =
 {
-    width: "5%"
+    width: "2%"
 };
 
 export class Building extends React.Component<IBuildingProps, {}>

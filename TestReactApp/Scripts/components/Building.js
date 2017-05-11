@@ -3,7 +3,7 @@ Object.defineProperty(exports, "__esModule", { value: true });
 const React = require("react");
 const Room_1 = require("./Room");
 var style = {
-    width: "5%"
+    width: "2%"
 };
 class Building extends React.Component {
     constructor(props) {

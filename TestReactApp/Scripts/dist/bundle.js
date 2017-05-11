@@ -22000,7 +22000,7 @@ Object.defineProperty(exports, "__esModule", { value: true });
 const React = __webpack_require__(12);
 const Room_1 = __webpack_require__(185);
 var style = {
-    width: "5%"
+    width: "2%"
 };
 class Building extends React.Component {
     constructor(props) {
@@ -22101,7 +22101,7 @@ const React = __webpack_require__(12);
 class Room extends React.Component {
     render() {
         return (React.createElement("li", { className: "list-group-item" },
-            React.createElement("img", { src: this.props.icon, style: { width: "5%" } }),
+            React.createElement("img", { src: this.props.icon, style: { width: "2%" } }),
             React.createElement("a", { href: "#" }, this.props.name)));
     }
 }

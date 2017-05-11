@@ -4,7 +4,7 @@ const React = require("react");
 class Room extends React.Component {
     render() {
         return (React.createElement("li", { className: "list-group-item" },
-            React.createElement("img", { src: this.props.icon, style: { width: "5%" } }),
+            React.createElement("img", { src: this.props.icon, style: { width: "2%" } }),
             React.createElement("a", { href: "#" }, this.props.name)));
     }
 }
