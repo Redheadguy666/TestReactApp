@@ -22,18 +22,19 @@ class Building extends React.Component {
             isSelected: true
         });
         var selectedId = this.props.id;
-        alert(this.state.isSelected);
-        this.props.handleTree(selectedId);
+        console.log(this.props.rooms);
+        //this.props.handleTree(selectedId);      
     }
     render() {
-        var rooms = this.props.rooms.map((room) => React.createElement(Room_1.Room, { id: room.roomId, name: room.name, key: room.id, icon: "/Content/Images/blue-folder.ico" }));
+        var rooms = this.props.rooms.map((room) => React.createElement(Room_1.Room, { id: room.roomId, name: room.name, key: room.roomId, icon: "/Content/Images/blue-folder.ico" }));
+        alert(rooms);
         return (React.createElement("div", null,
             React.createElement("ul", { className: "list-group" },
                 React.createElement("li", { className: "list-group-item" },
                     React.createElement("div", { onClick: () => this.handleClick(this.props.id) },
                         React.createElement("img", { src: this.props.icon, style: style }),
                         React.createElement("a", { href: "#" }, this.props.name)),
-                    rooms))));
+                    React.createElement("ul", { className: "list-group" }, rooms)))));
     }
 }
 exports.Building = Building;

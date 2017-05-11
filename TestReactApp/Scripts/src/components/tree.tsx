@@ -40,9 +40,16 @@ export class Tree extends React.Component<ITreeProps, ITreeState>
                 this.setState
                 ({
                     data : resultData
-                })
+                });
+                this.countEquipment();
             }
-        });
+            });
+
+    }
+
+    countEquipment()
+    {
+        console.log(this.state.data);
     }
 
     render()

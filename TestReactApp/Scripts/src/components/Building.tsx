@@ -48,23 +48,28 @@ export class Building extends React.Component<IBuildingProps, {}>
         });
 
         var selectedId = this.props.id;
-        alert(this.state.isSelected);
 
-        this.props.handleTree(selectedId);      
+
+        console.log(this.props.rooms);
+
+        //this.props.handleTree(selectedId);      
     }
 
     render()
     {
-        var rooms : any = this.props.rooms.map((room : any) => <Room id={room.roomId}
-            name={room.name} key={room.id} icon="/Content/Images/blue-folder.ico" />);
+        var rooms : any[] = this.props.rooms.map((room : any) => <Room id={room.roomId}
+            name={room.name} key={room.roomId} icon="/Content/Images/blue-folder.ico" />);
+        alert(rooms);
         return (
             <div >
                 <ul className="list-group">
                     <li className="list-group-item" >
                         <div onClick={() => this.handleClick(this.props.id)}>
                             <img src={this.props.icon} style={style} /><a href="#">{this.props.name}</a>
-                        </div>                      
-                        {rooms}
+                        </div>      
+                        <ul className="list-group">             
+                            {rooms}
+                        </ul>
                     </li>
                 </ul>
             </div>

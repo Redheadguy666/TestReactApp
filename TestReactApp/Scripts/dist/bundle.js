@@ -22019,18 +22019,19 @@ class Building extends React.Component {
             isSelected: true
         });
         var selectedId = this.props.id;
-        alert(this.state.isSelected);
-        this.props.handleTree(selectedId);
+        console.log(this.props.rooms);
+        //this.props.handleTree(selectedId);      
     }
     render() {
-        var rooms = this.props.rooms.map((room) => React.createElement(Room_1.Room, { id: room.roomId, name: room.name, key: room.id, icon: "/Content/Images/blue-folder.ico" }));
+        var rooms = this.props.rooms.map((room) => React.createElement(Room_1.Room, { id: room.roomId, name: room.name, key: room.roomId, icon: "/Content/Images/blue-folder.ico" }));
+        alert(rooms);
         return (React.createElement("div", null,
             React.createElement("ul", { className: "list-group" },
                 React.createElement("li", { className: "list-group-item" },
                     React.createElement("div", { onClick: () => this.handleClick(this.props.id) },
                         React.createElement("img", { src: this.props.icon, style: style }),
                         React.createElement("a", { href: "#" }, this.props.name)),
-                    rooms))));
+                    React.createElement("ul", { className: "list-group" }, rooms)))));
     }
 }
 exports.Building = Building;
@@ -22099,10 +22100,9 @@ Object.defineProperty(exports, "__esModule", { value: true });
 const React = __webpack_require__(12);
 class Room extends React.Component {
     render() {
-        return (React.createElement("ul", { className: "list-group" },
-            React.createElement("li", { className: "list-group-item" },
-                React.createElement("img", { src: this.props.icon, style: { width: "5%" } }),
-                React.createElement("a", { href: "#" }, this.props.name))));
+        return (React.createElement("li", { className: "list-group-item" },
+            React.createElement("img", { src: this.props.icon, style: { width: "5%" } }),
+            React.createElement("a", { href: "#" }, this.props.name)));
     }
 }
 exports.Room = Room;
@@ -22136,8 +22136,12 @@ class Tree extends React.Component {
                 this.setState({
                     data: resultData
                 });
+                this.countEquipment();
             }
         });
+    }
+    countEquipment() {
+        console.log(this.state.data);
     }
     render() {
         var buildings = this.state.data ? this.state.data.buildings.map((building) => React.createElement(Building_1.Building, { id: building.id, name: building.title, key: building.id, rooms: building.rooms, icon: "/Content/Images/blue-folder.ico", handleTree: this.props.handle })) : null;

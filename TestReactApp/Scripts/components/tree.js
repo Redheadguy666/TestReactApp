@@ -21,8 +21,12 @@ class Tree extends React.Component {
                 this.setState({
                     data: resultData
                 });
+                this.countEquipment();
             }
         });
+    }
+    countEquipment() {
+        console.log(this.state.data);
     }
     render() {
         var buildings = this.state.data ? this.state.data.buildings.map((building) => React.createElement(Building_1.Building, { id: building.id, name: building.title, key: building.id, rooms: building.rooms, icon: "/Content/Images/blue-folder.ico", handleTree: this.props.handle })) : null;
