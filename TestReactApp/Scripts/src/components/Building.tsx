@@ -5,7 +5,7 @@ export interface IBuildingProps
 {
     id: number;
     name?: string;
-    rooms?: Array<any>;
+    rooms?: any[];
     isCollapsed?: boolean;
     isFolder?: boolean; 
     icon?: string;   
@@ -47,19 +47,26 @@ export class Building extends React.Component<IBuildingProps, {}>
             isSelected: true
         });
 
-        var selectedId = this.props.id;
+        this.countEquipmentInRoom(); 
+    }
 
+    countEquipmentInRoom()
+    {
+        var allEquipment : any = {};
 
-        console.log(this.props.rooms);
+        Array.prototype.forEach.call(this.props.rooms, (room: any) => {
+            Array.prototype.forEach.call(room.equipment, (equipment: any) => {
+                allEquipment[equipment.title] = equipment.number;
+            });
+        });
 
-        //this.props.handleTree(selectedId);      
+        this.props.handleTree(allEquipment);
     }
 
     render()
     {
         var rooms : any[] = this.props.rooms.map((room : any) => <Room id={room.roomId}
             name={room.name} key={room.roomId} icon="/Content/Images/blue-folder.ico" />);
-        alert(rooms);
         return (
             <div >
                 <ul className="list-group">

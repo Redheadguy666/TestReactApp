@@ -22018,13 +22018,19 @@ class Building extends React.Component {
         this.setState({
             isSelected: true
         });
-        var selectedId = this.props.id;
-        console.log(this.props.rooms);
-        //this.props.handleTree(selectedId);      
+        this.countEquipmentInRoom();
+    }
+    countEquipmentInRoom() {
+        var allEquipment = {};
+        Array.prototype.forEach.call(this.props.rooms, (room) => {
+            Array.prototype.forEach.call(room.equipment, (equipment) => {
+                allEquipment[equipment.title] = equipment.number;
+            });
+        });
+        this.props.handleTree(allEquipment);
     }
     render() {
         var rooms = this.props.rooms.map((room) => React.createElement(Room_1.Room, { id: room.roomId, name: room.name, key: room.roomId, icon: "/Content/Images/blue-folder.ico" }));
-        alert(rooms);
         return (React.createElement("div", null,
             React.createElement("ul", { className: "list-group" },
                 React.createElement("li", { className: "list-group-item" },
@@ -22136,15 +22142,14 @@ class Tree extends React.Component {
                 this.setState({
                     data: resultData
                 });
-                this.countEquipment();
             }
         });
     }
-    countEquipment() {
-        console.log(this.state.data);
+    contentCallback(equipment) {
+        this.props.handle(equipment);
     }
     render() {
-        var buildings = this.state.data ? this.state.data.buildings.map((building) => React.createElement(Building_1.Building, { id: building.id, name: building.title, key: building.id, rooms: building.rooms, icon: "/Content/Images/blue-folder.ico", handleTree: this.props.handle })) : null;
+        var buildings = this.state.data ? this.state.data.buildings.map((building) => React.createElement(Building_1.Building, { id: building.id, name: building.title, key: building.id, rooms: building.rooms, icon: "/Content/Images/blue-folder.ico", handleTree: (allEquipment) => this.contentCallback(allEquipment) })) : null;
         return (React.createElement("div", null, buildings));
     }
 }
@@ -22165,25 +22170,19 @@ class Content extends React.Component {
     constructor(props) {
         super(props);
         this.state = {};
-        this.setSelectedNode = this.setSelectedNode.bind(this);
     }
-    setSelectedNode(treeNode) {
+    getEquipment(allEquipment) {
         this.setState({
-            selectedNode: treeNode
+            equipment: allEquipment
         });
-    }
-    onButtonClick(event) {
-        this.setSelectedNode({
-            id: 1,
-            name: "Some value"
-        });
+        alert(JSON.stringify(this.state.equipment));
     }
     render() {
         return (React.createElement("div", null,
             React.createElement("div", { className: "container-fluid" },
                 React.createElement("div", { className: "row" },
                     React.createElement("div", { className: "col-md-6 col-sm-6 col-xs-6 col-3" },
-                        React.createElement(Tree_1.Tree, { handle: this.onButtonClick })),
+                        React.createElement(Tree_1.Tree, { handle: (allEquipment) => this.getEquipment(allEquipment) })),
                     React.createElement("div", { className: "col-md-6 col-sm-6 col-xs-6 col-4" },
                         React.createElement(EquipmentList_1.EquipmentList, null))))));
     }

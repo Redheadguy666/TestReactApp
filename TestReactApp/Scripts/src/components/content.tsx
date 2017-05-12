@@ -22,20 +22,12 @@ export class Content extends React.Component<IContentProps, IContentState>
 
     constructor(props : any) {
         super(props);
-        this.setSelectedNode = this.setSelectedNode.bind(this);
     }
 
-    setSelectedNode(treeNode: IBuildingProps)
+    getEquipment(allEquipment : any)
     {
         this.setState({
-            selectedNode : treeNode
-        });
-    }
-
-    onButtonClick(event: any) {
-        this.setSelectedNode({
-            id: 1,
-            name: "Some value"
+            equipment: allEquipment
         });
     }
 
@@ -47,7 +39,7 @@ export class Content extends React.Component<IContentProps, IContentState>
                 <div className="container-fluid">
                     <div className="row">
                         <div className="col-md-6 col-sm-6 col-xs-6 col-3">
-                            <Tree handle={this.onButtonClick}/>
+                            <Tree handle={(allEquipment : any) => this.getEquipment(allEquipment)}/>
                         </div>
                         <div className="col-md-6 col-sm-6 col-xs-6 col-4">
                             <EquipmentList />

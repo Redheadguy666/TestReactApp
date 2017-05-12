@@ -7,25 +7,19 @@ class Content extends React.Component {
     constructor(props) {
         super(props);
         this.state = {};
-        this.setSelectedNode = this.setSelectedNode.bind(this);
     }
-    setSelectedNode(treeNode) {
+    getEquipment(allEquipment) {
         this.setState({
-            selectedNode: treeNode
+            equipment: allEquipment
         });
-    }
-    onButtonClick(event) {
-        this.setSelectedNode({
-            id: 1,
-            name: "Some value"
-        });
+        alert(JSON.stringify(this.state.equipment));
     }
     render() {
         return (React.createElement("div", null,
             React.createElement("div", { className: "container-fluid" },
                 React.createElement("div", { className: "row" },
                     React.createElement("div", { className: "col-md-6 col-sm-6 col-xs-6 col-3" },
-                        React.createElement(Tree_1.Tree, { handle: this.onButtonClick })),
+                        React.createElement(Tree_1.Tree, { handle: (allEquipment) => this.getEquipment(allEquipment) })),
                     React.createElement("div", { className: "col-md-6 col-sm-6 col-xs-6 col-4" },
                         React.createElement(EquipmentList_1.EquipmentList, null))))));
     }

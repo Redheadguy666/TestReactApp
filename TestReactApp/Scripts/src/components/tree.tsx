@@ -41,22 +41,21 @@ export class Tree extends React.Component<ITreeProps, ITreeState>
                 ({
                     data : resultData
                 });
-                this.countEquipment();
             }
             });
 
     }
 
-    countEquipment()
+    contentCallback(equipment : any)
     {
-        console.log(this.state.data);
+        this.props.handle(equipment);
     }
 
     render()
     {
         var buildings = this.state.data ? this.state.data.buildings.map
             ((building: any) => <Building id={building.id}
-                name={building.title} key={building.id} rooms={building.rooms} icon="/Content/Images/blue-folder.ico" handleTree={this.props.handle}/>) : null;
+                name={building.title} key={building.id} rooms={building.rooms} icon="/Content/Images/blue-folder.ico" handleTree={(allEquipment : any) => this.contentCallback(allEquipment)}/>) : null;
         return (
             <div>
                 {buildings}

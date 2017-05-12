@@ -21,13 +21,19 @@ class Building extends React.Component {
         this.setState({
             isSelected: true
         });
-        var selectedId = this.props.id;
-        console.log(this.props.rooms);
-        //this.props.handleTree(selectedId);      
+        this.countEquipmentInRoom();
+    }
+    countEquipmentInRoom() {
+        var allEquipment = {};
+        Array.prototype.forEach.call(this.props.rooms, (room) => {
+            Array.prototype.forEach.call(room.equipment, (equipment) => {
+                allEquipment[equipment.title] = equipment.number;
+            });
+        });
+        this.props.handleTree(allEquipment);
     }
     render() {
         var rooms = this.props.rooms.map((room) => React.createElement(Room_1.Room, { id: room.roomId, name: room.name, key: room.roomId, icon: "/Content/Images/blue-folder.ico" }));
-        alert(rooms);
         return (React.createElement("div", null,
             React.createElement("ul", { className: "list-group" },
                 React.createElement("li", { className: "list-group-item" },
