@@ -42,7 +42,7 @@ export class Content extends React.Component<IContentProps, IContentState>
                             <Tree handle={(allEquipment : any) => this.getEquipment(allEquipment)}/>
                         </div>
                         <div className="col-md-6 col-sm-6 col-xs-6 col-4">
-                            <EquipmentList />
+                            <EquipmentList equipment={this.state.equipment}/>
                         </div>
                     </div>
                 </div>

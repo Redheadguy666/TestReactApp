@@ -27,12 +27,13 @@ class Building extends React.Component {
         var allEquipment = {};
         Array.prototype.forEach.call(this.props.rooms, (room) => {
             Array.prototype.forEach.call(room.equipment, (equipment) => {
-                allEquipment[equipment.title] = equipment.number;
+                allEquipment["\"" + equipment.title + "\""] = equipment.number;
             });
         });
         this.props.handleTree(allEquipment);
     }
     render() {
+        //alert(this.props.rooms instanceof Array);
         var rooms = this.props.rooms.map((room) => React.createElement(Room_1.Room, { id: room.roomId, name: room.name, key: room.roomId, icon: "/Content/Images/blue-folder.ico" }));
         return (React.createElement("div", null,
             React.createElement("ul", { className: "list-group" },

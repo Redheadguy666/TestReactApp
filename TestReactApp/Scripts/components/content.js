@@ -12,7 +12,6 @@ class Content extends React.Component {
         this.setState({
             equipment: allEquipment
         });
-        alert(JSON.stringify(this.state.equipment));
     }
     render() {
         return (React.createElement("div", null,
@@ -21,7 +20,7 @@ class Content extends React.Component {
                     React.createElement("div", { className: "col-md-6 col-sm-6 col-xs-6 col-3" },
                         React.createElement(Tree_1.Tree, { handle: (allEquipment) => this.getEquipment(allEquipment) })),
                     React.createElement("div", { className: "col-md-6 col-sm-6 col-xs-6 col-4" },
-                        React.createElement(EquipmentList_1.EquipmentList, null))))));
+                        React.createElement(EquipmentList_1.EquipmentList, { equipment: this.state.equipment }))))));
     }
 }
 exports.Content = Content;

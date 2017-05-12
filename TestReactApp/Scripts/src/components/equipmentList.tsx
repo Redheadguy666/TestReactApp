@@ -3,19 +3,36 @@ import { EquipmentElement } from "./EquipmentElement";
 
 interface IEquipmentListProps
 {
-    //equipment?: any
+    equipment: any[];
+}
+
+interface IEquipmentListState
+{
+    
 }
 
 export class EquipmentList extends React.Component<IEquipmentListProps, {}>
 {
-    renderNode(props: any)
-    {
-       
+    props: IEquipmentListProps = {} as any;
+    state: IEquipmentListState = {} as any;
+
+    constructor(props: any) {
+        super(props);
     }
 
     render()
     {
+        var equipmentProps;
+        if (this.props.equipment !== undefined)
+        {
+            equipmentProps = Array.prototype.slice.call(this.props.equipment);
+        }
+        var equipment: any[] = equipmentProps ? equipmentProps.map
+            ((equipment: any) => <EquipmentElement key={equipment.id} id={equipment.id}
+            name={equipment.name} number={equipment.number} />) : null;
+
         return (
+
             <div className="container">
                 <table className="table-bordered">
                     <thead>
@@ -26,11 +43,7 @@ export class EquipmentList extends React.Component<IEquipmentListProps, {}>
                         </tr>
                     </thead>
                     <tbody>
-                        <EquipmentElement id={0} name="Комната" number={6} />
-                        <EquipmentElement id={1} name="Кровать" number={10} />
-                        <EquipmentElement id={2} name="Диван" number={1} />
-                        <EquipmentElement id={3} name="Котик" number={6} />
-                        <EquipmentElement id={4} name="Андройд" number={2} />
+                        {equipment}
                     </tbody>
                 </table>
             </div>
