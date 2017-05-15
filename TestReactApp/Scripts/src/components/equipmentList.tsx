@@ -22,14 +22,16 @@ export class EquipmentList extends React.Component<IEquipmentListProps, {}>
 
     render()
     {
-        var equipmentProps;
+        var equipmentProps = this.props.equipment;
         if (this.props.equipment !== undefined)
         {
-            equipmentProps = Array.prototype.slice.call(this.props.equipment);
+            //equipmentProps = Array.prototype.slice.call(this.props.equipment);
+            //equipmentProps = Object.keys(this.props.equipment).map((key : any) => key)
         }
         var equipment: any[] = equipmentProps ? equipmentProps.map
             ((equipment: any) => <EquipmentElement key={equipment.id} id={equipment.id}
-            name={equipment.name} number={equipment.number} />) : null;
+                name={equipment.name} number={equipment.number} />) : null;
+        console.log(this.props.equipment);
 
         return (
 

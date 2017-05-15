@@ -52,15 +52,21 @@ export class Building extends React.Component<IBuildingProps, {}>
 
     countEquipmentInRoom()
     {
-        var allEquipment : any = {};
+        var allEquipment: any = {};
+        var equipmentMassive: any = [];
 
         Array.prototype.forEach.call(this.props.rooms, (room: any) => {
             Array.prototype.forEach.call(room.equipment, (equipment: any) => {
-                allEquipment[equipment.title] = equipment.number;
+                var eq = {
+                    name: equipment.title,
+                    number: equipment.number
+                };
+                equipmentMassive.push(eq);
+                //allEquipment[equipment.title] = equipment.number;
             });
         });
 
-        this.props.handleTree(allEquipment);
+        this.props.handleTree(equipmentMassive);
     }
 
     render()

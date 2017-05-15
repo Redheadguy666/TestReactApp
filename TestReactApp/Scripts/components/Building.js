@@ -25,12 +25,18 @@ class Building extends React.Component {
     }
     countEquipmentInRoom() {
         var allEquipment = {};
+        var equipmentMassive = [];
         Array.prototype.forEach.call(this.props.rooms, (room) => {
             Array.prototype.forEach.call(room.equipment, (equipment) => {
-                allEquipment["\"" + equipment.title + "\""] = equipment.number;
+                var eq = {
+                    name: equipment.title,
+                    number: equipment.number
+                };
+                equipmentMassive.push(eq);
+                //allEquipment[equipment.title] = equipment.number;
             });
         });
-        this.props.handleTree(allEquipment);
+        this.props.handleTree(equipmentMassive);
     }
     render() {
         //alert(this.props.rooms instanceof Array);

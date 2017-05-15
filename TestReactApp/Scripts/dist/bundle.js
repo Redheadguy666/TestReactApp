@@ -22022,12 +22022,18 @@ class Building extends React.Component {
     }
     countEquipmentInRoom() {
         var allEquipment = {};
+        var equipmentMassive = [];
         Array.prototype.forEach.call(this.props.rooms, (room) => {
             Array.prototype.forEach.call(room.equipment, (equipment) => {
-                allEquipment["\"" + equipment.title + "\""] = equipment.number;
+                var eq = {
+                    name: equipment.title,
+                    number: equipment.number
+                };
+                equipmentMassive.push(eq);
+                //allEquipment[equipment.title] = equipment.number;
             });
         });
-        this.props.handleTree(allEquipment);
+        this.props.handleTree(equipmentMassive);
     }
     render() {
         //alert(this.props.rooms instanceof Array);
@@ -22056,7 +22062,7 @@ class EquipmentElement extends React.Component {
     render() {
         return (React.createElement("tr", null,
             React.createElement("td", null, this.props.id),
-            React.createElement("td", null, this.props.name),
+            React.createElement("td", { className: "text-center" }, this.props.name),
             React.createElement("td", null, this.props.number)));
     }
 }
@@ -22079,11 +22085,13 @@ class EquipmentList extends React.Component {
         this.state = {};
     }
     render() {
-        var equipmentProps;
+        var equipmentProps = this.props.equipment;
         if (this.props.equipment !== undefined) {
-            equipmentProps = Array.prototype.slice.call(this.props.equipment);
+            //equipmentProps = Array.prototype.slice.call(this.props.equipment);
+            //equipmentProps = Object.keys(this.props.equipment).map((key : any) => key)
         }
         var equipment = equipmentProps ? equipmentProps.map((equipment) => React.createElement(EquipmentElement_1.EquipmentElement, { key: equipment.id, id: equipment.id, name: equipment.name, number: equipment.number })) : null;
+        console.log(this.props.equipment);
         return (React.createElement("div", { className: "container" },
             React.createElement("table", { className: "table-bordered" },
                 React.createElement("thead", null,
