@@ -62,7 +62,6 @@ export class Building extends React.Component<IBuildingProps, {}>
                     number: equipment.number
                 };
                 equipmentMassive.push(eq);
-                //allEquipment[equipment.title] = equipment.number;
             });
         });
 
@@ -71,7 +70,6 @@ export class Building extends React.Component<IBuildingProps, {}>
 
     render()
     {
-        //alert(this.props.rooms instanceof Array);
         var rooms : any[] = this.props.rooms.map((room : any) => <Room id={room.roomId}
             name={room.name} key={room.roomId} icon="/Content/Images/blue-folder.ico" />);
         return (
