@@ -22018,9 +22018,9 @@ class Building extends React.Component {
         this.setState({
             isSelected: true
         });
-        this.countEquipmentInRoom();
+        this.countEquipmentInBuilding();
     }
-    countEquipmentInRoom() {
+    countEquipmentInBuilding() {
         var allEquipment = {};
         var equipmentMassive = [];
         Array.prototype.forEach.call(this.props.rooms, (room) => {
@@ -22030,13 +22030,24 @@ class Building extends React.Component {
                     number: equipment.number
                 };
                 equipmentMassive.push(eq);
-                //allEquipment[equipment.title] = equipment.number;
             });
         });
         this.props.handleTree(equipmentMassive);
     }
+    countEquipmentInRoom() {
+        var roomEquipment = [];
+        var room = this.props.rooms[this.props.id];
+        alert(this.props.id);
+        console.log(room);
+        //Array.prototype.forEach.call(room.equipment, (equipment: any) => {
+        //    var eq = {
+        //        name: equipment.title,
+        //        number: equipment.number
+        //    };
+        //    roomEquipment.push(eq);
+        //});
+    }
     render() {
-        //alert(this.props.rooms instanceof Array);
         var rooms = this.props.rooms.map((room) => React.createElement(Room_1.Room, { id: room.roomId, name: room.name, key: room.roomId, icon: "/Content/Images/blue-folder.ico" }));
         return (React.createElement("div", null,
             React.createElement("ul", { className: "list-group" },
@@ -22044,7 +22055,8 @@ class Building extends React.Component {
                     React.createElement("div", { onClick: () => this.handleClick(this.props.id) },
                         React.createElement("img", { src: this.props.icon, style: style }),
                         React.createElement("a", { href: "#" }, this.props.name)),
-                    React.createElement("ul", { className: "list-group" }, rooms)))));
+                    React.createElement("div", { onClick: () => this.countEquipmentInRoom() },
+                        React.createElement("ul", { className: "list-group" }, rooms))))));
     }
 }
 exports.Building = Building;
