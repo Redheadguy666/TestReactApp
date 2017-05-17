@@ -37,18 +37,19 @@ class Building extends React.Component {
         });
         this.props.handleTree(equipmentMassive);
     }
-    countEquipmentInRoom() {
+    countEquipmentInRoom(event) {
         var roomEquipment = [];
-        var room = this.props.rooms[this.props.id];
-        alert(this.props.id);
-        console.log(room);
-        //Array.prototype.forEach.call(room.equipment, (equipment: any) => {
-        //    var eq = {
-        //        name: equipment.title,
-        //        number: equipment.number
-        //    };
-        //    roomEquipment.push(eq);
-        //});
+        var rooms = this.props.rooms.filter(room => room.roomId == 1);
+        Array.prototype.forEach.call(rooms, (room) => {
+            Array.prototype.forEach.call(room.equipment, (equipment) => {
+                var eq = {
+                    name: equipment.title,
+                    number: equipment.number
+                };
+                roomEquipment.push(eq);
+            });
+        });
+        console.log(event.target.roomId);
     }
     render() {
         var rooms = this.props.rooms.map((room) => React.createElement(Room_1.Room, { id: room.roomId, name: room.name, key: room.roomId, icon: "/Content/Images/blue-folder.ico" }));
@@ -58,7 +59,7 @@ class Building extends React.Component {
                     React.createElement("div", { onClick: () => this.handleClick(this.props.id) },
                         React.createElement("img", { src: this.props.icon, style: style }),
                         React.createElement("a", { href: "#" }, this.props.name)),
-                    React.createElement("div", { onClick: () => this.countEquipmentInRoom() },
+                    React.createElement("div", { onClick: () => this.countEquipmentInRoom(event) },
                         React.createElement("ul", { className: "list-group" }, rooms))))));
     }
 }

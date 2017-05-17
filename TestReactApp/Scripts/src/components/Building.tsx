@@ -68,21 +68,21 @@ export class Building extends React.Component<IBuildingProps, {}>
         this.props.handleTree(equipmentMassive);
     }
 
-    countEquipmentInRoom()
+    countEquipmentInRoom(event : any)
     {
         var roomEquipment: any = [];
+        var rooms = this.props.rooms.filter(room => room.roomId == this.props.rooms);
 
-        var room = this.props.rooms[this.props.id];
-        alert(this.props.id);
-        console.log(room);
-
-        Array.prototype.forEach.call(room.equipment, (equipment: any) => {
-            var eq = {
-                name: equipment.title,
-                number: equipment.number
-            };
-            roomEquipment.push(eq);
+        Array.prototype.forEach.call(rooms, (room: any) => {
+            Array.prototype.forEach.call(room.equipment, (equipment: any) => {
+                var eq = {
+                    name: equipment.title,
+                    number: equipment.number
+                };
+                roomEquipment.push(eq);
+            });
         });
+
 
     }
 
@@ -97,7 +97,7 @@ export class Building extends React.Component<IBuildingProps, {}>
                         <div onClick={() => this.handleClick(this.props.id)}>
                             <img src={this.props.icon} style={style} /><a href="#">{this.props.name}</a>
                         </div>      
-                        <div onClick={() => this.countEquipmentInRoom()}>
+                        <div onClick={() => this.countEquipmentInRoom(event)}>
                             <ul className="list-group">             
                                 {rooms}
                             </ul>
