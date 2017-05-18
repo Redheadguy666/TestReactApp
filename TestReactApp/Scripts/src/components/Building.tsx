@@ -58,7 +58,7 @@ export class Building extends React.Component<IBuildingProps, {}>
         Array.prototype.forEach.call(this.props.rooms, (room: any) => {
             Array.prototype.forEach.call(room.equipment, (equipment: any) => {
                 var eq = {
-                    name: equipment.title,
+                    title: equipment.title,
                     number: equipment.number
                 };
                 equipmentMassive.push(eq);
@@ -68,28 +68,15 @@ export class Building extends React.Component<IBuildingProps, {}>
         this.props.handleTree(equipmentMassive);
     }
 
-    countEquipmentInRoom(event : any)
+    countEquipmentInRoom(roomEquipment : any)
     {
-        var roomEquipment: any = [];
-        var rooms = this.props.rooms.filter(room => room.roomId == this.props.rooms);
-
-        Array.prototype.forEach.call(rooms, (room: any) => {
-            Array.prototype.forEach.call(room.equipment, (equipment: any) => {
-                var eq = {
-                    name: equipment.title,
-                    number: equipment.number
-                };
-                roomEquipment.push(eq);
-            });
-        });
-
-
+        this.props.handleTree(roomEquipment);
     }
 
     render()
     {
         var rooms : any[] = this.props.rooms.map((room : any) => <Room id={room.roomId}
-            name={room.name} key={room.roomId} icon="/Content/Images/blue-folder.ico" />);
+            name={room.name} key={room.roomId} equipmentInRoom={room.equipment} buildingCallback={(roomEquipment : any) => this.countEquipmentInRoom(roomEquipment)} icon="/Content/Images/blue-folder.ico" />);
         return (
             <div >
                 <ul className="list-group">
@@ -97,11 +84,7 @@ export class Building extends React.Component<IBuildingProps, {}>
                         <div onClick={() => this.handleClick(this.props.id)}>
                             <img src={this.props.icon} style={style} /><a href="#">{this.props.name}</a>
                         </div>      
-                        <div onClick={() => this.countEquipmentInRoom(event)}>
-                            <ul className="list-group">             
-                                {rooms}
-                            </ul>
-                        </div>
+                         {rooms}
                     </li>
                 </ul>
             </div>

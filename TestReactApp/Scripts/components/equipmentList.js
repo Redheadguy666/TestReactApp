@@ -14,7 +14,7 @@ class EquipmentList extends React.Component {
             //equipmentProps = Array.prototype.slice.call(this.props.equipment);
             //equipmentProps = Object.keys(this.props.equipment).map((key : any) => key)
         }
-        var equipment = equipmentProps ? equipmentProps.map((equipment) => React.createElement(EquipmentElement_1.EquipmentElement, { key: equipment.id, id: equipment.id, name: equipment.name, number: equipment.number })) : null;
+        var equipment = equipmentProps ? equipmentProps.map((equipment) => React.createElement(EquipmentElement_1.EquipmentElement, { key: equipment.id, id: equipment.id, title: equipment.title, number: equipment.number })) : null;
         console.log(this.props.equipment);
         return (React.createElement("div", { className: "container" },
             React.createElement("table", { className: "table-bordered" },

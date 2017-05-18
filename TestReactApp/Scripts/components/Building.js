@@ -29,7 +29,7 @@ class Building extends React.Component {
         Array.prototype.forEach.call(this.props.rooms, (room) => {
             Array.prototype.forEach.call(room.equipment, (equipment) => {
                 var eq = {
-                    name: equipment.title,
+                    title: equipment.title,
                     number: equipment.number
                 };
                 equipmentMassive.push(eq);
@@ -37,30 +37,18 @@ class Building extends React.Component {
         });
         this.props.handleTree(equipmentMassive);
     }
-    countEquipmentInRoom(event) {
-        var roomEquipment = [];
-        var rooms = this.props.rooms.filter(room => room.roomId == 1);
-        Array.prototype.forEach.call(rooms, (room) => {
-            Array.prototype.forEach.call(room.equipment, (equipment) => {
-                var eq = {
-                    name: equipment.title,
-                    number: equipment.number
-                };
-                roomEquipment.push(eq);
-            });
-        });
-        console.log(event.target.roomId);
+    countEquipmentInRoom(roomEquipment) {
+        this.props.handleTree(roomEquipment);
     }
     render() {
-        var rooms = this.props.rooms.map((room) => React.createElement(Room_1.Room, { id: room.roomId, name: room.name, key: room.roomId, icon: "/Content/Images/blue-folder.ico" }));
+        var rooms = this.props.rooms.map((room) => React.createElement(Room_1.Room, { id: room.roomId, name: room.name, key: room.roomId, equipmentInRoom: room.equipment, buildingCallback: (roomEquipment) => this.countEquipmentInRoom(roomEquipment), icon: "/Content/Images/blue-folder.ico" }));
         return (React.createElement("div", null,
             React.createElement("ul", { className: "list-group" },
                 React.createElement("li", { className: "list-group-item" },
                     React.createElement("div", { onClick: () => this.handleClick(this.props.id) },
                         React.createElement("img", { src: this.props.icon, style: style }),
                         React.createElement("a", { href: "#" }, this.props.name)),
-                    React.createElement("div", { onClick: () => this.countEquipmentInRoom(event) },
-                        React.createElement("ul", { className: "list-group" }, rooms))))));
+                    rooms))));
     }
 }
 exports.Building = Building;

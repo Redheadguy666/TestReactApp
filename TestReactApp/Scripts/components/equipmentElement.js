@@ -5,7 +5,7 @@ class EquipmentElement extends React.Component {
     render() {
         return (React.createElement("tr", null,
             React.createElement("td", null, this.props.id),
-            React.createElement("td", { className: "text-center" }, this.props.name),
+            React.createElement("td", { className: "text-center" }, this.props.title),
             React.createElement("td", null, this.props.number)));
     }
 }

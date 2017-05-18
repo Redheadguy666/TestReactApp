@@ -7,7 +7,9 @@ interface IRoomPropes
     isActive?: boolean;
     isCollapsed?: boolean;
     isFolder?: boolean;
-    icon?: string;   
+    icon?: string; 
+    equipmentInRoom?: any[];  
+    buildingCallback?: any;
 }
 
 interface IRoomState
@@ -17,12 +19,22 @@ interface IRoomState
 
 export class Room extends React.Component<IRoomPropes, IRoomState>
 {
+    countEquipmentInRoom()
+    {
+        this.props.buildingCallback(this.props.equipmentInRoom);
+    }
+
     render()
     {
         return (
-                <li className="list-group-item">
-                    <img src={this.props.icon} style={{width: "2%"}} /><a href="#">{this.props.name}</a>
-                </li>
+            <div onClick={() => this.countEquipmentInRoom()}>
+                <ul className="list-group">
+                    <li className="list-group-item">
+                        <img src={this.props.icon} style={{ width: "2%" }} /><a href="#">{this.props.name}</a>
+                    </li>
+                </ul>
+            </div>
+               
         )
     }
 }

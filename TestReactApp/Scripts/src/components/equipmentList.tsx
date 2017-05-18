@@ -30,7 +30,7 @@ export class EquipmentList extends React.Component<IEquipmentListProps, {}>
         }
         var equipment: any[] = equipmentProps ? equipmentProps.map
             ((equipment: any) => <EquipmentElement key={equipment.id} id={equipment.id}
-                name={equipment.name} number={equipment.number} />) : null;
+                title={equipment.title} number={equipment.number} />) : null;
         console.log(this.props.equipment);
 
         return (

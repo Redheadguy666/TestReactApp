@@ -51,8 +51,8 @@ export class Tree extends React.Component<ITreeProps, ITreeState>
         this.props.handle(equipment);
     }
 
-    render()
-    {
+
+    render() {
         var buildings = this.state.data ? this.state.data.buildings.map
             ((building: any) => <Building id={building.id}
                 name={building.title} key={building.id} rooms={building.rooms} icon="/Content/Images/blue-folder.ico" handleTree={(allEquipment : any) => this.contentCallback(allEquipment)}/>) : null;
