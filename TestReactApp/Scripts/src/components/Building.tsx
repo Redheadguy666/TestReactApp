@@ -68,11 +68,6 @@ export class Building extends React.Component<IBuildingProps, {}>
         this.props.handleTree(equipmentMassive);
     }
 
-    countEquipmentInRoom(roomEquipment : any)
-    {
-        //this.props.handleTree(roomEquipment);
-    }
-
     render()
     {
         var rooms : any[] = this.props.rooms.map((room : any) => <Room id={room.roomId}
