@@ -22026,6 +22026,7 @@ class Building extends React.Component {
         Array.prototype.forEach.call(this.props.rooms, (room) => {
             Array.prototype.forEach.call(room.equipment, (equipment) => {
                 var eq = {
+                    id: equipment.id,
                     title: equipment.title,
                     number: equipment.number
                 };
@@ -22088,7 +22089,7 @@ class EquipmentList extends React.Component {
             //equipmentProps = Array.prototype.slice.call(this.props.equipment);
             //equipmentProps = Object.keys(this.props.equipment).map((key : any) => key)
         }
-        var equipment = equipmentProps ? equipmentProps.map((equipment) => React.createElement(EquipmentElement_1.EquipmentElement, { key: equipment.id, id: equipment.id, title: equipment.title, number: equipment.number })) : null;
+        var equipment = equipmentProps ? equipmentProps.map((equipment_) => React.createElement(EquipmentElement_1.EquipmentElement, { key: equipment_.id, id: equipment_.id, title: equipment_.title, number: equipment_.number })) : null;
         console.log(this.props.equipment);
         return (React.createElement("div", { className: "container" },
             React.createElement("table", { className: "table-bordered" },

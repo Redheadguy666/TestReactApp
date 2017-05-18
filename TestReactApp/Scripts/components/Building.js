@@ -29,6 +29,7 @@ class Building extends React.Component {
         Array.prototype.forEach.call(this.props.rooms, (room) => {
             Array.prototype.forEach.call(room.equipment, (equipment) => {
                 var eq = {
+                    id: equipment.id,
                     title: equipment.title,
                     number: equipment.number
                 };

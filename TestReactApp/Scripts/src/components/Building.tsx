@@ -58,6 +58,7 @@ export class Building extends React.Component<IBuildingProps, {}>
         Array.prototype.forEach.call(this.props.rooms, (room: any) => {
             Array.prototype.forEach.call(room.equipment, (equipment: any) => {
                 var eq = {
+                    id: equipment.id,
                     title: equipment.title,
                     number: equipment.number
                 };
