@@ -70,13 +70,13 @@ export class Building extends React.Component<IBuildingProps, {}>
 
     countEquipmentInRoom(roomEquipment : any)
     {
-        this.props.handleTree(roomEquipment);
+        //this.props.handleTree(roomEquipment);
     }
 
     render()
     {
         var rooms : any[] = this.props.rooms.map((room : any) => <Room id={room.roomId}
-            name={room.name} key={room.roomId} equipmentInRoom={room.equipment} buildingCallback={(roomEquipment : any) => this.countEquipmentInRoom(roomEquipment)} icon="/Content/Images/blue-folder.ico" />);
+            name={room.name} key={room.roomId} equipmentInRoom={room.equipment} buildingCallback={this.props.handleTree} icon="/Content/Images/blue-folder.ico" />);
         return (
             <div >
                 <ul className="list-group">
