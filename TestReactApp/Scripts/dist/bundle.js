@@ -22034,9 +22034,6 @@ class Building extends React.Component {
         });
         this.props.handleTree(equipmentMassive);
     }
-    countEquipmentInRoom(roomEquipment) {
-        //this.props.handleTree(roomEquipment);
-    }
     render() {
         var rooms = this.props.rooms.map((room) => React.createElement(Room_1.Room, { id: room.roomId, name: room.name, key: room.roomId, equipmentInRoom: room.equipment, buildingCallback: this.props.handleTree, icon: "/Content/Images/blue-folder.ico" }));
         return (React.createElement("div", null,
