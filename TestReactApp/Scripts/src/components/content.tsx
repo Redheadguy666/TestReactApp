@@ -14,7 +14,7 @@ export interface IContentState
     selectedNode: IBuildingProps
     model: any;
     equipment?: any;
-
+    addingEquipment?: any;
 }
 
 export class Content extends React.Component<IContentProps, IContentState>
@@ -45,7 +45,7 @@ export class Content extends React.Component<IContentProps, IContentState>
                         </div>
                         <div className="col-md-6 col-sm-6 col-xs-6 col-4">
                             <EquipmentList equipment={this.state.equipment} />
-                            <OperationField/>
+                            <OperationField contentCallback=/>
                         </div>
                     </div>
                 </div>
