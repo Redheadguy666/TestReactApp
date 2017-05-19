@@ -17,36 +17,70 @@ export class OperationField extends React.Component<IOperationFieldProps, {}>
 
     constructor(props: any) {
         super(props);
+        this.setUpNewEquipment = this.setUpNewEquipment.bind(this);
     }
 
-    sendNewEquipmentToServer(newEquipment: any) {
+    addEquipment(newEquipment: any) {
         $.ajax
-            ({
-                type: "Post",
-                url: "/Data/AddEquipment",
-                data: newEquipment,
-                dataType: "json",
-                success: (result, status) => {
-                    alert("OK: " + status);
-                }
-            });
+        ({
+            type: "Post",
+            url: "/Data/AddEquipment",
+            data: newEquipment,
+            dataType: "json",
+            success: (result, status) => {
+                alert("OK: " + status);
+            }
+        });
+      
     }
 
-    setUpNewEquipment()
+    deleteEquipment(equipment: any)
     {
-        var addingEquipmentRoomId = $("#addingNodeRoomId").val();
-        var addingEquipmentTitle = $("#addingNodeName").val();
-        var addingEquipmentNumber = $("#addingNodeNumber").val();
-
-        var addingEquipment = {
-            roomId: addingEquipmentRoomId,
-            title: addingEquipmentTitle,
-            number: addingEquipmentNumber
-        }     
-        this.sendNewEquipmentToServer(addingEquipment);
+        $.ajax
+        ({
+            type: "Post",
+            url: "/Data/DeleteEquipment",
+            data: equipment.id,
+            dataType: "json",
+            success: (result, status) => {
+                alert("OK: " + status);
+            }
+        });
     }
 
+    updateEquipment(equipment: any) {
+        $.ajax
+        ({
+            type: "Post",
+            url: "/Data/UpdateEquipment",
+            data: equipment,
+            dataType: "json",
+            success: (result, status) => {
+                alert("OK: " + status);
+            }
+        });
+    }
 
+    setUpNewEquipment(operation : string)
+    {
+        switch (operation) {
+            case "Add": this.addEquipment(equipment); break;
+            case "Delete": this.deleteEquipment(equipment); break;
+            case "Update": this.updateEquipment(equipment); break;
+        }
+
+        var equipmentRoomId = $("#addingNodeRoomId").val();
+        var equipmentTitle = $("#addingNodeName").val();
+        var equipmentNumber = $("#addingNodeNumber").val();
+
+        var equipment = {
+            roomId: equipmentRoomId,
+            title: equipmentTitle,
+            number: equipmentNumber
+        }     
+
+        
+    }
 
     render()
     {
@@ -64,7 +98,7 @@ export class OperationField extends React.Component<IOperationFieldProps, {}>
                                     <input type="text" required className="form-control" id="addingNodeName" />
                                     <label htmlFor="addingNodeNumber">Количество:</label>
                                     <input type="number" required className="form-control" id="addingNodeNumber" />
-                                    <button type="submit" onClick={this.setUpNewEquipment.bind(this)} className="btn btn-info">OK</button>
+                                    <button type="submit" onClick={() => this.setUpNewEquipment("Add")} className="btn btn-info">OK</button>
                                 </div>
                             </div>
                         </div>
@@ -75,7 +109,7 @@ export class OperationField extends React.Component<IOperationFieldProps, {}>
                             <div className="panel-body">
                                 <label htmlFor="deletingNodeId">Ид:</label>
                                 <input type="number" required className="form-control" id="deletingNodeId" />
-                                <button type="submit" /*onClick={this.removeEquipment}*/ className="btn btn-info">OK</button>
+                                <button type="submit" onClick={() => this.setUpNewEquipment("Delete")} className="btn btn-info">OK</button>
                             </div>
                         </div>
                 </form>
@@ -87,7 +121,7 @@ export class OperationField extends React.Component<IOperationFieldProps, {}>
                             <input type="text" required className="form-control" id="updatingNodeName" />
                             <label htmlFor="updatingNodeNumber">Количество:</label>
                             <input type="numbers" required className="form-control" id="updatingNodeNumber" />
-                            <button type="submit" /*onClick={this.editEquipment}*/ className="btn btn-info">OK</button>
+                            <button type="submit" onClick={() => this.setUpNewEquipment("Update")} className="btn btn-info">OK</button>
                         </div>
                     </div>
                 </form>
