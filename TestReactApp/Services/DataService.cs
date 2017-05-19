@@ -32,7 +32,7 @@ namespace TraineeshipWebApp
         public void AddEquipment(EquipmentModel equipmentModel)
         {
             factoryContext.Equipment.Add(new Equipment()
-                { Title = equipmentModel.Title, RoomId = equipmentModel.RoomId });
+                { Title = equipmentModel.Title, RoomId = equipmentModel.RoomId, Number = equipmentModel.Numbers });
             factoryContext.SaveChanges();
         }
 

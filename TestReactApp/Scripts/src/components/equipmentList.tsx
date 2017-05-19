@@ -4,7 +4,7 @@ import { EquipmentElement } from "./EquipmentElement";
 interface IEquipmentListProps
 {
     equipment: any[];
-    addingEquipment: any;
+    addingEquipment?: any;
 }
 
 interface IEquipmentListState
@@ -21,20 +21,6 @@ export class EquipmentList extends React.Component<IEquipmentListProps, {}>
         super(props);
     }
 
-    addEquipment(equipment : any)
-    {
-
-    }
-
-    removeEquipment(id : number)
-    {
-
-    }
-
-    editEquipment(id: number)
-    {
-
-    }
 
     render()
     {

@@ -42,7 +42,7 @@ export class Tree extends React.Component<ITreeProps, ITreeState>
                     data : resultData
                 });
             }
-            });
+        });
 
     }
 

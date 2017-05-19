@@ -2,7 +2,7 @@
 
 interface IOperationFieldProps
 {
-    contentCallback: any
+    contentCallback?: any
 }
 
 interface IOperationFieldState
@@ -19,7 +19,20 @@ export class OperationField extends React.Component<IOperationFieldProps, {}>
         super(props);
     }
 
-    passEquipmentToContent()
+    sendNewEquipmentToServer(newEquipment: any) {
+        $.ajax
+            ({
+                type: "Post",
+                url: "/Data/AddEquipment",
+                data: newEquipment,
+                dataType: "json",
+                success: (result, status) => {
+                    alert("OK: " + status);
+                }
+            });
+    }
+
+    setUpNewEquipment()
     {
         var addingEquipmentRoomId = $("#addingNodeRoomId").val();
         var addingEquipmentTitle = $("#addingNodeName").val();
@@ -29,10 +42,11 @@ export class OperationField extends React.Component<IOperationFieldProps, {}>
             roomId: addingEquipmentRoomId,
             title: addingEquipmentTitle,
             number: addingEquipmentNumber
-        }
-
-        this.props.contentCallback(addingEquipment);
+        }     
+        this.sendNewEquipmentToServer(addingEquipment);
     }
+
+
 
     render()
     {
@@ -50,7 +64,7 @@ export class OperationField extends React.Component<IOperationFieldProps, {}>
                                     <input type="text" required className="form-control" id="addingNodeName" />
                                     <label htmlFor="addingNodeNumber">Количество:</label>
                                     <input type="number" required className="form-control" id="addingNodeNumber" />
-                                    <button type="submit" onClick={this.passEquipmentToContent} className="btn btn-info">OK</button>
+                                    <button type="submit" onClick={this.setUpNewEquipment.bind(this)} className="btn btn-info">OK</button>
                                 </div>
                             </div>
                         </div>
