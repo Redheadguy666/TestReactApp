@@ -61,7 +61,7 @@
 /******/ 	__webpack_require__.p = "/js/";
 /******/
 /******/ 	// Load entry module and return exports
-/******/ 	return __webpack_require__(__webpack_require__.s = 189);
+/******/ 	return __webpack_require__(__webpack_require__.s = 190);
 /******/ })
 /************************************************************************/
 /******/ ([
@@ -788,7 +788,7 @@ module.exports = ExecutionEnvironment;
 
 var _prodInvariant = __webpack_require__(17);
 
-var ReactCurrentOwner = __webpack_require__(11);
+var ReactCurrentOwner = __webpack_require__(12);
 
 var invariant = __webpack_require__(1);
 var warning = __webpack_require__(2);
@@ -1187,6 +1187,16 @@ module.exports = emptyFunction;
 /***/ function(module, exports, __webpack_require__) {
 
 "use strict";
+'use strict';
+
+module.exports = __webpack_require__(20);
+
+
+/***/ },
+/* 11 */
+/***/ function(module, exports, __webpack_require__) {
+
+"use strict";
 /* WEBPACK VAR INJECTION */(function(process) {/**
  * Copyright 2013-present, Facebook, Inc.
  * All rights reserved.
@@ -1440,7 +1450,7 @@ module.exports = ReactUpdates;
 /* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(0)))
 
 /***/ },
-/* 11 */
+/* 12 */
 /***/ function(module, exports) {
 
 "use strict";
@@ -1474,16 +1484,6 @@ var ReactCurrentOwner = {
 };
 
 module.exports = ReactCurrentOwner;
-
-/***/ },
-/* 12 */
-/***/ function(module, exports, __webpack_require__) {
-
-"use strict";
-'use strict';
-
-module.exports = __webpack_require__(20);
-
 
 /***/ },
 /* 13 */
@@ -2112,7 +2112,7 @@ module.exports = PooledClass;
 
 var _assign = __webpack_require__(4);
 
-var ReactCurrentOwner = __webpack_require__(11);
+var ReactCurrentOwner = __webpack_require__(12);
 
 var warning = __webpack_require__(2);
 var canDefineProperty = __webpack_require__(32);
@@ -5545,10 +5545,10 @@ module.exports = ReactErrorUtils;
 
 var _prodInvariant = __webpack_require__(3);
 
-var ReactCurrentOwner = __webpack_require__(11);
+var ReactCurrentOwner = __webpack_require__(12);
 var ReactInstanceMap = __webpack_require__(24);
 var ReactInstrumentation = __webpack_require__(8);
-var ReactUpdates = __webpack_require__(10);
+var ReactUpdates = __webpack_require__(11);
 
 var invariant = __webpack_require__(1);
 var warning = __webpack_require__(2);
@@ -7449,7 +7449,7 @@ var _assign = __webpack_require__(4);
 
 var LinkedValueUtils = __webpack_require__(38);
 var ReactDOMComponentTree = __webpack_require__(5);
-var ReactUpdates = __webpack_require__(10);
+var ReactUpdates = __webpack_require__(11);
 
 var warning = __webpack_require__(2);
 
@@ -7922,7 +7922,7 @@ var DOMLazyTree = __webpack_require__(18);
 var DOMProperty = __webpack_require__(14);
 var React = __webpack_require__(20);
 var ReactBrowserEventEmitter = __webpack_require__(27);
-var ReactCurrentOwner = __webpack_require__(11);
+var ReactCurrentOwner = __webpack_require__(12);
 var ReactDOMComponentTree = __webpack_require__(5);
 var ReactDOMContainerInfo = __webpack_require__(114);
 var ReactDOMFeatureFlags = __webpack_require__(116);
@@ -7932,7 +7932,7 @@ var ReactInstrumentation = __webpack_require__(8);
 var ReactMarkupChecksum = __webpack_require__(136);
 var ReactReconciler = __webpack_require__(19);
 var ReactUpdateQueue = __webpack_require__(41);
-var ReactUpdates = __webpack_require__(10);
+var ReactUpdates = __webpack_require__(11);
 
 var emptyObject = __webpack_require__(21);
 var instantiateReactComponent = __webpack_require__(73);
@@ -8983,7 +8983,7 @@ module.exports = setTextContent;
 
 var _prodInvariant = __webpack_require__(3);
 
-var ReactCurrentOwner = __webpack_require__(11);
+var ReactCurrentOwner = __webpack_require__(12);
 var REACT_ELEMENT_TYPE = __webpack_require__(130);
 
 var getIteratorFn = __webpack_require__(164);
@@ -9195,7 +9195,7 @@ module.exports = REACT_ELEMENT_TYPE;
 
 'use strict';
 
-var ReactCurrentOwner = __webpack_require__(11);
+var ReactCurrentOwner = __webpack_require__(12);
 var ReactComponentTreeHook = __webpack_require__(7);
 var ReactElement = __webpack_require__(16);
 
@@ -9524,9 +9524,9 @@ module.exports = __webpack_require__(112);
 "use strict";
 "use strict";
 Object.defineProperty(exports, "__esModule", { value: true });
-const React = __webpack_require__(12);
-const header_1 = __webpack_require__(188);
-const content_1 = __webpack_require__(187);
+const React = __webpack_require__(10);
+const header_1 = __webpack_require__(189);
+const content_1 = __webpack_require__(188);
 class EquipmentApp extends React.Component {
     render() {
         return (React.createElement("div", null,
@@ -11565,7 +11565,7 @@ var EventPluginHub = __webpack_require__(22);
 var EventPropagators = __webpack_require__(23);
 var ExecutionEnvironment = __webpack_require__(6);
 var ReactDOMComponentTree = __webpack_require__(5);
-var ReactUpdates = __webpack_require__(10);
+var ReactUpdates = __webpack_require__(11);
 var SyntheticEvent = __webpack_require__(13);
 
 var getEventTarget = __webpack_require__(45);
@@ -12643,7 +12643,7 @@ var _prodInvariant = __webpack_require__(3),
 
 var React = __webpack_require__(20);
 var ReactComponentEnvironment = __webpack_require__(39);
-var ReactCurrentOwner = __webpack_require__(11);
+var ReactCurrentOwner = __webpack_require__(12);
 var ReactErrorUtils = __webpack_require__(40);
 var ReactInstanceMap = __webpack_require__(24);
 var ReactInstrumentation = __webpack_require__(8);
@@ -13552,7 +13552,7 @@ var ReactDOMComponentTree = __webpack_require__(5);
 var ReactDefaultInjection = __webpack_require__(129);
 var ReactMount = __webpack_require__(65);
 var ReactReconciler = __webpack_require__(19);
-var ReactUpdates = __webpack_require__(10);
+var ReactUpdates = __webpack_require__(11);
 var ReactVersion = __webpack_require__(144);
 
 var findDOMNode = __webpack_require__(161);
@@ -14843,7 +14843,7 @@ var _prodInvariant = __webpack_require__(3),
 var DOMPropertyOperations = __webpack_require__(58);
 var LinkedValueUtils = __webpack_require__(38);
 var ReactDOMComponentTree = __webpack_require__(5);
-var ReactUpdates = __webpack_require__(10);
+var ReactUpdates = __webpack_require__(11);
 
 var invariant = __webpack_require__(1);
 var warning = __webpack_require__(2);
@@ -15797,7 +15797,7 @@ var _prodInvariant = __webpack_require__(3),
 
 var LinkedValueUtils = __webpack_require__(38);
 var ReactDOMComponentTree = __webpack_require__(5);
-var ReactUpdates = __webpack_require__(10);
+var ReactUpdates = __webpack_require__(11);
 
 var invariant = __webpack_require__(1);
 var warning = __webpack_require__(2);
@@ -16585,7 +16585,7 @@ module.exports = ReactDebugTool;
 
 var _assign = __webpack_require__(4);
 
-var ReactUpdates = __webpack_require__(10);
+var ReactUpdates = __webpack_require__(11);
 var Transaction = __webpack_require__(29);
 
 var emptyFunction = __webpack_require__(9);
@@ -16816,7 +16816,7 @@ var EventListener = __webpack_require__(51);
 var ExecutionEnvironment = __webpack_require__(6);
 var PooledClass = __webpack_require__(15);
 var ReactDOMComponentTree = __webpack_require__(5);
-var ReactUpdates = __webpack_require__(10);
+var ReactUpdates = __webpack_require__(11);
 
 var getEventTarget = __webpack_require__(45);
 var getUnboundedScrollPosition = __webpack_require__(89);
@@ -17016,7 +17016,7 @@ var ReactComponentEnvironment = __webpack_require__(39);
 var ReactEmptyComponent = __webpack_require__(61);
 var ReactBrowserEventEmitter = __webpack_require__(27);
 var ReactHostComponent = __webpack_require__(63);
-var ReactUpdates = __webpack_require__(10);
+var ReactUpdates = __webpack_require__(11);
 
 var ReactInjection = {
   Component: ReactComponentEnvironment.injection,
@@ -17152,7 +17152,7 @@ var ReactComponentEnvironment = __webpack_require__(39);
 var ReactInstanceMap = __webpack_require__(24);
 var ReactInstrumentation = __webpack_require__(8);
 
-var ReactCurrentOwner = __webpack_require__(11);
+var ReactCurrentOwner = __webpack_require__(12);
 var ReactReconciler = __webpack_require__(19);
 var ReactChildReconciler = __webpack_require__(109);
 
@@ -19731,7 +19731,7 @@ module.exports = dangerousStyleValue;
 
 var _prodInvariant = __webpack_require__(3);
 
-var ReactCurrentOwner = __webpack_require__(11);
+var ReactCurrentOwner = __webpack_require__(12);
 var ReactDOMComponentTree = __webpack_require__(5);
 var ReactInstanceMap = __webpack_require__(24);
 
@@ -21827,7 +21827,7 @@ module.exports = onlyChild;
 
 var _prodInvariant = __webpack_require__(17);
 
-var ReactCurrentOwner = __webpack_require__(11);
+var ReactCurrentOwner = __webpack_require__(12);
 var REACT_ELEMENT_TYPE = __webpack_require__(77);
 
 var getIteratorFn = __webpack_require__(80);
@@ -21997,8 +21997,8 @@ module.exports = traverseAllChildren;
 "use strict";
 "use strict";
 Object.defineProperty(exports, "__esModule", { value: true });
-const React = __webpack_require__(12);
-const Room_1 = __webpack_require__(185);
+const React = __webpack_require__(10);
+const Room_1 = __webpack_require__(186);
 var style = {
     width: "2%"
 };
@@ -22056,7 +22056,7 @@ exports.Building = Building;
 "use strict";
 "use strict";
 Object.defineProperty(exports, "__esModule", { value: true });
-const React = __webpack_require__(12);
+const React = __webpack_require__(10);
 class EquipmentElement extends React.Component {
     render() {
         return (React.createElement("tr", null,
@@ -22075,7 +22075,7 @@ exports.EquipmentElement = EquipmentElement;
 "use strict";
 "use strict";
 Object.defineProperty(exports, "__esModule", { value: true });
-const React = __webpack_require__(12);
+const React = __webpack_require__(10);
 const EquipmentElement_1 = __webpack_require__(183);
 class EquipmentList extends React.Component {
     constructor(props) {
@@ -22114,7 +22114,67 @@ exports.EquipmentList = EquipmentList;
 "use strict";
 "use strict";
 Object.defineProperty(exports, "__esModule", { value: true });
-const React = __webpack_require__(12);
+const React = __webpack_require__(10);
+class OperationField extends React.Component {
+    addEquipment() {
+        var name = $("#addingNodeName").val();
+        var count = $("#addingNodeNumber").val();
+        var obj = {
+            title: name,
+            number: count
+        };
+        alert(JSON.stringify(obj));
+    }
+    removeEquipment() {
+        alert("remove");
+    }
+    editEquipment() {
+        alert("edit");
+    }
+    render() {
+        return (React.createElement("div", null,
+            React.createElement("div", { className: "col-md-3 col-sm-3 col-xs-3 col-3" },
+                React.createElement("form", null,
+                    React.createElement("div", { className: "panel-group" },
+                        React.createElement("div", { className: "panel panel-default" },
+                            React.createElement("div", { className: "panel-heading" }, "\u0414\u043E\u0431\u0430\u0432\u0438\u0442\u044C:"),
+                            React.createElement("div", { className: "panel-body" },
+                                React.createElement("label", { htmlFor: "addingNodeRoomId" }, "\u0418\u0434 \u043A\u043E\u043C\u043D\u0430\u0442\u044B:"),
+                                React.createElement("input", { type: "number", required: true, className: "form-control", id: "addingNodeRoomId" }),
+                                React.createElement("label", { htmlFor: "addingNodeName" }, "\u041D\u0430\u0437\u0432\u0430\u043D\u0438\u0435:"),
+                                React.createElement("input", { type: "text", required: true, className: "form-control", id: "addingNodeName" }),
+                                React.createElement("label", { htmlFor: "addingNodeNumber" }, "\u041A\u043E\u043B\u0438\u0447\u0435\u0441\u0442\u0432\u043E:"),
+                                React.createElement("input", { type: "number", required: true, className: "form-control", id: "addingNodeNumber" }),
+                                React.createElement("button", { type: "submit", onClick: this.addEquipment, className: "btn btn-info" }, "OK"))))),
+                React.createElement("form", null,
+                    React.createElement("div", { className: "panel panel-default" },
+                        React.createElement("div", { className: "panel-heading" }, "\u0423\u0434\u0430\u043B\u0438\u0442\u044C:"),
+                        React.createElement("div", { className: "panel-body" },
+                            React.createElement("label", { htmlFor: "deletingNodeId" }, "\u0418\u0434:"),
+                            React.createElement("input", { type: "number", required: true, className: "form-control", id: "deletingNodeId" }),
+                            React.createElement("button", { type: "submit", onClick: this.removeEquipment, className: "btn btn-info" }, "OK")))),
+                React.createElement("form", null,
+                    React.createElement("div", { className: "panel panel-default" },
+                        React.createElement("div", { className: "panel-heading" }, "\u0418\u0437\u043C\u0435\u043D\u0438\u0442\u044C:"),
+                        React.createElement("div", { className: "panel-body" },
+                            React.createElement("label", { htmlFor: "updatingNodeName" }, "\u041D\u0430\u0437\u0432\u0430\u043D\u0438\u0435:"),
+                            React.createElement("input", { type: "text", required: true, className: "form-control", id: "updatingNodeName" }),
+                            React.createElement("label", { htmlFor: "updatingNodeNumber" }, "\u041A\u043E\u043B\u0438\u0447\u0435\u0441\u0442\u0432\u043E:"),
+                            React.createElement("input", { type: "numbers", required: true, className: "form-control", id: "updatingNodeNumber" }),
+                            React.createElement("button", { type: "submit", onClick: this.editEquipment, className: "btn btn-info" }, "OK")))))));
+    }
+}
+exports.OperationField = OperationField;
+
+
+/***/ },
+/* 186 */
+/***/ function(module, exports, __webpack_require__) {
+
+"use strict";
+"use strict";
+Object.defineProperty(exports, "__esModule", { value: true });
+const React = __webpack_require__(10);
 class Room extends React.Component {
     countEquipmentInRoom() {
         this.props.buildingCallback(this.props.equipmentInRoom);
@@ -22131,13 +22191,13 @@ exports.Room = Room;
 
 
 /***/ },
-/* 186 */
+/* 187 */
 /***/ function(module, exports, __webpack_require__) {
 
 "use strict";
 "use strict";
 Object.defineProperty(exports, "__esModule", { value: true });
-const React = __webpack_require__(12);
+const React = __webpack_require__(10);
 const Building_1 = __webpack_require__(182);
 class Tree extends React.Component {
     constructor(props) {
@@ -22173,15 +22233,16 @@ exports.Tree = Tree;
 
 
 /***/ },
-/* 187 */
+/* 188 */
 /***/ function(module, exports, __webpack_require__) {
 
 "use strict";
 "use strict";
 Object.defineProperty(exports, "__esModule", { value: true });
-const React = __webpack_require__(12);
+const React = __webpack_require__(10);
 const EquipmentList_1 = __webpack_require__(184);
-const Tree_1 = __webpack_require__(186);
+const Tree_1 = __webpack_require__(187);
+const OpearationField_1 = __webpack_require__(185);
 class Content extends React.Component {
     constructor(props) {
         super(props);
@@ -22199,20 +22260,21 @@ class Content extends React.Component {
                     React.createElement("div", { className: "col-md-6 col-sm-6 col-xs-6 col-3" },
                         React.createElement(Tree_1.Tree, { handle: (allEquipment) => this.getEquipment(allEquipment) })),
                     React.createElement("div", { className: "col-md-6 col-sm-6 col-xs-6 col-4" },
-                        React.createElement(EquipmentList_1.EquipmentList, { equipment: this.state.equipment }))))));
+                        React.createElement(EquipmentList_1.EquipmentList, { equipment: this.state.equipment }),
+                        React.createElement(OpearationField_1.OperationField, null))))));
     }
 }
 exports.Content = Content;
 
 
 /***/ },
-/* 188 */
+/* 189 */
 /***/ function(module, exports, __webpack_require__) {
 
 "use strict";
 "use strict";
 Object.defineProperty(exports, "__esModule", { value: true });
-const React = __webpack_require__(12);
+const React = __webpack_require__(10);
 class Header extends React.Component {
     render() {
         return (React.createElement("div", { className: "container-fluid" },
@@ -22227,13 +22289,13 @@ exports.Header = Header;
 
 
 /***/ },
-/* 189 */
+/* 190 */
 /***/ function(module, exports, __webpack_require__) {
 
 "use strict";
 "use strict";
 Object.defineProperty(exports, "__esModule", { value: true });
-const React = __webpack_require__(12);
+const React = __webpack_require__(10);
 const ReactDOM = __webpack_require__(81);
 const app_1 = __webpack_require__(82);
 ReactDOM.render(React.createElement("div", null,

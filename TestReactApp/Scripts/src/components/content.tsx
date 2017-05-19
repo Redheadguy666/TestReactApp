@@ -14,6 +14,7 @@ export interface IContentState
     selectedNode: IBuildingProps
     model: any;
     equipment?: any;
+
 }
 
 export class Content extends React.Component<IContentProps, IContentState>
@@ -31,6 +32,8 @@ export class Content extends React.Component<IContentProps, IContentState>
         });
     }
 
+    pass
+
     render()
     {
         return (
@@ -42,7 +45,8 @@ export class Content extends React.Component<IContentProps, IContentState>
                             <Tree handle={(allEquipment: any) => this.getEquipment(allEquipment)} />
                         </div>
                         <div className="col-md-6 col-sm-6 col-xs-6 col-4">
-                            <EquipmentList equipment={this.state.equipment}/>
+                            <EquipmentList equipment={this.state.equipment} />
+                            <OperationField contentCallback=/>
                         </div>
                     </div>
                 </div>
