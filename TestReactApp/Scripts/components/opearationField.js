@@ -6,16 +6,15 @@ class OperationField extends React.Component {
         super(props);
         this.props = {};
         this.state = {};
-        this.setUpNewEquipment = this.setUpNewEquipment.bind(this);
+        this.setUpEquipment = this.setUpEquipment.bind(this);
     }
     addEquipment(newEquipment) {
         $.ajax({
             type: "Post",
             url: "/Data/AddEquipment",
             data: newEquipment,
-            dataType: "json",
-            success: (result, status) => {
-                alert("OK: " + status);
+            success: (statusCode) => {
+                alert("OK: " + statusCode);
             }
         });
     }
@@ -23,10 +22,10 @@ class OperationField extends React.Component {
         $.ajax({
             type: "Post",
             url: "/Data/DeleteEquipment",
-            data: equipment.id,
-            dataType: "json",
-            success: (result, status) => {
-                alert("OK: " + status);
+            contentType: "application/json",
+            data: JSON.stringify({ id: parseInt(equipment.id) }),
+            success: () => {
+                alert("OK: ");
             }
         });
     }
@@ -35,21 +34,12 @@ class OperationField extends React.Component {
             type: "Post",
             url: "/Data/UpdateEquipment",
             data: equipment,
-            dataType: "json",
-            success: (result, status) => {
-                alert("OK: " + status);
+            success: () => {
+                alert("OK: ");
             }
         });
     }
-    setUpNewEquipment(operation) {
-        var equipmentRoomId = $("#addingNodeRoomId").val();
-        var equipmentTitle = $("#addingNodeName").val();
-        var equipmentNumber = $("#addingNodeNumber").val();
-        var equipment = {
-            roomId: equipmentRoomId,
-            title: equipmentTitle,
-            number: equipmentNumber
-        };
+    chooseOperation(operation, equipment) {
         switch (operation) {
             case "Add":
                 this.addEquipment(equipment);
@@ -61,6 +51,44 @@ class OperationField extends React.Component {
                 this.updateEquipment(equipment);
                 break;
         }
+    }
+    setUpEquipment(operation) {
+        var equipment = {};
+        switch (operation) {
+            case "Add":
+                {
+                    var newEquipmentRoomId = $("#addingNodeRoomId").val();
+                    var newEquipmentTitle = $("#addingNodeName").val();
+                    var newEquipmentNumber = $("#addingNodeNumber").val();
+                    equipment = {
+                        roomId: newEquipmentRoomId,
+                        title: newEquipmentTitle,
+                        number: newEquipmentNumber
+                    };
+                }
+                break;
+            case "Delete":
+                {
+                    var deletingEquipmentId = $("#deletingNodeId").val();
+                    equipment = {
+                        id: parseInt(deletingEquipmentId)
+                    };
+                }
+                break;
+            case "Update":
+                {
+                    var updatingEquipmentId = $("#updatingNodeId").val();
+                    var updatingEquipmentTitle = $("#updatingNodeTitle").val();
+                    var updatingEquipmentNumber = $("#updatingNodeNumber").val();
+                    equipment = {
+                        id: updatingEquipmentId,
+                        title: updatingEquipmentTitle,
+                        number: updatingEquipmentNumber
+                    };
+                }
+                break;
+        }
+        this.chooseOperation(operation, equipment);
     }
     render() {
         return (React.createElement("div", null,
@@ -76,23 +104,25 @@ class OperationField extends React.Component {
                                 React.createElement("input", { type: "text", required: true, className: "form-control", id: "addingNodeName" }),
                                 React.createElement("label", { htmlFor: "addingNodeNumber" }, "\u041A\u043E\u043B\u0438\u0447\u0435\u0441\u0442\u0432\u043E:"),
                                 React.createElement("input", { type: "number", required: true, className: "form-control", id: "addingNodeNumber" }),
-                                React.createElement("button", { type: "submit", onClick: () => this.setUpNewEquipment("Add"), className: "btn btn-info" }, "OK"))))),
+                                React.createElement("button", { type: "button", onClick: () => this.setUpEquipment("Add"), className: "btn btn-info" }, "OK"))))),
                 React.createElement("form", null,
                     React.createElement("div", { className: "panel panel-default" },
                         React.createElement("div", { className: "panel-heading" }, "\u0423\u0434\u0430\u043B\u0438\u0442\u044C:"),
                         React.createElement("div", { className: "panel-body" },
                             React.createElement("label", { htmlFor: "deletingNodeId" }, "\u0418\u0434:"),
                             React.createElement("input", { type: "number", required: true, className: "form-control", id: "deletingNodeId" }),
-                            React.createElement("button", { type: "submit", onClick: () => this.setUpNewEquipment("Delete"), className: "btn btn-info" }, "OK")))),
+                            React.createElement("button", { type: "button", onClick: () => this.setUpEquipment("Delete"), className: "btn btn-info" }, "OK")))),
                 React.createElement("form", null,
                     React.createElement("div", { className: "panel panel-default" },
                         React.createElement("div", { className: "panel-heading" }, "\u0418\u0437\u043C\u0435\u043D\u0438\u0442\u044C:"),
                         React.createElement("div", { className: "panel-body" },
-                            React.createElement("label", { htmlFor: "updatingNodeName" }, "\u041D\u0430\u0437\u0432\u0430\u043D\u0438\u0435:"),
-                            React.createElement("input", { type: "text", required: true, className: "form-control", id: "updatingNodeName" }),
+                            React.createElement("label", { htmlFor: "updatingNodeId" }, "\u041D\u0430\u0437\u0432\u0430\u043D\u0438\u0435:"),
+                            React.createElement("input", { type: "number", required: true, className: "form-control", id: "updatingNodeId" }),
+                            React.createElement("label", { htmlFor: "updatingNodeTitle" }, "\u041D\u0430\u0437\u0432\u0430\u043D\u0438\u0435:"),
+                            React.createElement("input", { type: "text", required: true, className: "form-control", id: "updatingNodeTitle" }),
                             React.createElement("label", { htmlFor: "updatingNodeNumber" }, "\u041A\u043E\u043B\u0438\u0447\u0435\u0441\u0442\u0432\u043E:"),
-                            React.createElement("input", { type: "numbers", required: true, className: "form-control", id: "updatingNodeNumber" }),
-                            React.createElement("button", { type: "submit", onClick: () => this.setUpNewEquipment("Update"), className: "btn btn-info" }, "OK")))))));
+                            React.createElement("input", { type: "number", required: true, className: "form-control", id: "updatingNodeNumber" }),
+                            React.createElement("button", { type: "button", onClick: () => this.setUpEquipment("Update"), className: "btn btn-info" }, "OK")))))));
     }
 }
 exports.OperationField = OperationField;

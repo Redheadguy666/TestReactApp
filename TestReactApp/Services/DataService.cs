@@ -46,6 +46,7 @@ namespace TraineeshipWebApp
             }
 
             equipment.Title = equipmentModel.Title;
+            equipment.Number = equipmentModel.Number;
             factoryContext.Entry(equipment).State = EntityState.Modified;
             factoryContext.SaveChanges();
         }

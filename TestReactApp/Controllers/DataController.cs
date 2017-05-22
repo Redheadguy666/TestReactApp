@@ -43,6 +43,7 @@ namespace TraineeshipWebApp.Controllers
             this.DataService.UpdateEquipment(equipmentModel);
         }
 
+        [HttpPost]
         [ActionName("DeleteEquipment")]
         public void DeleteEquipment(int equipmentId)
         {
