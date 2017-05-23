@@ -12,6 +12,6 @@ namespace TraineeshipWebApp
         OrganizationModel GetData();
         void AddEquipment(EquipmentModel equipmentModel);
         void UpdateEquipment(EquipmentModel equipmentModel);
-        void DeleteEquipment(int equipmentId);
+        void DeleteEquipment(EquipmentModel equipmentModel);
     }
 }

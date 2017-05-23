@@ -39,8 +39,7 @@ export class OperationField extends React.Component<IOperationFieldProps, {}>
         ({
             type: "Post",
             url: "/Data/DeleteEquipment",
-            contentType: "application/json",
-            data: JSON.stringify({id : parseInt(equipment.id)}),
+            data: equipment,
             success: () => {
                 alert("OK: ");
             }
@@ -68,7 +67,6 @@ export class OperationField extends React.Component<IOperationFieldProps, {}>
         }
     }
 
-
     setUpEquipment(operation : string)
     {
         var equipment = {};
@@ -93,7 +91,9 @@ export class OperationField extends React.Component<IOperationFieldProps, {}>
                 var deletingEquipmentId = $("#deletingNodeId").val();
 
                 equipment = {
-                    id: parseInt(deletingEquipmentId)
+                    id: deletingEquipmentId,
+                    title: "",
+                    number: -1
                 }
             }
             break;

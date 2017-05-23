@@ -51,13 +51,13 @@ namespace TraineeshipWebApp
             factoryContext.SaveChanges();
         }
 
-        public void DeleteEquipment(int equipmentId)
+        public void DeleteEquipment(EquipmentModel equipmentModel)
         {
-            Equipment equipment = factoryContext.Equipment.Find(equipmentId);
+            Equipment equipment = factoryContext.Equipment.Find(equipmentModel.Id);
 
             if (equipment == null)
             {
-                throw new ArgumentException(nameof(equipmentId));
+                throw new ArgumentException(nameof(equipmentModel.Id));
             }
 
             factoryContext.Equipment.Remove(equipment);

@@ -22136,8 +22136,7 @@ class OperationField extends React.Component {
         $.ajax({
             type: "Post",
             url: "/Data/DeleteEquipment",
-            contentType: "application/json",
-            data: JSON.stringify({ id: parseInt(equipment.id) }),
+            data: equipment,
             success: () => {
                 alert("OK: ");
             }
@@ -22185,7 +22184,9 @@ class OperationField extends React.Component {
                 {
                     var deletingEquipmentId = $("#deletingNodeId").val();
                     equipment = {
-                        id: parseInt(deletingEquipmentId)
+                        id: deletingEquipmentId,
+                        title: "",
+                        number: -1
                     };
                 }
                 break;

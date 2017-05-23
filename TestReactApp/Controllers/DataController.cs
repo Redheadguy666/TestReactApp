@@ -43,11 +43,10 @@ namespace TraineeshipWebApp.Controllers
             this.DataService.UpdateEquipment(equipmentModel);
         }
 
-        [HttpPost]
         [ActionName("DeleteEquipment")]
-        public void DeleteEquipment(int equipmentId)
+        public void DeleteEquipment(EquipmentModel equipmentModel)
         {
-            this.DataService.DeleteEquipment(equipmentId);
+            this.DataService.DeleteEquipment(equipmentModel);
         }
 
         private string JsonSerializeObject(object data)
