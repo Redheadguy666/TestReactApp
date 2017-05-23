@@ -50,6 +50,7 @@ class OperationField extends React.Component {
                 this.updateEquipment(equipment);
                 break;
         }
+        this.props.contentCallback();
     }
     setUpEquipment(operation) {
         var equipment = {};

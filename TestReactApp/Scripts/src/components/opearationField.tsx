@@ -29,8 +29,7 @@ export class OperationField extends React.Component<IOperationFieldProps, {}>
             success: (statusCode) => {
                 alert("OK: " + statusCode);
             }
-        });
-      
+        });   
     }
 
     deleteEquipment(equipment: any)

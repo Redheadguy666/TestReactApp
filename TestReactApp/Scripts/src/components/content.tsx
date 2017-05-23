@@ -25,18 +25,16 @@ export class Content extends React.Component<IContentProps, IContentState>
         super(props);
     }
 
-    getEquipment(allEquipment : any)
+    getEquipment(allEquipment? : any)
     {
         this.setState({
             equipment: allEquipment
         });
     }
 
-
     render()
     {
         return (
-
             <div>
                 <div className="container-fluid">
                     <div className="row">
@@ -45,11 +43,10 @@ export class Content extends React.Component<IContentProps, IContentState>
                         </div>
                         <div className="col-md-6 col-sm-6 col-xs-6 col-4">
                             <EquipmentList equipment={this.state.equipment} />
-                            <OperationField/>
+                            <OperationField />
                         </div>
                     </div>
                 </div>
-
             </div>
         );
     }

@@ -22164,6 +22164,7 @@ class OperationField extends React.Component {
                 this.updateEquipment(equipment);
                 break;
         }
+        this.props.contentCallback();
     }
     setUpEquipment(operation) {
         var equipment = {};
@@ -22282,6 +22283,9 @@ class Tree extends React.Component {
         this.getData = this.getData.bind(this);
     }
     componentWillMount() {
+        this.getData();
+    }
+    componentDidUpdate() {
         this.getData();
     }
     getData() {

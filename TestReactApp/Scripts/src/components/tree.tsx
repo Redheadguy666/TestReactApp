@@ -27,6 +27,11 @@ export class Tree extends React.Component<ITreeProps, ITreeState>
         this.getData();
     }
 
+    componentDidUpdate()
+    {
+        this.getData();
+    }
+
     getData() : any
     {
         $.ajax
