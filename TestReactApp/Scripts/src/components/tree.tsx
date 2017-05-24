@@ -27,12 +27,7 @@ export class Tree extends React.Component<ITreeProps, ITreeState>
         this.getData();
     }
 
-    componentDidUpdate()
-    {
-        this.getData();
-    }
-
-    getData() : any
+    public getData() : any
     {
         $.ajax
         ({
@@ -48,14 +43,12 @@ export class Tree extends React.Component<ITreeProps, ITreeState>
                 });
             }
         });
-
     }
 
     contentCallback(equipment : any)
     {
         this.props.handle(equipment);
     }
-
 
     render() {
         var buildings = this.state.data ? this.state.data.buildings.map

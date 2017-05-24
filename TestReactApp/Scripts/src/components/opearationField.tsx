@@ -26,6 +26,7 @@ export class OperationField extends React.Component<IOperationFieldProps, {}>
             type: "Post",
             url: "/Data/AddEquipment",
             data: newEquipment,
+            dataType: "json",
             success: (statusCode) => {
                 alert("OK: " + statusCode);
             }
@@ -39,13 +40,12 @@ export class OperationField extends React.Component<IOperationFieldProps, {}>
             type: "Post",
             url: "/Data/DeleteEquipment",
             data: equipment,
-            success: () => {
-                alert("OK: ");
-            }
+            success: () => alert("ok")
         });
     }
 
-    updateEquipment(equipment: any) {
+    updateEquipment(equipment: any)
+    {
         $.ajax
         ({
             type: "Post",
@@ -55,6 +55,11 @@ export class OperationField extends React.Component<IOperationFieldProps, {}>
                 alert("OK: ");
             }
         });
+    }
+
+    updateTreeState()
+    {
+        this.props.contentCallback;
     }
 
     chooseOperation(operation : string, equipment : any)

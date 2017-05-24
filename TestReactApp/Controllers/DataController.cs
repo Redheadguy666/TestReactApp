@@ -35,18 +35,21 @@ namespace TraineeshipWebApp.Controllers
         public void AddEquipment(EquipmentModel equipmentModel)
         {
             this.DataService.AddEquipment(equipmentModel);
+            this.DataService.GetData();
         }
 
         [ActionName("UpdateEquipment")]
         public void UpdateEquipment(EquipmentModel equipmentModel)
         {
             this.DataService.UpdateEquipment(equipmentModel);
+            this.DataService.GetData();
         }
 
         [ActionName("DeleteEquipment")]
         public void DeleteEquipment(EquipmentModel equipmentModel)
         {
             this.DataService.DeleteEquipment(equipmentModel);
+            this.DataService.GetData();
         }
 
         private string JsonSerializeObject(object data)

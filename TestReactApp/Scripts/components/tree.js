@@ -11,9 +11,6 @@ class Tree extends React.Component {
     componentWillMount() {
         this.getData();
     }
-    componentDidUpdate() {
-        this.getData();
-    }
     getData() {
         $.ajax({
             type: "Get",

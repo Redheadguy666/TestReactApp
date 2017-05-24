@@ -13,6 +13,7 @@ class OperationField extends React.Component {
             type: "Post",
             url: "/Data/AddEquipment",
             data: newEquipment,
+            dataType: "json",
             success: (statusCode) => {
                 alert("OK: " + statusCode);
             }
@@ -23,9 +24,7 @@ class OperationField extends React.Component {
             type: "Post",
             url: "/Data/DeleteEquipment",
             data: equipment,
-            success: () => {
-                alert("OK: ");
-            }
+            success: () => alert("ok")
         });
     }
     updateEquipment(equipment) {
@@ -37,6 +36,9 @@ class OperationField extends React.Component {
                 alert("OK: ");
             }
         });
+    }
+    updateTreeState() {
+        this.props.contentCallback;
     }
     chooseOperation(operation, equipment) {
         switch (operation) {
@@ -50,7 +52,6 @@ class OperationField extends React.Component {
                 this.updateEquipment(equipment);
                 break;
         }
-        this.props.contentCallback();
     }
     setUpEquipment(operation) {
         var equipment = {};
