@@ -22128,8 +22128,9 @@ class OperationField extends React.Component {
             url: "/Data/AddEquipment",
             data: newEquipment,
             dataType: "json",
-            success: (statusCode) => {
-                alert("OK: " + statusCode);
+            success: (response) => {
+                this.props.contentCallback(response);
+                alert(JSON.stringify(response));
             }
         });
     }
@@ -22138,7 +22139,9 @@ class OperationField extends React.Component {
             type: "Post",
             url: "/Data/DeleteEquipment",
             data: equipment,
-            success: () => alert("ok")
+            success: (response) => {
+                this.props.contentCallback(response);
+            }
         });
     }
     updateEquipment(equipment) {
@@ -22146,12 +22149,12 @@ class OperationField extends React.Component {
             type: "Post",
             url: "/Data/UpdateEquipment",
             data: equipment,
-            success: () => {
-                alert("OK: ");
+            success: (response) => {
+                this.props.contentCallback(response);
             }
         });
     }
-    updateTreeState() {
+    passDataToContent() {
         this.props.contentCallback;
     }
     chooseOperation(operation, equipment) {
@@ -22339,7 +22342,7 @@ class Content extends React.Component {
                         React.createElement(Tree_1.Tree, { handle: (allEquipment) => this.getEquipment(allEquipment) })),
                     React.createElement("div", { className: "col-md-6 col-sm-6 col-xs-6 col-4" },
                         React.createElement(EquipmentList_1.EquipmentList, { equipment: this.state.equipment }),
-                        React.createElement(OpearationField_1.OperationField, null))))));
+                        React.createElement(OpearationField_1.OperationField, { contentCallback: (eq) => this.getEquipment(eq) }))))));
     }
 }
 exports.Content = Content;
