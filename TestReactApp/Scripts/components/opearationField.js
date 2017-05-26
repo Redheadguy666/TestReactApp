@@ -23,7 +23,6 @@ class OperationField extends React.Component {
                     }
                 ];
                 this.props.contentCallback(obj);
-                //alert(JSON.stringify(response));
             }
         });
     }
@@ -33,14 +32,16 @@ class OperationField extends React.Component {
             url: "/Data/DeleteEquipment",
             data: equipment,
             success: (response) => {
-                var obj = [
-                    {
-                        id: 666,
-                        title: "Ежик для проверки удаления",
-                        number: 666
-                    }
-                ];
-                this.props.contentCallback(obj);
+                //var obj =
+                //    [
+                //        {
+                //            id: 666,
+                //            title: "Ежик для проверки удаления",
+                //            number: 666
+                //        }
+                //    ]
+                alert(JSON.parse(response));
+                this.props.contentCallback(JSON.parse(response));
             }
         });
     }

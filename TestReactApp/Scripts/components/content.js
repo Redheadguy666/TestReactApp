@@ -8,6 +8,7 @@ class Content extends React.Component {
     constructor(props) {
         super(props);
         this.state = {};
+        this.getEquipment = this.getEquipment.bind(this);
     }
     getEquipment(allEquipment) {
         this.setState({
@@ -19,10 +20,10 @@ class Content extends React.Component {
             React.createElement("div", { className: "container-fluid" },
                 React.createElement("div", { className: "row" },
                     React.createElement("div", { className: "col-md-6 col-sm-6 col-xs-6 col-3" },
-                        React.createElement(Tree_1.Tree, { handle: (allEquipment) => this.getEquipment(allEquipment) })),
+                        React.createElement(Tree_1.Tree, { handle: this.getEquipment })),
                     React.createElement("div", { className: "col-md-6 col-sm-6 col-xs-6 col-4" },
                         React.createElement(EquipmentList_1.EquipmentList, { equipment: this.state.equipment }),
-                        React.createElement(OpearationField_1.OperationField, { contentCallback: (allEquipment) => this.getEquipment(allEquipment) }))))));
+                        React.createElement(OpearationField_1.OperationField, { contentCallback: this.getEquipment }))))));
     }
 }
 exports.Content = Content;

@@ -50,15 +50,16 @@ export class OperationField extends React.Component<IOperationFieldProps, {}>
             url: "/Data/DeleteEquipment",
             data: equipment,
             success: (response) => {
-                var obj =
-                    [
-                        {
-                            id: 666,
-                            title: "Ежик для проверки удаления",
-                            number: 666
-                        }
-                    ]
-                this.props.contentCallback(obj);
+                //var obj =
+                //    [
+                //        {
+                //            id: 666,
+                //            title: "Ежик для проверки удаления",
+                //            number: 666
+                //        }
+                //    ]
+                alert(JSON.parse(response));
+                this.props.contentCallback(JSON.parse(response));
             } 
         });
     }
