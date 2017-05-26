@@ -1,4 +1,5 @@
 ﻿import * as React from "react";
+import { RoomModel } from "./OrganisationModel"
 
 interface IRoomPropes
 {
@@ -8,7 +9,7 @@ interface IRoomPropes
     isCollapsed?: boolean;
     isFolder?: boolean;
     icon?: string; 
-    equipmentInRoom?: any[];  
+    equipmentInRoom?: RoomModel[];  
     buildingCallback?: any;
 }
 

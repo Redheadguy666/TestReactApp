@@ -1,11 +1,12 @@
 ﻿import * as React from "react";
 import { Room } from "./Room"
+import { RoomModel, EquipmentModel } from "./OrganisationModel"
 
 export interface IBuildingProps
 {
     id: number;
     name?: string;
-    rooms?: any[];
+    rooms?: RoomModel[];
     isCollapsed?: boolean;
     isFolder?: boolean; 
     icon?: string;   
@@ -52,11 +53,11 @@ export class Building extends React.Component<IBuildingProps, {}>
 
     countEquipmentInBuilding()
     {
-        var allEquipment: any = {};
-        var equipmentMassive: any = [];
+        var allEquipment: EquipmentModel = {};
+        var equipmentMassive: EquipmentModel[] = [];
 
-        Array.prototype.forEach.call(this.props.rooms, (room: any) => {
-            Array.prototype.forEach.call(room.equipment, (equipment: any) => {
+        Array.prototype.forEach.call(this.props.rooms, (room: RoomModel) => {
+            Array.prototype.forEach.call(room.equipment, (equipment: EquipmentModel) => {
                 var eq = {
                     id: equipment.id,
                     title: equipment.title,

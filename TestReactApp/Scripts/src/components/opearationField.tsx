@@ -1,4 +1,5 @@
 ﻿import * as React from "react";
+import { EquipmentModel } from "./OrganisationModel"
 
 interface IOperationFieldProps
 {
@@ -20,7 +21,7 @@ export class OperationField extends React.Component<IOperationFieldProps, {}>
         this.setUpEquipment = this.setUpEquipment.bind(this);
     }
 
-    addEquipment(newEquipment: any) {
+    addEquipment(newEquipment: EquipmentModel) {
         $.ajax
         ({
             type: "Post",
@@ -42,7 +43,7 @@ export class OperationField extends React.Component<IOperationFieldProps, {}>
         });   
     }
 
-    deleteEquipment(equipment: any)
+    deleteEquipment(equipment: EquipmentModel)
     {
         $.ajax
         ({
@@ -64,7 +65,7 @@ export class OperationField extends React.Component<IOperationFieldProps, {}>
         });
     }
 
-    updateEquipment(equipment: any)
+    updateEquipment(equipment: EquipmentModel)
     {
         $.ajax
         ({
@@ -90,7 +91,7 @@ export class OperationField extends React.Component<IOperationFieldProps, {}>
         this.props.contentCallback;
     }
 
-    chooseOperation(operation : string, equipment : any)
+    chooseOperation(operation : string, equipment : EquipmentModel)
     {
         switch (operation) {
             case "Add": this.addEquipment(equipment); break;
