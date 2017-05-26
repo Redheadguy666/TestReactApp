@@ -43,7 +43,7 @@ export class Content extends React.Component<IContentProps, IContentState>
                         </div>
                         <div className="col-md-6 col-sm-6 col-xs-6 col-4">
                             <EquipmentList equipment={this.state.equipment} />
-                            <OperationField contentCallback={(eq : any) => this.getEquipment(eq)}/>
+                            <OperationField contentCallback={(allEquipment: any) => this.getEquipment(allEquipment)}/>
                         </div>
                     </div>
                 </div>

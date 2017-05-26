@@ -15,8 +15,15 @@ class OperationField extends React.Component {
             data: newEquipment,
             dataType: "json",
             success: (response) => {
-                this.props.contentCallback(response);
-                alert(JSON.stringify(response));
+                var obj = [
+                    {
+                        id: 666,
+                        title: "Ежик для проверки добавления",
+                        number: 666
+                    }
+                ];
+                this.props.contentCallback(obj);
+                //alert(JSON.stringify(response));
             }
         });
     }
@@ -26,7 +33,14 @@ class OperationField extends React.Component {
             url: "/Data/DeleteEquipment",
             data: equipment,
             success: (response) => {
-                this.props.contentCallback(response);
+                var obj = [
+                    {
+                        id: 666,
+                        title: "Ежик для проверки удаления",
+                        number: 666
+                    }
+                ];
+                this.props.contentCallback(obj);
             }
         });
     }
@@ -36,7 +50,14 @@ class OperationField extends React.Component {
             url: "/Data/UpdateEquipment",
             data: equipment,
             success: (response) => {
-                this.props.contentCallback(response);
+                var obj = [
+                    {
+                        id: 666,
+                        title: "Ежик для проверки обновления",
+                        number: 666
+                    }
+                ];
+                this.props.contentCallback(obj);
             }
         });
     }
