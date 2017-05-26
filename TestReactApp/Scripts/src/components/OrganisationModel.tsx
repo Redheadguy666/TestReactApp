@@ -20,21 +20,21 @@ interface IEquipment
     roomId: number,
 }
 
-export class Building implements IBuilding
+export class BuildingModel implements IBuilding
 {
     id: number;
     title: string;
-    rooms: Room[]
+    rooms: RoomModel[]
 }
 
-export class Room implements IRoom
+export class RoomModel implements IRoom
 {
     id: number;
     title: string;
-    equipment: Equipment[]
+    equipment: EquipmentModel[]
 }
 
-export class Equipment implements IEquipment
+export class EquipmentModel implements IEquipment
 {
     id: number;
     title: string;

@@ -3,6 +3,7 @@ import { EquipmentList } from "./EquipmentList";
 import { Tree } from "./Tree";
 import { Building, IBuildingProps } from "./Building";
 import { OperationField } from "./OpearationField";
+import { EquipmentModel } from "./OrganisationModel"
 
 export interface IContentProps
 {
@@ -12,9 +13,8 @@ export interface IContentProps
 export interface IContentState
 {
     selectedNode: IBuildingProps
-    model: any;
-    equipment?: any;
-    addingEquipment?: any;
+    equipment?: EquipmentModel;
+    addingEquipment?: EquipmentModel;
 }
 
 export class Content extends React.Component<IContentProps, IContentState>
@@ -26,7 +26,7 @@ export class Content extends React.Component<IContentProps, IContentState>
         this.getEquipment = this.getEquipment.bind(this);
     }
 
-    getEquipment(allEquipment? : any)
+    getEquipment(allEquipment? : EquipmentModel)
     {
         this.setState({
             equipment: allEquipment

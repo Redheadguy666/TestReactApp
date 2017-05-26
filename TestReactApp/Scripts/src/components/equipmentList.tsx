@@ -1,10 +1,10 @@
 ﻿import * as React from "react";
 import { EquipmentElement } from "./EquipmentElement";
-import { Equipment } from "./OrganisationModel"
+import { EquipmentModel } from "./OrganisationModel"
 
 interface IEquipmentListProps
 {
-    equipment: Equipment[],
+    equipment: EquipmentModel[],
     addingEquipment?: any;
 }
 
@@ -32,8 +32,8 @@ export class EquipmentList extends React.Component<IEquipmentListProps, {}>
             //equipmentProps = Array.prototype.slice.call(this.props.equipment);
             //equipmentProps = Object.keys(this.props.equipment).map((key : any) => key)
         }
-        var equipment: Equipment[] = equipmentProps ? equipmentProps.map
-            ((equipment_: Equipment) => <EquipmentElement key={equipment_.id} id={equipment_.id}
+        var equipment: EquipmentModel[] = equipmentProps ? equipmentProps.map
+            ((equipment_: EquipmentModel) => <EquipmentElement key={equipment_.id} id={equipment_.id}
                 title={equipment_.title} number={equipment_.number} />) : null;
         console.log(this.props.equipment);
 
