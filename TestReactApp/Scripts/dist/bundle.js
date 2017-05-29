@@ -22021,7 +22021,7 @@ class Building extends React.Component {
         this.countEquipmentInBuilding();
     }
     countEquipmentInBuilding() {
-        var allEquipment = {};
+        var allEquipment;
         var equipmentMassive = [];
         Array.prototype.forEach.call(this.props.rooms, (room) => {
             Array.prototype.forEach.call(room.equipment, (equipment) => {
@@ -22036,7 +22036,7 @@ class Building extends React.Component {
         this.props.handleTree(equipmentMassive);
     }
     render() {
-        var rooms = this.props.rooms.map((room) => React.createElement(Room_1.Room, { id: room.roomId, name: room.name, key: room.roomId, equipmentInRoom: room.equipment, buildingCallback: this.props.handleTree, icon: "/Content/Images/blue-folder.ico" }));
+        var rooms = this.props.rooms.map((room) => React.createElement(Room_1.Room, { id: room.roomId, title: room.name, key: room.roomId, equipmentInRoom: room.equipment, buildingCallback: this.props.handleTree, icon: "/Content/Images/blue-folder.ico" }));
         return (React.createElement("div", null,
             React.createElement("ul", { className: "list-group" },
                 React.createElement("li", { className: "list-group-item" },
@@ -22085,12 +22085,7 @@ class EquipmentList extends React.Component {
     }
     render() {
         var equipmentProps = this.props.equipment;
-        if (this.props.equipment !== undefined) {
-            //equipmentProps = Array.prototype.slice.call(this.props.equipment);
-            //equipmentProps = Object.keys(this.props.equipment).map((key : any) => key)
-        }
         var equipment = equipmentProps ? equipmentProps.map((equipment_) => React.createElement(EquipmentElement_1.EquipmentElement, { key: equipment_.id, id: equipment_.id, title: equipment_.title, number: equipment_.number })) : null;
-        console.log(this.props.equipment);
         return (React.createElement("div", { className: "container" },
             React.createElement("table", { className: "table-bordered" },
                 React.createElement("thead", null,
@@ -22193,7 +22188,7 @@ class OperationField extends React.Component {
         }
     }
     setUpEquipment(operation) {
-        var equipment = {};
+        var equipment;
         switch (operation) {
             case "Add":
                 {
@@ -22287,7 +22282,7 @@ class Room extends React.Component {
             React.createElement("ul", { className: "list-group" },
                 React.createElement("li", { className: "list-group-item" },
                     React.createElement("img", { src: this.props.icon, style: { width: "2%" } }),
-                    React.createElement("a", { href: "#" }, this.props.name)))));
+                    React.createElement("a", { href: "#" }, this.props.title)))));
     }
 }
 exports.Room = Room;

@@ -46,7 +46,7 @@ export class Tree extends React.Component<ITreeProps, ITreeState>
         });
     }
 
-    contentCallback(equipment : EquipmentModel)
+    contentCallback(equipment : EquipmentModel[])
     {
         this.props.handle(equipment);
     }

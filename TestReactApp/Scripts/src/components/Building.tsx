@@ -53,7 +53,7 @@ export class Building extends React.Component<IBuildingProps, {}>
 
     countEquipmentInBuilding()
     {
-        var allEquipment: EquipmentModel = {};
+        var allEquipment: EquipmentModel;
         var equipmentMassive: EquipmentModel[] = [];
 
         Array.prototype.forEach.call(this.props.rooms, (room: RoomModel) => {
@@ -72,8 +72,9 @@ export class Building extends React.Component<IBuildingProps, {}>
 
     render()
     {
-        var rooms : any[] = this.props.rooms.map((room : any) => <Room id={room.roomId}
-            name={room.name} key={room.roomId} equipmentInRoom={room.equipment} buildingCallback={this.props.handleTree} icon="/Content/Images/blue-folder.ico" />);
+        var rooms : JSX.Element[] = this.props.rooms.map((room : RoomModel) => <Room id={room.roomId}
+            title={room.name} key={room.roomId} equipmentInRoom={room.equipment} buildingCallback={this.props.handleTree} icon="/Content/Images/blue-folder.ico" />);
+
         return (
             <div >
                 <ul className="list-group">

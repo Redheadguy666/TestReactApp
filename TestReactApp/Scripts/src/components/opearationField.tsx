@@ -102,14 +102,14 @@ export class OperationField extends React.Component<IOperationFieldProps, {}>
 
     setUpEquipment(operation : string)
     {
-        var equipment = {};
+        var equipment : EquipmentModel;
 
         switch (operation) {
             case "Add":
             {
-                var newEquipmentRoomId = $("#addingNodeRoomId").val();
-                var newEquipmentTitle = $("#addingNodeName").val();
-                var newEquipmentNumber = $("#addingNodeNumber").val();
+                var newEquipmentRoomId : number = $("#addingNodeRoomId").val();
+                var newEquipmentTitle : string = $("#addingNodeName").val();
+                var newEquipmentNumber : number = $("#addingNodeNumber").val();
 
                 equipment = {
                     roomId: newEquipmentRoomId,
@@ -121,7 +121,7 @@ export class OperationField extends React.Component<IOperationFieldProps, {}>
 
             case "Delete":
             {
-                var deletingEquipmentId = $("#deletingNodeId").val();
+                var deletingEquipmentId : number = $("#deletingNodeId").val();
 
                 equipment = {
                     id: deletingEquipmentId,
@@ -133,9 +133,9 @@ export class OperationField extends React.Component<IOperationFieldProps, {}>
 
             case "Update":
             {
-                var updatingEquipmentId = $("#updatingNodeId").val();
-                var updatingEquipmentTitle = $("#updatingNodeTitle").val();
-                var updatingEquipmentNumber = $("#updatingNodeNumber").val();
+                var updatingEquipmentId : number = $("#updatingNodeId").val();
+                var updatingEquipmentTitle : string = $("#updatingNodeTitle").val();
+                var updatingEquipmentNumber : number = $("#updatingNodeNumber").val();
 
                 equipment = {
                     id: updatingEquipmentId,

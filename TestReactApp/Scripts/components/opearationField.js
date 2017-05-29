@@ -79,7 +79,7 @@ class OperationField extends React.Component {
         }
     }
     setUpEquipment(operation) {
-        var equipment = {};
+        var equipment;
         switch (operation) {
             case "Add":
                 {

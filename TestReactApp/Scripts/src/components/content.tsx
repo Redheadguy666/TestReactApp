@@ -13,7 +13,7 @@ export interface IContentProps
 export interface IContentState
 {
     selectedNode: IBuildingProps
-    equipment?: EquipmentModel;
+    equipment?: EquipmentModel[];
     addingEquipment?: EquipmentModel;
 }
 
@@ -26,7 +26,7 @@ export class Content extends React.Component<IContentProps, IContentState>
         this.getEquipment = this.getEquipment.bind(this);
     }
 
-    getEquipment(allEquipment? : EquipmentModel)
+    getEquipment(allEquipment? : EquipmentModel[])
     {
         this.setState({
             equipment: allEquipment

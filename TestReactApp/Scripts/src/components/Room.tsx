@@ -1,15 +1,15 @@
 ﻿import * as React from "react";
-import { RoomModel } from "./OrganisationModel"
+import { EquipmentModel } from "./OrganisationModel"
 
 interface IRoomPropes
 {
     id: number;
-    name?: string;
+    title?: string;
     isActive?: boolean;
     isCollapsed?: boolean;
     isFolder?: boolean;
     icon?: string; 
-    equipmentInRoom?: RoomModel[];  
+    equipmentInRoom?: EquipmentModel[];  
     buildingCallback?: any;
 }
 
@@ -31,7 +31,7 @@ export class Room extends React.Component<IRoomPropes, IRoomState>
             <div onClick={() => this.countEquipmentInRoom()}>
                 <ul className="list-group">
                     <li className="list-group-item">
-                        <img src={this.props.icon} style={{ width: "2%" }} /><a href="#">{this.props.name}</a>
+                        <img src={this.props.icon} style={{ width: "2%" }} /><a href="#">{this.props.title}</a>
                     </li>
                 </ul>
             </div>

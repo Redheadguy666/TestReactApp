@@ -10,7 +10,7 @@ class Room extends React.Component {
             React.createElement("ul", { className: "list-group" },
                 React.createElement("li", { className: "list-group-item" },
                     React.createElement("img", { src: this.props.icon, style: { width: "2%" } }),
-                    React.createElement("a", { href: "#" }, this.props.name)))));
+                    React.createElement("a", { href: "#" }, this.props.title)))));
     }
 }
 exports.Room = Room;

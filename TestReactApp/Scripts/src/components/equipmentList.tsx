@@ -5,7 +5,7 @@ import { EquipmentModel } from "./OrganisationModel"
 interface IEquipmentListProps
 {
     equipment: EquipmentModel[],
-    addingEquipment?: any;
+    addingEquipment?: EquipmentModel;
 }
 
 interface IEquipmentListState
@@ -26,16 +26,9 @@ export class EquipmentList extends React.Component<IEquipmentListProps, {}>
     render()
     {
         var equipmentProps = this.props.equipment;
-
-        if (this.props.equipment !== undefined)
-        {
-            //equipmentProps = Array.prototype.slice.call(this.props.equipment);
-            //equipmentProps = Object.keys(this.props.equipment).map((key : any) => key)
-        }
-        var equipment: EquipmentModel[] = equipmentProps ? equipmentProps.map
+        var equipment: JSX.Element[] = equipmentProps ? equipmentProps.map
             ((equipment_: EquipmentModel) => <EquipmentElement key={equipment_.id} id={equipment_.id}
                 title={equipment_.title} number={equipment_.number} />) : null;
-        console.log(this.props.equipment);
 
         return (
 
