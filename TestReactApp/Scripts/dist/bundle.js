@@ -22124,14 +22124,15 @@ class OperationField extends React.Component {
             data: newEquipment,
             dataType: "json",
             success: (response) => {
-                var obj = [
-                    {
-                        id: 666,
-                        title: "Ежик для проверки добавления",
-                        number: 666
-                    }
-                ];
-                this.props.contentCallback(obj);
+                //var obj =
+                //    [
+                //        {
+                //            id: 666,
+                //            title: "Ежик для проверки добавления",
+                //            number: 666
+                //        }
+                //    ]
+                this.props.contentCallback(response);
             }
         });
     }
@@ -22149,7 +22150,6 @@ class OperationField extends React.Component {
                 //            number: 666
                 //        }
                 //    ]
-                alert(JSON.parse(response));
                 this.props.contentCallback(JSON.parse(response));
             }
         });
@@ -22347,7 +22347,7 @@ class Content extends React.Component {
         this.state = {};
         this.getEquipment = this.getEquipment.bind(this);
     }
-    getEquipment(allEquipment /*EquipmentModel[]*/) {
+    getEquipment(allEquipment) {
         this.setState({
             equipment: allEquipment
         });

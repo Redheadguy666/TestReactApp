@@ -14,7 +14,6 @@ export interface IContentState
 {
     selectedNode: IBuildingProps
     equipment?: EquipmentModel[];
-    addingEquipment?: EquipmentModel;
 }
 
 export class Content extends React.Component<IContentProps, IContentState>

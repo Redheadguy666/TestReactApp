@@ -10,7 +10,7 @@ class Content extends React.Component {
         this.state = {};
         this.getEquipment = this.getEquipment.bind(this);
     }
-    getEquipment(allEquipment /*EquipmentModel[]*/) {
+    getEquipment(allEquipment) {
         this.setState({
             equipment: allEquipment
         });

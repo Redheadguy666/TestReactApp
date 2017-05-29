@@ -29,16 +29,16 @@ export class OperationField extends React.Component<IOperationFieldProps, {}>
             data: newEquipment,
             dataType: "json",
             success: (response) => {
-                var obj =
-                    [
-                        {
-                            id: 666,
-                            title: "Ежик для проверки добавления",
-                            number: 666
-                        }
-                    ]
+                //var obj =
+                //    [
+                //        {
+                //            id: 666,
+                //            title: "Ежик для проверки добавления",
+                //            number: 666
+                //        }
+                //    ]
 
-                this.props.contentCallback(obj);
+                this.props.contentCallback(response);
             }
         });   
     }
@@ -59,7 +59,6 @@ export class OperationField extends React.Component<IOperationFieldProps, {}>
                 //            number: 666
                 //        }
                 //    ]
-                alert(JSON.parse(response));
                 this.props.contentCallback(JSON.parse(response));
             } 
         });
