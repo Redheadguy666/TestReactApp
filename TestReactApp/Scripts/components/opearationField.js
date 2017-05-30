@@ -15,33 +15,29 @@ class OperationField extends React.Component {
             data: newEquipment,
             dataType: "json",
             success: (response) => {
-                //var obj =
-                //    [
-                //        {
-                //            id: 666,
-                //            title: "Ежик для проверки добавления",
-                //            number: 666
-                //        }
-                //    ]
-                this.props.contentCallback(response);
+                this.getEquipmentFromObject(response);
             }
         });
+    }
+    getEquipmentFromObject(serverResponse) {
+        var mas = [];
+        serverResponse.buildings.forEach(function (building) {
+            building.rooms.forEach(function (room) {
+                room.equipment.forEach(function (eq) {
+                    mas.push(eq);
+                });
+            });
+        });
+        this.props.contentCallback(mas);
     }
     deleteEquipment(equipment) {
         $.ajax({
             type: "Post",
             url: "/Data/DeleteEquipment",
             data: equipment,
+            dataType: "json",
             success: (response) => {
-                //var obj =
-                //    [
-                //        {
-                //            id: 666,
-                //            title: "Ежик для проверки удаления",
-                //            number: 666
-                //        }
-                //    ]
-                this.props.contentCallback(JSON.parse(response));
+                this.getEquipmentFromObject(response);
             }
         });
     }
@@ -50,15 +46,9 @@ class OperationField extends React.Component {
             type: "Post",
             url: "/Data/UpdateEquipment",
             data: equipment,
+            dataType: "json",
             success: (response) => {
-                var obj = [
-                    {
-                        id: 666,
-                        title: "Ежик для проверки обновления",
-                        number: 666
-                    }
-                ];
-                this.props.contentCallback(obj);
+                this.getEquipmentFromObject(response);
             }
         });
     }

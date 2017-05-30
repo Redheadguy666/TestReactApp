@@ -21,7 +21,8 @@ export class OperationField extends React.Component<IOperationFieldProps, {}>
         this.setUpEquipment = this.setUpEquipment.bind(this);
     }
 
-    addEquipment(newEquipment: EquipmentModel) {
+    addEquipment(newEquipment: EquipmentModel)
+    {
         $.ajax
         ({
             type: "Post",
@@ -29,18 +30,24 @@ export class OperationField extends React.Component<IOperationFieldProps, {}>
             data: newEquipment,
             dataType: "json",
             success: (response) => {
-                //var obj =
-                //    [
-                //        {
-                //            id: 666,
-                //            title: "Ежик для проверки добавления",
-                //            number: 666
-                //        }
-                //    ]
-
-                this.props.contentCallback(response);
+                this.getEquipmentFromObject(response);
             }
         });   
+    }
+
+    getEquipmentFromObject(serverResponse: any)
+    {
+        var mas : EquipmentModel[] = [];
+
+        serverResponse.buildings.forEach(function (building: any) {
+            building.rooms.forEach(function (room: any) {
+                room.equipment.forEach(function (eq: EquipmentModel) {
+                    mas.push(eq);
+                });
+            });
+        });
+
+        this.props.contentCallback(mas);
     }
 
     deleteEquipment(equipment: EquipmentModel)
@@ -50,16 +57,9 @@ export class OperationField extends React.Component<IOperationFieldProps, {}>
             type: "Post",
             url: "/Data/DeleteEquipment",
             data: equipment,
+            dataType: "json",
             success: (response) => {
-                //var obj =
-                //    [
-                //        {
-                //            id: 666,
-                //            title: "Ежик для проверки удаления",
-                //            number: 666
-                //        }
-                //    ]
-                this.props.contentCallback(JSON.parse(response));
+                this.getEquipmentFromObject(response);
             } 
         });
     }
@@ -71,16 +71,9 @@ export class OperationField extends React.Component<IOperationFieldProps, {}>
             type: "Post",
             url: "/Data/UpdateEquipment",
             data: equipment,
+            dataType: "json",
             success: (response) => {
-                var obj =
-                    [
-                        {
-                            id: 666,
-                            title: "Ежик для проверки обновления",
-                            number: 666
-                        }
-                    ]
-                this.props.contentCallback(obj);
+                this.getEquipmentFromObject(response);
             }
         });
     }
