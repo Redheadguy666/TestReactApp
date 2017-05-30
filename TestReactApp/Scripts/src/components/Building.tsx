@@ -28,16 +28,6 @@ export class Building extends React.Component<IBuildingProps, {}>
         this.handleClick = this.handleClick.bind(this);
     }
 
-    SELECTED_ELEMENT_STYLE =
-    {
-        width: "2%",
-        background: "blue"
-    };
-
-    NON_SELECTED_ELEMENT_STYLE =
-    {
-        width: "2%"
-    };
 
     componentWillMount()
     {
