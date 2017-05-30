@@ -42,6 +42,7 @@ export class OperationField extends React.Component<IOperationFieldProps, {}>
         serverResponse.buildings.forEach(function (building: any) {
             building.rooms.forEach(function (room: any) {
                 room.equipment.forEach(function (eq: EquipmentModel) {
+
                     mas.push(eq);
                 });
             });

@@ -21999,14 +21999,18 @@ module.exports = traverseAllChildren;
 Object.defineProperty(exports, "__esModule", { value: true });
 const React = __webpack_require__(10);
 const Room_1 = __webpack_require__(186);
-var style = {
-    width: "2%"
-};
 class Building extends React.Component {
     constructor(props) {
         super(props);
         this.props = {};
         this.state = {};
+        this.SELECTED_ELEMENT_STYLE = {
+            width: "2%",
+            background: "blue"
+        };
+        this.NON_SELECTED_ELEMENT_STYLE = {
+            width: "2%"
+        };
         this.handleClick = this.handleClick.bind(this);
     }
     componentWillMount() {
@@ -22016,7 +22020,7 @@ class Building extends React.Component {
     }
     handleClick(buildingId) {
         this.setState({
-            isSelected: true
+            isSelected: !this.state.isSelected
         });
         this.countEquipmentInBuilding();
     }
@@ -22037,12 +22041,13 @@ class Building extends React.Component {
     }
     render() {
         var rooms = this.props.rooms.map((room) => React.createElement(Room_1.Room, { id: room.roomId, title: room.name, key: room.roomId, equipmentInRoom: room.equipment, buildingCallback: this.props.handleTree, icon: "/Content/Images/blue-folder.ico" }));
+        let bgcolor = this.state.isSelected ? "red" : "blue";
         return (React.createElement("div", null,
             React.createElement("ul", { className: "list-group" },
                 React.createElement("li", { className: "list-group-item" },
                     React.createElement("div", { onClick: () => this.handleClick(this.props.id) },
-                        React.createElement("img", { src: this.props.icon, style: style }),
-                        React.createElement("a", { href: "#" }, this.props.name)),
+                        React.createElement("img", { src: this.props.icon, style: { width: "2%" } }),
+                        React.createElement("a", { href: "#", style: { color: bgcolor } }, this.props.name)),
                     rooms))));
     }
 }
