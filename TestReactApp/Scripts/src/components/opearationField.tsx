@@ -99,12 +99,13 @@ export class OperationField extends React.Component<IOperationFieldProps, {}>
 
     setUpEquipment(operation : string)
     {
-        var equipment : EquipmentModel;
+        var equipment: EquipmentModel;
+        var that = this;
 
         switch (operation) {
             case "Add":
             {
-                var newEquipmentRoomId : number = $("#addingNodeRoomId").val();
+                var newEquipmentRoomId : number = that.props.selectedItem.roomId;
                 var newEquipmentTitle : string = $("#addingNodeName").val();
                 var newEquipmentNumber : number = $("#addingNodeNumber").val();
 
@@ -147,6 +148,9 @@ export class OperationField extends React.Component<IOperationFieldProps, {}>
 
     render()
     {
+        var roomTitle: string = this.props.selectedItem !== undefined ? this.props.selectedItem.name
+            : "";
+
         return (
             <div>
                 <div className="col-md-3 col-sm-3 col-xs-3 col-3">
@@ -155,8 +159,8 @@ export class OperationField extends React.Component<IOperationFieldProps, {}>
                         <div className="panel panel-default">
                             <div className="panel-heading">Добавить:</div>
                             <div className="panel-body">
-                                    <label htmlFor="addingNodeRoomId">Ид комнаты:</label>
-                                    <input type="number" required className="form-control" id="addingNodeRoomId" />
+                                    <label htmlFor="addingNodeRoomId">Добавление в...</label>
+                                    <input type="text" readOnly value={roomTitle} className="form-control" id="addingRoomName" />
                                     <label htmlFor="addingNodeName">Название:</label>
                                     <input type="text" required className="form-control" id="addingNodeName" />
                                     <label htmlFor="addingNodeNumber">Количество:</label>

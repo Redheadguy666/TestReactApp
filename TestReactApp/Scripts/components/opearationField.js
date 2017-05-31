@@ -73,10 +73,11 @@ class OperationField extends React.Component {
     }
     setUpEquipment(operation) {
         var equipment;
+        var that = this;
         switch (operation) {
             case "Add":
                 {
-                    var newEquipmentRoomId = $("#addingNodeRoomId").val();
+                    var newEquipmentRoomId = that.props.selectedItem.roomId;
                     var newEquipmentTitle = $("#addingNodeName").val();
                     var newEquipmentNumber = $("#addingNodeNumber").val();
                     equipment = {
@@ -112,6 +113,8 @@ class OperationField extends React.Component {
         this.chooseOperation(operation, equipment);
     }
     render() {
+        var roomTitle = this.props.selectedItem !== undefined ? this.props.selectedItem.name
+            : "";
         return (React.createElement("div", null,
             React.createElement("div", { className: "col-md-3 col-sm-3 col-xs-3 col-3" },
                 React.createElement("form", null,
@@ -119,8 +122,8 @@ class OperationField extends React.Component {
                         React.createElement("div", { className: "panel panel-default" },
                             React.createElement("div", { className: "panel-heading" }, "\u0414\u043E\u0431\u0430\u0432\u0438\u0442\u044C:"),
                             React.createElement("div", { className: "panel-body" },
-                                React.createElement("label", { htmlFor: "addingNodeRoomId" }, "\u0418\u0434 \u043A\u043E\u043C\u043D\u0430\u0442\u044B:"),
-                                React.createElement("input", { type: "number", required: true, className: "form-control", id: "addingNodeRoomId" }),
+                                React.createElement("label", { htmlFor: "addingNodeRoomId" }, "\u0414\u043E\u0431\u0430\u0432\u043B\u0435\u043D\u0438\u0435 \u0432..."),
+                                React.createElement("input", { type: "text", readOnly: true, value: roomTitle, className: "form-control", id: "addingRoomName" }),
                                 React.createElement("label", { htmlFor: "addingNodeName" }, "\u041D\u0430\u0437\u0432\u0430\u043D\u0438\u0435:"),
                                 React.createElement("input", { type: "text", required: true, className: "form-control", id: "addingNodeName" }),
                                 React.createElement("label", { htmlFor: "addingNodeNumber" }, "\u041A\u043E\u043B\u0438\u0447\u0435\u0441\u0442\u0432\u043E:"),
