@@ -4,6 +4,7 @@ import { EquipmentModel } from "./OrganisationModel"
 interface IOperationFieldProps
 {
     contentCallback?: any
+    selectedItem?: any
 }
 
 interface IOperationFieldState
@@ -19,6 +20,7 @@ export class OperationField extends React.Component<IOperationFieldProps, {}>
     constructor(props: any) {
         super(props);
         this.setUpEquipment = this.setUpEquipment.bind(this);
+        this.getEquipmentFromObject = this.getEquipmentFromObject.bind(this);
     }
 
     addEquipment(newEquipment: EquipmentModel)
@@ -37,16 +39,18 @@ export class OperationField extends React.Component<IOperationFieldProps, {}>
 
     getEquipmentFromObject(serverResponse: any)
     {
-        var mas : EquipmentModel[] = [];
+        var mas: EquipmentModel[] = [];
+        var that = this;
 
         serverResponse.buildings.forEach(function (building: any) {
             building.rooms.forEach(function (room: any) {
                 room.equipment.forEach(function (eq: EquipmentModel) {
-
-                    mas.push(eq);
+                    if (room.roomId == that.props.selectedItem.roomId)
+                        mas.push(eq);
                 });
             });
         });
+
 
         this.props.contentCallback(mas);
     }

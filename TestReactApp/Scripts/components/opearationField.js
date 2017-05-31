@@ -7,6 +7,7 @@ class OperationField extends React.Component {
         this.props = {};
         this.state = {};
         this.setUpEquipment = this.setUpEquipment.bind(this);
+        this.getEquipmentFromObject = this.getEquipmentFromObject.bind(this);
     }
     addEquipment(newEquipment) {
         $.ajax({
@@ -21,10 +22,12 @@ class OperationField extends React.Component {
     }
     getEquipmentFromObject(serverResponse) {
         var mas = [];
+        var that = this;
         serverResponse.buildings.forEach(function (building) {
             building.rooms.forEach(function (room) {
                 room.equipment.forEach(function (eq) {
-                    mas.push(eq);
+                    if (room.roomId == that.props.selectedItem.roomId)
+                        mas.push(eq);
                 });
             });
         });

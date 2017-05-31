@@ -1,5 +1,5 @@
 ﻿import * as React from "react";
-import { EquipmentModel } from "./OrganisationModel"
+import { EquipmentModel, RoomModel } from "./OrganisationModel"
 
 interface IRoomPropes
 {
@@ -11,15 +11,47 @@ interface IRoomPropes
     icon?: string; 
     equipmentInRoom?: EquipmentModel[];  
     buildingCallback?: any;
+    selectedItemCallback: any
 }
 
 interface IRoomState
 {
-
+    isSelected?: boolean
 }
 
 export class Room extends React.Component<IRoomPropes, IRoomState>
 {
+    props: IRoomPropes = {} as any;
+    state: IRoomState = {} as any;
+
+    constructor(props: any) {
+        super(props);
+        this.handleClick = this.handleClick.bind(this);
+    }
+
+    handleClick()
+    {
+        this.setState
+        ({
+            isSelected: !this.state.isSelected
+        });
+
+        this.passSelectedRoom();
+        this.countEquipmentInRoom();
+    }
+
+    passSelectedRoom()
+    {
+        var room: RoomModel = 
+        {
+            roomId: this.props.id,
+            name: this.props.title,
+            equipment: this.props.equipmentInRoom
+        };
+
+        this.props.selectedItemCallback(room);
+    }
+
     countEquipmentInRoom()
     {
         this.props.buildingCallback(this.props.equipmentInRoom);
@@ -28,14 +60,13 @@ export class Room extends React.Component<IRoomPropes, IRoomState>
     render()
     {
         return (
-            <div onClick={() => this.countEquipmentInRoom()}>
+            <div onClick={this.handleClick}>
                 <ul className="list-group">
                     <li className="list-group-item">
                         <img src={this.props.icon} style={{ width: "2%" }} /><a href="#">{this.props.title}</a>
                     </li>
                 </ul>
-            </div>
-               
+            </div> 
         )
     }
 }

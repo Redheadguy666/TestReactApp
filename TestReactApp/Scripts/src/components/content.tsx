@@ -3,7 +3,7 @@ import { EquipmentList } from "./EquipmentList";
 import { Tree } from "./Tree";
 import { Building, IBuildingProps } from "./Building";
 import { OperationField } from "./OpearationField";
-import { EquipmentModel } from "./OrganisationModel"
+import { EquipmentModel, RoomModel } from "./OrganisationModel"
 
 export interface IContentProps
 {
@@ -12,7 +12,7 @@ export interface IContentProps
 
 export interface IContentState
 {
-    selectedNode: IBuildingProps
+    selectedItem?: any
     equipment?: EquipmentModel[];
 }
 
@@ -32,6 +32,14 @@ export class Content extends React.Component<IContentProps, IContentState>
         });
     }
 
+    setSelectedItem(room : RoomModel)
+    {
+        this.setState
+        ({
+            selectedItem: room
+        });
+    }
+
     render()
     {
         return (
@@ -39,11 +47,11 @@ export class Content extends React.Component<IContentProps, IContentState>
                 <div className="container-fluid">
                     <div className="row">
                         <div className="col-md-6 col-sm-6 col-xs-6 col-3">
-                            <Tree handle={this.getEquipment} />
+                            <Tree handle={this.getEquipment} selectedItemCallback={(selectedItem: RoomModel) => this.setSelectedItem(selectedItem)} />
                         </div>
                         <div className="col-md-6 col-sm-6 col-xs-6 col-4">
                             <EquipmentList equipment={this.state.equipment} />
-                            <OperationField contentCallback={this.getEquipment}/>
+                            <OperationField selectedItem={this.state.selectedItem} contentCallback={this.getEquipment}/>
                         </div>
                     </div>
                 </div>

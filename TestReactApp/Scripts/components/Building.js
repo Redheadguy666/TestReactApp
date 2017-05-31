@@ -7,14 +7,10 @@ class Building extends React.Component {
         super(props);
         this.props = {};
         this.state = {};
-        this.SELECTED_ELEMENT_STYLE = {
-            width: "2%",
-            background: "blue"
-        };
-        this.NON_SELECTED_ELEMENT_STYLE = {
-            width: "2%"
-        };
         this.handleClick = this.handleClick.bind(this);
+    }
+    passSelectedRoom(room) {
+        this.props.selectedItemCallback(room);
     }
     componentWillMount() {
         this.setState({
@@ -43,7 +39,7 @@ class Building extends React.Component {
         this.props.handleTree(equipmentMassive);
     }
     render() {
-        var rooms = this.props.rooms.map((room) => React.createElement(Room_1.Room, { id: room.roomId, title: room.name, key: room.roomId, equipmentInRoom: room.equipment, buildingCallback: this.props.handleTree, icon: "/Content/Images/blue-folder.ico" }));
+        var rooms = this.props.rooms.map((room) => React.createElement(Room_1.Room, { id: room.roomId, title: room.name, key: room.roomId, equipmentInRoom: room.equipment, buildingCallback: this.props.handleTree, selectedItemCallback: (selectedRoom) => this.passSelectedRoom(selectedRoom), icon: "/Content/Images/blue-folder.ico" }));
         let bgcolor = this.state.isSelected ? "red" : "blue";
         return (React.createElement("div", null,
             React.createElement("ul", { className: "list-group" },

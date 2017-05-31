@@ -11,6 +11,7 @@ export interface IBuildingProps
     isFolder?: boolean; 
     icon?: string;   
     handleTree?: any;
+    selectedItemCallback: any
 }
 
 interface IBuildingState
@@ -28,6 +29,10 @@ export class Building extends React.Component<IBuildingProps, {}>
         this.handleClick = this.handleClick.bind(this);
     }
 
+    passSelectedRoom(room : RoomModel)
+    {
+        this.props.selectedItemCallback(room);
+    }
 
     componentWillMount()
     {
@@ -69,7 +74,8 @@ export class Building extends React.Component<IBuildingProps, {}>
     render()
     {
         var rooms : JSX.Element[] = this.props.rooms.map((room : RoomModel) => <Room id={room.roomId}
-            title={room.name} key={room.roomId} equipmentInRoom={room.equipment} buildingCallback={this.props.handleTree} icon="/Content/Images/blue-folder.ico" />);
+            title={room.name} key={room.roomId} equipmentInRoom={room.equipment} buildingCallback={this.props.handleTree}
+            selectedItemCallback={(selectedRoom: RoomModel) => this.passSelectedRoom(selectedRoom)} icon="/Content/Images/blue-folder.ico" />);
 
         let bgcolor : string = this.state.isSelected ? "red" : "blue";
 

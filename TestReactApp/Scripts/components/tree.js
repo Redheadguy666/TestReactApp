@@ -24,11 +24,14 @@ class Tree extends React.Component {
             }
         });
     }
+    passSelectedElement(room) {
+        this.props.selectedItemCallback(room);
+    }
     contentCallback(equipment) {
         this.props.handle(equipment);
     }
     render() {
-        var buildings = this.state.data ? this.state.data.buildings.map((building) => React.createElement(Building_1.Building, { id: building.id, name: building.title, key: building.id, rooms: building.rooms, icon: "/Content/Images/blue-folder.ico", handleTree: (allEquipment) => this.contentCallback(allEquipment) })) : null;
+        var buildings = this.state.data ? this.state.data.buildings.map((building) => React.createElement(Building_1.Building, { id: building.id, name: building.title, key: building.id, rooms: building.rooms, selectedItemCallback: (selectedRoom) => this.passSelectedElement(selectedRoom), icon: "/Content/Images/blue-folder.ico", handleTree: (allEquipment) => this.contentCallback(allEquipment) })) : null;
         return (React.createElement("div", null, buildings));
     }
 }
