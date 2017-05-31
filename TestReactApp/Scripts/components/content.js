@@ -28,7 +28,7 @@ class Content extends React.Component {
                         React.createElement(Tree_1.Tree, { handle: this.getEquipment, selectedItemCallback: (selectedItem) => this.setSelectedItem(selectedItem) })),
                     React.createElement("div", { className: "col-md-6 col-sm-6 col-xs-6 col-4" },
                         React.createElement(EquipmentList_1.EquipmentList, { equipment: this.state.equipment }),
-                        React.createElement(OpearationField_1.OperationField, { selectedItem: this.state.selectedItem, contentCallback: this.getEquipment }))))));
+                        React.createElement(OpearationField_1.OperationField, { selectedItem: this.state.selectedItem, currentRoomEquipment: this.state.equipment, contentCallback: this.getEquipment }))))));
     }
 }
 exports.Content = Content;
