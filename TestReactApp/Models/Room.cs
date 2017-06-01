@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Web.Script.Serialization;
 
 namespace TraineeshipWebApp.Models
 {
@@ -7,10 +8,13 @@ namespace TraineeshipWebApp.Models
     {
         public int Id { get; set; }
         public string Title { get; set; }
-        public List<Equipment> RoomEquipment { get; set; }
+        public int? BuildingId { get; set; }
+        public Building Building { get; set; }
+        public List<Equipment> Children { get; set; }
+
         public Room()
         {
-            RoomEquipment = new List<Equipment>();
+            Children = new List<Equipment>();
         }
     }
 }

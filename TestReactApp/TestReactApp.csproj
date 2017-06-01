@@ -200,10 +200,6 @@
     <Compile Include="Migrations\201704271401467_TitleMigration.Designer.cs">
       <DependentUpon>201704271401467_TitleMigration.cs</DependentUpon>
     </Compile>
-    <Compile Include="Migrations\201706011159068_RoomEquipment.cs" />
-    <Compile Include="Migrations\201706011159068_RoomEquipment.Designer.cs">
-      <DependentUpon>201706011159068_RoomEquipment.cs</DependentUpon>
-    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\Building.cs" />
     <Compile Include="Models\Equipment.cs" />
@@ -519,9 +515,6 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201704271401467_TitleMigration.resx">
       <DependentUpon>201704271401467_TitleMigration.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201706011159068_RoomEquipment.resx">
-      <DependentUpon>201706011159068_RoomEquipment.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>
