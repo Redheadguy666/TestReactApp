@@ -1,8 +1,6 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Web;
 using System.Data.Entity;
+using TestReactApp.Models;
 
 namespace TraineeshipWebApp.Models
 {
@@ -15,5 +13,6 @@ namespace TraineeshipWebApp.Models
         public DbSet<Building> Buildings { get; set; }
         public DbSet<Room> Rooms { get; set; }
         public DbSet<Equipment> Equipment { get; set; }
+        public DbSet<RoomEquipment> RoomEquipment { get; set; }
     }
 }

@@ -8,13 +8,10 @@ namespace TraineeshipWebApp.Models
     {
         public int Id { get; set; }
         public string Title { get; set; }
-        public int? BuildingId { get; set; }
-        public Building Building { get; set; }
-        public List<Equipment> Children { get; set; }
-
+        public List<Equipment> RoomEquipment { get; set; }
         public Room()
         {
-            Children = new List<Equipment>();
+            this.RoomEquipment = new List<Equipment>();
         }
     }
 }
