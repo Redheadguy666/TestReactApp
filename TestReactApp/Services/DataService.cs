@@ -17,7 +17,7 @@ namespace TraineeshipWebApp
         {
             var organizationModel = new OrganizationModel();
 
-            var buildings = factoryContext.Buildings.Include(x => x.Children.Select(c => c.Children)).ToList();
+            var buildings = factoryContext.Buildings.Include(x => x.Children.Select(c => c.RoomEquipment)).ToList();
 
             foreach (var item in buildings)
             {
@@ -31,8 +31,8 @@ namespace TraineeshipWebApp
 
         public void AddEquipment(EquipmentModel equipmentModel)
         {
-            factoryContext.Equipment.Add(new Equipment()
-                { Title = equipmentModel.Title, RoomId = equipmentModel.RoomId, Number = equipmentModel.Number });
+            //factoryContext.Equipment.Add(new Equipment()
+            //    { Title = equipmentModel.Title, RoomId = equipmentModel.RoomId, Number = equipmentModel.Number });
             factoryContext.SaveChanges();
         }
 
@@ -46,7 +46,7 @@ namespace TraineeshipWebApp
             }
 
             equipment.Title = equipmentModel.Title;
-            equipment.Number = equipmentModel.Number;
+            //equipment.Number = equipmentModel.Number;
             factoryContext.Entry(equipment).State = EntityState.Modified;
             factoryContext.SaveChanges();
         }

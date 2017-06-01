@@ -19,7 +19,7 @@ namespace TestReactApp.ViewModels
             this.Name = room.Title;
             this.RoomId = room.Id;
 
-            foreach (var equipment in room.Children)
+            foreach (var equipment in room.RoomEquipment)
             {
                 var equipmentModel = new EquipmentModel();
                 equipmentModel.Initialize(equipment);
