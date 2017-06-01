@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using TraineeshipWebApp.ViewModels;
 using TraineeshipWebApp.Models;
+using TestReactApp.Models;
 
 namespace TestReactApp.ViewModels
 {
@@ -22,7 +23,8 @@ namespace TestReactApp.ViewModels
             foreach (var equipment in room.RoomEquipment)
             {
                 var equipmentModel = new EquipmentModel();
-                equipmentModel.Initialize(equipment);
+                var roomEquipment = new RoomEquipment();
+                equipmentModel.Initialize(equipment, roomEquipment);
                 this.Equipment.Add(equipmentModel);
             }
 

@@ -5,6 +5,7 @@ using System.Web.Mvc;
 using System.Data.Entity;
 using TraineeshipWebApp.Models;
 using TraineeshipWebApp.ViewModels;
+using TestReactApp.Models;
 using TestReactApp.ViewModels;
 
 namespace TraineeshipWebApp
@@ -17,9 +18,18 @@ namespace TraineeshipWebApp
         {
             var organizationModel = new OrganizationModel();
 
-            var buildings = factoryContext.Buildings.Include(x => x.Children.Select(c => c.RoomEquipment)).ToList();
+            var buildings = factoryContext.Buildings.Include(x => x.Children);
 
-            foreach (var item in buildings)
+            var data = (from room in buildings
+                        join re in factoryContext.RoomEquipment on room.Id equals re.RoomId
+                        join equip in factoryContext.Equipment on re.EquipmentId equals equip.Id
+                        select new
+                        {
+                            Id = equip.Id,
+                            Title = equip.Title
+                        });
+
+            foreach (var item in data)
             {
                 var buildingModel = new BuildingModel();
                 buildingModel.Initialize(item);
@@ -31,9 +41,12 @@ namespace TraineeshipWebApp
 
         public void AddEquipment(EquipmentModel equipmentModel)
         {
-            //TODO: Изменить инициализацию полей
-            //factoryContext.Equipment.Add(new Equipment()
-            //    { Title = equipmentModel.Title, RoomId = equipmentModel.RoomId, Number = equipmentModel.Number });
+            factoryContext.Equipment.Add(new Equipment()
+                { Title = equipmentModel.Title });
+
+            factoryContext.RoomEquipment.Add(new RoomEquipment()
+                { RoomId = (int)equipmentModel.RoomId, EquipmentId = equipmentModel.Id, EquipmentNumber = equipmentModel.Number });
+
             factoryContext.SaveChanges();
         }
 

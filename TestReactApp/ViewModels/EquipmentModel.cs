@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Web;
+using TestReactApp.Models;
 using TraineeshipWebApp.Models;
 
 namespace TraineeshipWebApp.ViewModels
@@ -13,13 +14,12 @@ namespace TraineeshipWebApp.ViewModels
         public int Number { get; set; }
         public int? RoomId { get; set; }
 
-        public void Initialize(Equipment equipment)
+        public void Initialize(Equipment equipment, RoomEquipment roomEquipment)
         {
             this.Id = equipment.Id;
             this.Title = equipment.Title;
-            //TODO: Изменить инициализацию полей
-            //this.Number = equipment.Number;
-            //this.RoomId = equipment.RoomId;
+            this.Number = roomEquipment.EquipmentNumber;
+            this.RoomId = roomEquipment.RoomId;
         }
     }
 }
