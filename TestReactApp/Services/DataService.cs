@@ -18,16 +18,7 @@ namespace TraineeshipWebApp
         {
             var organizationModel = new OrganizationModel();
 
-            var buildings = factoryContext.Buildings.Include(x => x.Children);
-
-            var data = (from room in buildings
-                        join re in factoryContext.RoomEquipment on room.Id equals re.RoomId
-                        join equip in factoryContext.Equipment on re.EquipmentId equals equip.Id
-                        select new
-                        {
-                            Id = equip.Id,
-                            Title = equip.Title
-                        });
+            var data = factoryContext.Buildings.Include(r => r.Children).ToList();
 
             foreach (var item in data)
             {
@@ -43,7 +34,7 @@ namespace TraineeshipWebApp
         {
             factoryContext.Equipment.Add(new Equipment()
                 { Title = equipmentModel.Title });
-
+                
             factoryContext.RoomEquipment.Add(new RoomEquipment()
                 { RoomId = (int)equipmentModel.RoomId, EquipmentId = equipmentModel.Id, EquipmentNumber = equipmentModel.Number });
 

@@ -14,6 +14,5 @@ namespace TestReactApp.Models
         public virtual Room Room { get; set; }
         public virtual Equipment Equipment { get; set; }
         public int EquipmentNumber { get; set; }
-
     }
 }

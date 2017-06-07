@@ -204,6 +204,10 @@
     <Compile Include="Migrations\201706011303433_RoomEquipment.Designer.cs">
       <DependentUpon>201706011303433_RoomEquipment.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201706060955264_RoomMigration.cs" />
+    <Compile Include="Migrations\201706060955264_RoomMigration.Designer.cs">
+      <DependentUpon>201706060955264_RoomMigration.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\Building.cs" />
     <Compile Include="Models\Equipment.cs" />
@@ -523,6 +527,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201706011303433_RoomEquipment.resx">
       <DependentUpon>201706011303433_RoomEquipment.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201706060955264_RoomMigration.resx">
+      <DependentUpon>201706060955264_RoomMigration.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>
