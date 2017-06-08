@@ -10,7 +10,9 @@ interface IOperationFieldProps
 
 interface IOperationFieldState
 {
-
+    deletingId: string;
+    addingEquipmentTitle: string;
+    addingEquipmentNumber: string;
 }
 
 export class OperationField extends React.Component<IOperationFieldProps, {}>
@@ -22,6 +24,9 @@ export class OperationField extends React.Component<IOperationFieldProps, {}>
         super(props);
         this.setUpEquipment = this.setUpEquipment.bind(this);
         this.getEquipmentFromObject = this.getEquipmentFromObject.bind(this);
+        this.handleSelectChanged = this.handleSelectChanged.bind(this);
+        this.handleAddingNodeTitle = this.handleAddingNodeTitle.bind(this);
+        this.handleAddingNodeNumber = this.handleAddingNodeNumber.bind(this);
     }
 
     addEquipment(newEquipment: EquipmentModel)
@@ -89,6 +94,27 @@ export class OperationField extends React.Component<IOperationFieldProps, {}>
         this.props.contentCallback;
     }
 
+    handleSelectChanged(event: any)
+    {
+        this.setState({
+            value: event.target.value
+        });
+    }
+
+    handleAddingNodeTitle(event: any)
+    {
+        this.setState({
+            addingEquipmentTitle: event.target.value
+        });
+    }
+
+    handleAddingNodeNumber(event: any)
+    {
+        this.setState({
+            addingEquipmentNumber: event.target.value
+        });
+    }
+
     chooseOperation(operation : string, equipment : EquipmentModel)
     {
         switch (operation) {
@@ -107,25 +133,20 @@ export class OperationField extends React.Component<IOperationFieldProps, {}>
             case "Add":
             {
                 var newEquipmentRoomId : number = that.props.selectedItem.roomId;
-                var newEquipmentTitle : string = $("#addingNodeName").val();
                 var newEquipmentNumber : number = $("#addingNodeNumber").val();
 
                 equipment = {
                     roomId: newEquipmentRoomId,
-                    title: newEquipmentTitle,
-                    number: newEquipmentNumber
+                    title: this.state.addingEquipmentTitle,
+                    number: Number(this.state.addingEquipmentNumber)
                 }
             }
             break;
 
             case "Delete":
             {
-                var deletingEquipmentId : number = $("#deletingNodeId").val();
-
                 equipment = {
-                    id: deletingEquipmentId,
-                    title: "",
-                    number: -1
+                    id: Number(this.state.deletingId)
                 }
             }
             break;
@@ -149,10 +170,11 @@ export class OperationField extends React.Component<IOperationFieldProps, {}>
 
     render()
     {
+
         var roomTitle: string = this.props.selectedItem !== undefined ? this.props.selectedItem.name
             : "";
         var roomEquipment: JSX.Element[] = this.props.currentRoomEquipment !== undefined ?
-            this.props.currentRoomEquipment.map((eq) => <option>{eq.id}) {eq.title}</option>)
+            this.props.currentRoomEquipment.map((eq) => <option key={eq.id} value={eq.id}>{eq.id}) {eq.title}</option>)
                 : null;
 
         return (
@@ -166,9 +188,9 @@ export class OperationField extends React.Component<IOperationFieldProps, {}>
                                     <label htmlFor="addingNodeRoomId">Добавление в...</label>
                                     <input type="text" readOnly value={roomTitle} className="form-control" id="addingRoomName" />
                                     <label htmlFor="addingNodeName">Название:</label>
-                                    <input type="text" required className="form-control" id="addingNodeName" />
+                                    <input type="text" required value={this.state.addingEquipmentTitle} onChange={this.handleAddingNodeTitle} className="form-control" id="addingNodeName" />
                                     <label htmlFor="addingNodeNumber">Количество:</label>
-                                    <input type="number" required className="form-control" id="addingNodeNumber" />
+                                    <input type="number" required value={this.state.addingEquipmentNumber} onChange={this.handleAddingNodeNumber} className="form-control" id="addingNodeNumber" />
                                     <button type="button" onClick={() => this.setUpEquipment("Add")} className="btn btn-info">OK</button>
                                 </div>
                             </div>
@@ -181,7 +203,7 @@ export class OperationField extends React.Component<IOperationFieldProps, {}>
                                 <div className="dropdown">
                                     <div className="form-group">
                                         <label htmlFor="currentEquipmentList">Выбрать оборудование</label>
-                                        <select className="form-control" id="currentEquipmentList">
+                                        <select value={this.state.deletingId} className="form-control" onChange={this.handleSelectChanged}>
                                             {roomEquipment}
                                         </select>
                                     </div>

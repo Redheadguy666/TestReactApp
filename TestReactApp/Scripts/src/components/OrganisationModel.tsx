@@ -15,8 +15,8 @@ interface IRoom
 interface IEquipment
 {
     id?: number,
-    title: string,
-    number: number
+    title?: string,
+    number?: number
     roomId?: number,
 }
 
@@ -37,7 +37,7 @@ export class RoomModel implements IRoom
 export class EquipmentModel implements IEquipment
 {
     id?: number;
-    title: string;
-    number: number;
+    title?: string;
+    number?: number;
     roomId?: number;
 }
