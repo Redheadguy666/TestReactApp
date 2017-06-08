@@ -5,8 +5,8 @@ using System.Web.Mvc;
 using System.Data.Entity;
 using TraineeshipWebApp.Models;
 using TraineeshipWebApp.ViewModels;
-using TestReactApp.Models;
 using TestReactApp.ViewModels;
+using TestReactApp.Models;
 
 namespace TraineeshipWebApp
 {
@@ -18,12 +18,13 @@ namespace TraineeshipWebApp
         {
             var organizationModel = new OrganizationModel();
 
+            //Получаем здания и комнаты с бд
             var data = factoryContext.Buildings.Include(r => r.Children).ToList();
-
+            
             foreach (var item in data)
             {
                 var buildingModel = new BuildingModel();
-                buildingModel.Initialize(item);
+                buildingModel.Initialize(factoryContext, item);
                 organizationModel.Buildings.Add(buildingModel);
             }
 
@@ -34,9 +35,9 @@ namespace TraineeshipWebApp
         {
             factoryContext.Equipment.Add(new Equipment()
                 { Title = equipmentModel.Title });
-                
+
             factoryContext.RoomEquipment.Add(new RoomEquipment()
-                { RoomId = (int)equipmentModel.RoomId, EquipmentId = equipmentModel.Id, EquipmentNumber = equipmentModel.Number });
+            { RoomId = (int)equipmentModel.RoomId, EquipmentId = equipmentModel.Id, EquipmentNumber = equipmentModel.Number });
 
             factoryContext.SaveChanges();
         }

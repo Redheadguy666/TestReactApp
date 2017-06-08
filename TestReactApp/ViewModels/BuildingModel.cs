@@ -15,7 +15,7 @@ namespace TraineeshipWebApp.ViewModels
         public int Id { get; set; }
         public string Title { get; set; }
         public List<RoomModel> Rooms { get; set; }
-        public void Initialize(Building building)
+        public void Initialize(FactoryContext factoryContext, Building building)
         {
             this.Id = building.Id;
             this.Title = building.Title;
@@ -23,7 +23,7 @@ namespace TraineeshipWebApp.ViewModels
             foreach (var room in building.Children)
             {
                 var roomModel = new RoomModel();
-                roomModel.Initialize(room);
+                roomModel.Initialize(factoryContext, room);
                 this.Rooms.Add(roomModel);
             }
 

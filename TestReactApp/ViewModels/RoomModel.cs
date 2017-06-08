@@ -1,7 +1,9 @@
 ﻿using System;
 using System.Collections.Generic;
 using TraineeshipWebApp.ViewModels;
+using System.Linq;
 using TraineeshipWebApp.Models;
+using TestReactApp.ViewModels;
 using TestReactApp.Models;
 
 namespace TestReactApp.ViewModels
@@ -15,18 +17,31 @@ namespace TestReactApp.ViewModels
         public int RoomId { get; set; }
         public string Name { get; set; }
         public List<EquipmentModel> Equipment { get; set; }
-        public void Initialize(Room room)
+        public void Initialize(FactoryContext factoryContext, Room room)
         {
             this.Name = room.Title;
             this.RoomId = room.Id;
 
-            foreach (var equipment in room.RoomEquipment)
+            foreach (var roomEquipment in factoryContext.RoomEquipment)
             {
-                var equipmentModel = new EquipmentModel();
-                var roomEquipment = new RoomEquipment();
-                equipmentModel.Initialize(equipment, roomEquipment);
-                this.Equipment.Add(equipmentModel);
+                if (roomEquipment.RoomId == room.Id)
+                {
+                    var equipmentModel = new EquipmentModel();
+                    equipmentModel.Initialize(roomEquipment);
+                    this.Equipment.Add(equipmentModel);
+
+                }
             }
+
+            //factoryContext.RoomEquipment.Where(re => re.RoomId == room.Id)
+
+            //foreach (var equipment in room.RoomEquipment)
+            //{
+            //    var equipmentModel = new EquipmentModel();
+            //    var roomEquipment = new RoomEquipment();
+            //    equipmentModel.Initialize(equipment, roomEquipment);
+            //    this.Equipment.Add(equipmentModel);
+            //}
 
         }
     }
