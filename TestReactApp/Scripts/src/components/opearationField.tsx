@@ -152,7 +152,7 @@ export class OperationField extends React.Component<IOperationFieldProps, {}>
         var roomTitle: string = this.props.selectedItem !== undefined ? this.props.selectedItem.name
             : "";
         var roomEquipment: JSX.Element[] = this.props.currentRoomEquipment !== undefined ?
-            this.props.currentRoomEquipment.map((eq) => <li><a href="#">{eq.id} + " " + {eq.title}</a></li>)
+            this.props.currentRoomEquipment.map((eq) => <option>{eq.id}) {eq.title}</option>)
                 : null;
 
         return (
@@ -179,20 +179,14 @@ export class OperationField extends React.Component<IOperationFieldProps, {}>
                         <div className="panel-heading">Удалить:</div>
                             <div className="panel-body">
                                 <div className="dropdown">
-                                    <button className="btn btn-primary dropdown-toggle" type="button" data-toggle="dropdown">Выберите оборудование:
-                                        <span className="caret"></span>
-                                    </button>
-                                    <ul className="dropdown-menu">
-                                        {roomEquipment}
-                                    </ul>
+                                    <div className="form-group">
+                                        <label htmlFor="currentEquipmentList">Выбрать оборудование</label>
+                                        <select className="form-control" id="currentEquipmentList">
+                                            {roomEquipment}
+                                        </select>
+                                    </div>
                                 </div>
-
-
-                                <label htmlFor="deletingNodeId">Ид:</label>
-                                <input type="number" required className="form-control" id="deletingNodeId" />
                                 <button type="button" onClick={() => this.setUpEquipment("Delete")} className="btn btn-info">OK</button>
-
-
                             </div>
                         </div>
                 </form>
