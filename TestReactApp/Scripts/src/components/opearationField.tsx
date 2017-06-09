@@ -55,6 +55,7 @@ export class OperationField extends React.Component<IOperationFieldProps, {}>
             });
         });
 
+
         this.props.contentCallback(mas);
     }
 
