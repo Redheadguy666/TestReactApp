@@ -22039,8 +22039,8 @@ class Building extends React.Component {
         var rooms = this.props.rooms.map((room) => React.createElement(Room_1.Room, { id: room.roomId, title: room.name, key: room.roomId, equipmentInRoom: room.equipment, buildingCallback: this.props.handleTree, selectedItemCallback: (selectedRoom) => this.passSelectedRoom(selectedRoom), icon: "/Content/Images/blue-folder.ico" }));
         let bgcolor = this.state.isSelected ? "red" : "blue";
         return (React.createElement("div", null,
-            React.createElement("ul", { className: "list-group" },
-                React.createElement("li", { className: "list-group-item" },
+            React.createElement("ul", { className: "list-group", style: { border: "none" } },
+                React.createElement("li", { style: { border: "none" } },
                     React.createElement("div", { onClick: () => this.handleClick(this.props.id) },
                         React.createElement("img", { src: this.props.icon, style: { width: "2%" } }),
                         React.createElement("a", { href: "#", style: { color: bgcolor } }, this.props.name)),
@@ -22124,15 +22124,9 @@ class OperationField extends React.Component {
         this.handleUpdatingSelectChange = this.handleUpdatingSelectChange.bind(this);
     }
     addEquipment(newEquipment) {
-        $.ajax({
-            type: "Post",
-            url: "/Data/AddEquipment",
-            data: newEquipment,
-            dataType: "json",
-            success: (response) => {
-                this.getEquipmentFromObject(response);
-            }
-        });
+        $.post("/Data/AddEquipment", newEquipment, (response) => {
+            this.getEquipmentFromObject(response);
+        }, "json");
     }
     getEquipmentFromObject(serverResponse) {
         var mas = [];
@@ -22148,26 +22142,14 @@ class OperationField extends React.Component {
         this.props.contentCallback(mas);
     }
     deleteEquipment(equipment) {
-        $.ajax({
-            type: "Post",
-            url: "/Data/DeleteEquipment",
-            data: equipment,
-            dataType: "json",
-            success: (response) => {
-                this.getEquipmentFromObject(response);
-            }
-        });
+        $.post("/Data/DeleteEquipment", equipment, (response) => {
+            this.getEquipmentFromObject(response);
+        }, "json");
     }
     updateEquipment(equipment) {
-        $.ajax({
-            type: "Post",
-            url: "/Data/UpdateEquipment",
-            data: equipment,
-            dataType: "json",
-            success: (response) => {
-                this.getEquipmentFromObject(response);
-            }
-        });
+        $.post("/Data/UpdateEquipment", equipment, (response) => {
+            this.getEquipmentFromObject(response);
+        }, "json");
     }
     passDataToContent() {
         this.props.contentCallback;
@@ -22362,17 +22344,11 @@ class Tree extends React.Component {
         this.getData();
     }
     getData() {
-        $.ajax({
-            type: "Get",
-            data: "json",
-            dataType: "json",
-            url: "Data/GetData",
-            success: (resultData) => {
-                this.setState({
-                    data: resultData
-                });
-            }
-        });
+        $.get("Data/GetData", (resultData) => {
+            this.setState({
+                data: resultData
+            });
+        }, "json");
     }
     passSelectedElement(room) {
         this.props.selectedItemCallback(room);

@@ -35,16 +35,10 @@ export class OperationField extends React.Component<IOperationFieldProps, {}>
 
     addEquipment(newEquipment: EquipmentModel)
     {
-        $.ajax
-        ({
-            type: "Post",
-            url: "/Data/AddEquipment",
-            data: newEquipment,
-            dataType: "json",
-            success: (response) => {
-                this.getEquipmentFromObject(response);
-            }
-        });   
+        $.post("/Data/AddEquipment", newEquipment, (response) =>
+        {
+            this.getEquipmentFromObject(response);
+        }, "json");
     }
 
     getEquipmentFromObject(serverResponse: any)
@@ -61,36 +55,22 @@ export class OperationField extends React.Component<IOperationFieldProps, {}>
             });
         });
 
-
         this.props.contentCallback(mas);
     }
 
     deleteEquipment(equipment: EquipmentModel)
     {
-        $.ajax
-        ({
-            type: "Post",
-            url: "/Data/DeleteEquipment",
-            data: equipment,
-            dataType: "json",
-            success: (response) => {
-                this.getEquipmentFromObject(response);
-            } 
-        });
+        $.post("/Data/DeleteEquipment", equipment, (response) => {
+            this.getEquipmentFromObject(response);
+        }, "json");
     }
 
     updateEquipment(equipment: EquipmentModel)
     {
-        $.ajax
-        ({
-            type: "Post",
-            url: "/Data/UpdateEquipment",
-            data: equipment,
-            dataType: "json",
-            success: (response) => {
-                this.getEquipmentFromObject(response);
-            }
-        });
+        $.post("/Data/UpdateEquipment", equipment, (response) => {
+            this.getEquipmentFromObject(response);
+        }, "json");
+
     }
 
     passDataToContent()

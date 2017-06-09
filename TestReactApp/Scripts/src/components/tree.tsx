@@ -30,20 +30,14 @@ export class Tree extends React.Component<ITreeProps, ITreeState>
 
     public getData() : any
     {
-        $.ajax
-        ({
-            type: "Get",
-            data: "json",
-            dataType: "json",
-            url: "Data/GetData",
-            success: (resultData) =>
-            {
-                this.setState
-                ({
-                    data : resultData
-                });
-            }
-        });
+        $.get("Data/GetData", (resultData) =>
+        {
+            this.setState
+            ({
+                data: resultData
+            });
+        }, "json");
+
     }
 
     passSelectedElement(room : RoomModel)

@@ -80,9 +80,9 @@ export class Building extends React.Component<IBuildingProps, {}>
         let bgcolor : string = this.state.isSelected ? "red" : "blue";
 
         return (
-            <div >
-                <ul className="list-group">
-                    <li className="list-group-item">
+            <div>
+                <ul className="list-group" style={{ border: "none" }}>
+                    <li style={{ border: "none" }}>
                         <div onClick={() => this.handleClick(this.props.id)} >
                             <img src={this.props.icon} style={{ width: "2%" }} /><a href="#" style={{ color: bgcolor }}>{this.props.name}</a>
                         </div>      

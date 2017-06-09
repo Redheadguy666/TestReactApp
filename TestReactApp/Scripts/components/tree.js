@@ -12,17 +12,11 @@ class Tree extends React.Component {
         this.getData();
     }
     getData() {
-        $.ajax({
-            type: "Get",
-            data: "json",
-            dataType: "json",
-            url: "Data/GetData",
-            success: (resultData) => {
-                this.setState({
-                    data: resultData
-                });
-            }
-        });
+        $.get("Data/GetData", (resultData) => {
+            this.setState({
+                data: resultData
+            });
+        }, "json");
     }
     passSelectedElement(room) {
         this.props.selectedItemCallback(room);

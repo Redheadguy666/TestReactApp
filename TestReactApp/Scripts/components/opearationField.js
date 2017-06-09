@@ -14,15 +14,9 @@ class OperationField extends React.Component {
         this.handleUpdatingSelectChange = this.handleUpdatingSelectChange.bind(this);
     }
     addEquipment(newEquipment) {
-        $.ajax({
-            type: "Post",
-            url: "/Data/AddEquipment",
-            data: newEquipment,
-            dataType: "json",
-            success: (response) => {
-                this.getEquipmentFromObject(response);
-            }
-        });
+        $.post("/Data/AddEquipment", newEquipment, (response) => {
+            this.getEquipmentFromObject(response);
+        }, "json");
     }
     getEquipmentFromObject(serverResponse) {
         var mas = [];
@@ -38,26 +32,14 @@ class OperationField extends React.Component {
         this.props.contentCallback(mas);
     }
     deleteEquipment(equipment) {
-        $.ajax({
-            type: "Post",
-            url: "/Data/DeleteEquipment",
-            data: equipment,
-            dataType: "json",
-            success: (response) => {
-                this.getEquipmentFromObject(response);
-            }
-        });
+        $.post("/Data/DeleteEquipment", equipment, (response) => {
+            this.getEquipmentFromObject(response);
+        }, "json");
     }
     updateEquipment(equipment) {
-        $.ajax({
-            type: "Post",
-            url: "/Data/UpdateEquipment",
-            data: equipment,
-            dataType: "json",
-            success: (response) => {
-                this.getEquipmentFromObject(response);
-            }
-        });
+        $.post("/Data/UpdateEquipment", equipment, (response) => {
+            this.getEquipmentFromObject(response);
+        }, "json");
     }
     passDataToContent() {
         this.props.contentCallback;
