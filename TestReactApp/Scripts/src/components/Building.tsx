@@ -88,6 +88,7 @@ export class Building extends React.Component<IBuildingProps, {}>
                          {rooms}
                     </li>
                 </ul>
+                <br></br>
             </div>
         );
     }

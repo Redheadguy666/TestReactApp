@@ -22037,14 +22037,14 @@ class Building extends React.Component {
     }
     render() {
         var rooms = this.props.rooms.map((room) => React.createElement(Room_1.Room, { id: room.roomId, title: room.name, key: room.roomId, equipmentInRoom: room.equipment, buildingCallback: this.props.handleTree, selectedItemCallback: (selectedRoom) => this.passSelectedRoom(selectedRoom), icon: "/Content/Images/blue-folder.ico" }));
-        let bgcolor = this.state.isSelected ? "red" : "blue";
         return (React.createElement("div", null,
-            React.createElement("ul", { className: "list-group", style: { border: 0 } },
-                React.createElement("li", { className: "border-0" },
+            React.createElement("ul", { className: "list-group" },
+                React.createElement("li", null,
                     React.createElement("div", { onClick: () => this.handleClick(this.props.id) },
                         React.createElement("img", { src: this.props.icon, style: { width: "2%" } }),
-                        React.createElement("a", { href: "#", style: { color: bgcolor } }, this.props.name)),
-                    rooms))));
+                        React.createElement("a", { href: "#" }, this.props.name)),
+                    rooms)),
+            React.createElement("br", null)));
     }
 }
 exports.Building = Building;

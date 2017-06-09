@@ -1,4 +1,13 @@
-﻿.list-group-borderless 
+﻿.list-group 
 {
+    margin-bottom: 0;
+}
+
+.list-group-item 
+{
+    padding-left: 15px;
+    padding-bottom: 5px;
+    padding-right: 0px;
+    padding-top: 0px;
     border: 0;
 }
