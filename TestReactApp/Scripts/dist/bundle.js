@@ -22173,7 +22173,7 @@ class OperationField extends React.Component {
     }
     handleSelectChanged(event) {
         this.setState({
-            value: event.target.value
+            deletingId: event.target.value
         });
     }
     handleAddingNodeTitle(event) {
@@ -22206,7 +22206,6 @@ class OperationField extends React.Component {
             case "Add":
                 {
                     var newEquipmentRoomId = that.props.selectedItem.roomId;
-                    var newEquipmentNumber = $("#addingNodeNumber").val();
                     equipment = {
                         roomId: newEquipmentRoomId,
                         title: this.state.addingEquipmentTitle,

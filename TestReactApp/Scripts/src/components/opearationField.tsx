@@ -97,7 +97,7 @@ export class OperationField extends React.Component<IOperationFieldProps, {}>
     handleSelectChanged(event: any)
     {
         this.setState({
-            value: event.target.value
+            deletingId: event.target.value
         });
     }
 
@@ -133,7 +133,6 @@ export class OperationField extends React.Component<IOperationFieldProps, {}>
             case "Add":
             {
                 var newEquipmentRoomId : number = that.props.selectedItem.roomId;
-                var newEquipmentNumber : number = $("#addingNodeNumber").val();
 
                 equipment = {
                     roomId: newEquipmentRoomId,
