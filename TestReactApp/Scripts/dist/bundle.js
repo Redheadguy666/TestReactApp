@@ -22395,7 +22395,7 @@ class Content extends React.Component {
         return (React.createElement("div", null,
             React.createElement("div", { className: "container-fluid" },
                 React.createElement("div", { className: "row" },
-                    React.createElement("div", { className: "col-md-6 col-sm-6 col-xs-6 col-3" },
+                    React.createElement("div", { className: "center-block" },
                         React.createElement(Tree_1.Tree, { handle: this.getEquipment, selectedItemCallback: (selectedItem) => this.setSelectedItem(selectedItem) })),
                     React.createElement("div", { className: "col-md-6 col-sm-6 col-xs-6 col-4" },
                         React.createElement(EquipmentList_1.EquipmentList, { equipment: this.state.equipment }),
@@ -22416,6 +22416,9 @@ const React = __webpack_require__(10);
 class Header extends React.Component {
     render() {
         return (React.createElement("div", { className: "container-fluid" },
+            React.createElement("div", { className: "row" },
+                React.createElement("div", { className: "col-md-12 col-sm-12 col-xs-12" },
+                    React.createElement("h4", { className: "text-center" }, "\u0420\u0430\u0431\u043E\u0442\u0430 \u0441 \u043E\u0431\u043E\u0440\u0443\u0434\u043E\u0432\u0430\u043D\u0438\u0435\u043C"))),
             React.createElement("div", { className: "row" },
                 React.createElement("div", { className: "col-md-6 col-sm-6 col-xs-6 col-1" },
                     React.createElement("h4", { className: "text-center" }, "\u0417\u0434\u0430\u043D\u0438\u044F")),
