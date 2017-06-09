@@ -22121,6 +22121,7 @@ class OperationField extends React.Component {
         this.handleSelectChanged = this.handleSelectChanged.bind(this);
         this.handleAddingNodeTitle = this.handleAddingNodeTitle.bind(this);
         this.handleAddingNodeNumber = this.handleAddingNodeNumber.bind(this);
+        this.handleUpdatingSelectChange = this.handleUpdatingSelectChange.bind(this);
     }
     addEquipment(newEquipment) {
         $.ajax({
@@ -22186,6 +22187,21 @@ class OperationField extends React.Component {
             addingEquipmentNumber: event.target.value
         });
     }
+    handleUpdatingSelectChange(event) {
+        this.setState({
+            updatingId: event.target.value
+        });
+    }
+    handleUpdatingTitle(event) {
+        this.setState({
+            updatingTitle: event.target.value
+        });
+    }
+    handleUpdatingNumber(event) {
+        this.setState({
+            updatingNumber: event.target.value
+        });
+    }
     chooseOperation(operation, equipment) {
         switch (operation) {
             case "Add":
@@ -22222,13 +22238,14 @@ class OperationField extends React.Component {
                 break;
             case "Update":
                 {
-                    var updatingEquipmentId = $("#updatingNodeId").val();
-                    var updatingEquipmentTitle = $("#updatingNodeTitle").val();
-                    var updatingEquipmentNumber = $("#updatingNodeNumber").val();
+                    var updatingEquipmentId = Number(this.state.updatingId);
+                    var updatingEquipmentTitle = this.state.updatingTitle;
+                    var updatingEquipmentNumber = Number(this.state.updatingNumber);
                     equipment = {
                         id: updatingEquipmentId,
                         title: updatingEquipmentTitle,
-                        number: updatingEquipmentNumber
+                        number: updatingEquipmentNumber,
+                        roomId: this.props.selectedItem.roomId
                     };
                 }
                 break;
@@ -22271,12 +22288,11 @@ class OperationField extends React.Component {
                     React.createElement("div", { className: "panel panel-default" },
                         React.createElement("div", { className: "panel-heading" }, "\u0418\u0437\u043C\u0435\u043D\u0438\u0442\u044C:"),
                         React.createElement("div", { className: "panel-body" },
-                            React.createElement("label", { htmlFor: "updatingNodeId" }, "\u041D\u0430\u0437\u0432\u0430\u043D\u0438\u0435:"),
-                            React.createElement("input", { type: "number", required: true, className: "form-control", id: "updatingNodeId" }),
+                            React.createElement("select", { value: this.state.deletingId, className: "form-control", onChange: this.handleUpdatingSelectChange }, roomEquipment),
                             React.createElement("label", { htmlFor: "updatingNodeTitle" }, "\u041D\u0430\u0437\u0432\u0430\u043D\u0438\u0435:"),
-                            React.createElement("input", { type: "text", required: true, className: "form-control", id: "updatingNodeTitle" }),
+                            React.createElement("input", { type: "text", value: this.state.updatingTitle, onChange: (e) => this.handleUpdatingTitle(e), required: true, className: "form-control", id: "updatingNodeTitle" }),
                             React.createElement("label", { htmlFor: "updatingNodeNumber" }, "\u041A\u043E\u043B\u0438\u0447\u0435\u0441\u0442\u0432\u043E:"),
-                            React.createElement("input", { type: "number", required: true, className: "form-control", id: "updatingNodeNumber" }),
+                            React.createElement("input", { type: "number", value: this.state.updatingNumber, onChange: (e) => this.handleUpdatingNumber(e), required: true, className: "form-control", id: "updatingNodeNumber" }),
                             React.createElement("button", { type: "button", onClick: () => this.setUpEquipment("Update"), className: "btn btn-info" }, "OK")))))));
     }
 }

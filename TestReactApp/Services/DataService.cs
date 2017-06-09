@@ -63,7 +63,11 @@ namespace TraineeshipWebApp
                 throw new ArgumentException(nameof(equipmentModel));
             }
 
+            var equipmentInRoom = factoryContext.RoomEquipment.Find(equipmentModel.RoomId, equipment.Id);
+
             equipment.Title = equipmentModel.Title;
+            equipmentInRoom.EquipmentNumber = equipmentModel.Number;
+
             //TODO: Изменить инициализацию полей
             //equipment.Number = equipmentModel.Number;
             factoryContext.Entry(equipment).State = EntityState.Modified;

@@ -11,6 +11,9 @@ interface IOperationFieldProps
 interface IOperationFieldState
 {
     deletingId: string;
+    updatingId: string;
+    updatingTitle: string;
+    updatingNumber: string
     addingEquipmentTitle: string;
     addingEquipmentNumber: string;
 }
@@ -27,6 +30,7 @@ export class OperationField extends React.Component<IOperationFieldProps, {}>
         this.handleSelectChanged = this.handleSelectChanged.bind(this);
         this.handleAddingNodeTitle = this.handleAddingNodeTitle.bind(this);
         this.handleAddingNodeNumber = this.handleAddingNodeNumber.bind(this);
+        this.handleUpdatingSelectChange = this.handleUpdatingSelectChange.bind(this);
     }
 
     addEquipment(newEquipment: EquipmentModel)
@@ -115,6 +119,25 @@ export class OperationField extends React.Component<IOperationFieldProps, {}>
         });
     }
 
+    handleUpdatingSelectChange(event: any) {
+        this.setState({
+            updatingId: event.target.value
+        })
+    }
+
+    handleUpdatingTitle(event: any)
+    {
+        this.setState({
+            updatingTitle: event.target.value
+        });
+    }
+
+    handleUpdatingNumber(event: any) {
+        this.setState({
+            updatingNumber: event.target.value
+        })
+    }
+
     chooseOperation(operation : string, equipment : EquipmentModel)
     {
         switch (operation) {
@@ -126,7 +149,7 @@ export class OperationField extends React.Component<IOperationFieldProps, {}>
 
     setUpEquipment(operation : string)
     {
-        var equipment: EquipmentModel;
+        var equipment: any;
         var that = this;
 
         switch (operation) {
@@ -152,14 +175,15 @@ export class OperationField extends React.Component<IOperationFieldProps, {}>
 
             case "Update":
             {
-                var updatingEquipmentId : number = $("#updatingNodeId").val();
-                var updatingEquipmentTitle : string = $("#updatingNodeTitle").val();
-                var updatingEquipmentNumber : number = $("#updatingNodeNumber").val();
+                var updatingEquipmentId : number = Number(this.state.updatingId);
+                var updatingEquipmentTitle : string = this.state.updatingTitle;
+                var updatingEquipmentNumber : number = Number(this.state.updatingNumber);
 
                 equipment = {
                     id: updatingEquipmentId,
                     title: updatingEquipmentTitle,
-                    number: updatingEquipmentNumber
+                    number: updatingEquipmentNumber,
+                    roomId: this.props.selectedItem.roomId
                 }
             }
             break;
@@ -215,12 +239,13 @@ export class OperationField extends React.Component<IOperationFieldProps, {}>
                     <div className="panel panel-default">
                         <div className="panel-heading">Изменить:</div>
                         <div className="panel-body">
-                            <label htmlFor="updatingNodeId">Название:</label>
-                            <input type="number" required className="form-control" id="updatingNodeId" />
+                            <select value={this.state.deletingId} className="form-control" onChange={this.handleUpdatingSelectChange}>
+                                {roomEquipment}
+                            </select>
                             <label htmlFor="updatingNodeTitle">Название:</label>
-                            <input type="text" required className="form-control" id="updatingNodeTitle" />
+                            <input type="text" value={this.state.updatingTitle} onChange={(e) => this.handleUpdatingTitle(e)} required className="form-control" id="updatingNodeTitle" />
                             <label htmlFor="updatingNodeNumber">Количество:</label>
-                            <input type="number" required className="form-control" id="updatingNodeNumber" />
+                            <input type="number" value={this.state.updatingNumber} onChange={(e) => this.handleUpdatingNumber(e)} required className="form-control" id="updatingNodeNumber" />
                             <button type="button" onClick={() => this.setUpEquipment("Update")} className="btn btn-info">OK</button>
                         </div>
                     </div>
