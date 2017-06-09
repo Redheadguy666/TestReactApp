@@ -46,7 +46,7 @@ namespace TraineeshipWebApp
 
             else
             {
-                var equipmentForRoom = factoryContext.RoomEquipment.Find(equipmentModel.Id);
+                var equipmentForRoom = factoryContext.RoomEquipment.Find(equipmentModel.RoomId, equipment[0].Id);
                 equipmentForRoom.EquipmentNumber += equipmentModel.Number;
                 factoryContext.Entry(equipmentForRoom).State = EntityState.Modified;
             }
