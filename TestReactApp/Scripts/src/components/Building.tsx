@@ -77,14 +77,13 @@ export class Building extends React.Component<IBuildingProps, {}>
             title={room.name} key={room.roomId} equipmentInRoom={room.equipment} buildingCallback={this.props.handleTree}
             selectedItemCallback={(selectedRoom: RoomModel) => this.passSelectedRoom(selectedRoom)} icon="/Content/Images/blue-folder.ico" />);
 
-        let bgcolor : string = this.state.isSelected ? "red" : "blue";
 
         return (
             <div>
-                <ul className="list-group" style={{ border: "none" }}>
-                    <li style={{ border: "none" }}>
+                <ul className="list-group">
+                    <li>
                         <div onClick={() => this.handleClick(this.props.id)} >
-                            <img src={this.props.icon} style={{ width: "2%" }} /><a href="#" style={{ color: bgcolor }}>{this.props.name}</a>
+                            <img src={this.props.icon} style={{ width: "2%" }} /><a href="#">{this.props.name}</a>
                         </div>      
                          {rooms}
                     </li>
