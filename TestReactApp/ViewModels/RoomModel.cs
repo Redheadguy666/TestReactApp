@@ -32,17 +32,6 @@ namespace TestReactApp.ViewModels
 
                 }
             }
-
-            //factoryContext.RoomEquipment.Where(re => re.RoomId == room.Id)
-
-            //foreach (var equipment in room.RoomEquipment)
-            //{
-            //    var equipmentModel = new EquipmentModel();
-            //    var roomEquipment = new RoomEquipment();
-            //    equipmentModel.Initialize(equipment, roomEquipment);
-            //    this.Equipment.Add(equipmentModel);
-            //}
-
         }
     }
 }

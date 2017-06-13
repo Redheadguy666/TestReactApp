@@ -1,17 +1,17 @@
 ﻿import * as React from "react";
 import { Room } from "./Room"
-import { RoomModel, EquipmentModel } from "./OrganisationModel"
+import { IRoomModel, IEquipmentModel } from "./OrganisationModel"
 
 export interface IBuildingProps
 {
     id: number;
     name?: string;
-    rooms?: RoomModel[];
+    rooms?: IRoomModel[];
     isCollapsed?: boolean;
     isFolder?: boolean; 
     icon?: string;   
     handleTree?: any;
-    selectedItemCallback: any
+    selectedItemCallback: (roomModel:IRoomModel) => void
 }
 
 interface IBuildingState
@@ -29,7 +29,7 @@ export class Building extends React.Component<IBuildingProps, {}>
         this.handleClick = this.handleClick.bind(this);
     }
 
-    passSelectedRoom(room : RoomModel)
+    passSelectedRoom(room : IRoomModel)
     {
         this.props.selectedItemCallback(room);
     }
@@ -54,11 +54,11 @@ export class Building extends React.Component<IBuildingProps, {}>
 
     countEquipmentInBuilding()
     {
-        var allEquipment: EquipmentModel;
-        var equipmentMassive: EquipmentModel[] = [];
+        var allEquipment: IEquipmentModel;
+        var equipmentMassive: IEquipmentModel[] = [];
 
-        Array.prototype.forEach.call(this.props.rooms, (room: RoomModel) => {
-            Array.prototype.forEach.call(room.equipment, (equipment: EquipmentModel) => {
+        Array.prototype.forEach.call(this.props.rooms, (room: IRoomModel) => {
+            Array.prototype.forEach.call(room.equipment, (equipment: IEquipmentModel) => {
                 var eq = {
                     id: equipment.id,
                     title: equipment.title,
@@ -73,9 +73,9 @@ export class Building extends React.Component<IBuildingProps, {}>
 
     render()
     {
-        var rooms : JSX.Element[] = this.props.rooms.map((room : RoomModel) => <Room id={room.roomId}
-            title={room.name} key={room.roomId} equipmentInRoom={room.equipment} buildingCallback={this.props.handleTree}
-            selectedItemCallback={(selectedRoom: RoomModel) => this.passSelectedRoom(selectedRoom)} icon="/Content/Images/blue-folder.ico" />);
+        var rooms: JSX.Element[] = this.props.rooms.map((room: IRoomModel) =>
+            <Room id={room.roomId} title={room.name} key={room.roomId} equipmentInRoom={room.equipment} buildingCallback={this.props.handleTree}
+            selectedItemCallback={(selectedRoom: IRoomModel) => this.passSelectedRoom(selectedRoom)} icon="/Content/Images/blue-folder.ico" />);
 
 
         return (

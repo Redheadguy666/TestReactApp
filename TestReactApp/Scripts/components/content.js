@@ -9,6 +9,7 @@ class Content extends React.Component {
         super(props);
         this.state = {};
         this.getEquipment = this.getEquipment.bind(this);
+        this.setSelectedItem = this.setSelectedItem.bind(this);
     }
     getEquipment(allEquipment) {
         this.setState({
@@ -25,7 +26,7 @@ class Content extends React.Component {
             React.createElement("div", { className: "container-fluid" },
                 React.createElement("div", { className: "row" },
                     React.createElement("div", { className: "col-md-6 col-sm-6 col-xs-6 col-3" },
-                        React.createElement(Tree_1.Tree, { handle: this.getEquipment, selectedItemCallback: (selectedItem) => this.setSelectedItem(selectedItem) })),
+                        React.createElement(Tree_1.Tree, { handle: this.getEquipment, selectedItemCallback: this.setSelectedItem })),
                     React.createElement("div", { className: "col-md-6 col-sm-6 col-xs-6 col-4" },
                         React.createElement(EquipmentList_1.EquipmentList, { equipment: this.state.equipment }),
                         React.createElement(OpearationField_1.OperationField, { selectedItem: this.state.selectedItem, currentRoomEquipment: this.state.equipment, contentCallback: this.getEquipment }))))));

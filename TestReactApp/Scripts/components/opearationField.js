@@ -6,14 +6,22 @@ class OperationField extends React.Component {
         super(props);
         this.props = {};
         this.state = {};
-        this.setUpEquipment = this.setUpEquipment.bind(this);
         this.getEquipmentFromObject = this.getEquipmentFromObject.bind(this);
         this.handleSelectChanged = this.handleSelectChanged.bind(this);
         this.handleAddingNodeTitle = this.handleAddingNodeTitle.bind(this);
         this.handleAddingNodeNumber = this.handleAddingNodeNumber.bind(this);
         this.handleUpdatingSelectChange = this.handleUpdatingSelectChange.bind(this);
+        this.addEquipment = this.addEquipment.bind(this);
+        this.updateEquipment = this.updateEquipment.bind(this);
+        this.deleteEquipment = this.deleteEquipment.bind(this);
     }
-    addEquipment(newEquipment) {
+    addEquipment() {
+        var newEquipmentRoomId = this.props.selectedItem.roomId;
+        var newEquipment = {
+            roomId: newEquipmentRoomId,
+            title: this.state.addingEquipmentTitle,
+            number: Number(this.state.addingEquipmentNumber)
+        };
         $.post("/Data/AddEquipment", newEquipment, (response) => {
             this.getEquipmentFromObject(response);
         }, "json");
@@ -32,12 +40,24 @@ class OperationField extends React.Component {
         this.props.contentCallback(mas);
     }
     deleteEquipment(equipment) {
+        equipment = {
+            id: Number(this.state.deletingId)
+        };
         $.post("/Data/DeleteEquipment", equipment, (response) => {
             this.getEquipmentFromObject(response);
         }, "json");
     }
-    updateEquipment(equipment) {
-        $.post("/Data/UpdateEquipment", equipment, (response) => {
+    updateEquipment() {
+        var updatingEquipmentId = Number(this.state.updatingId);
+        var updatingEquipmentTitle = this.state.updatingTitle;
+        var updatingEquipmentNumber = Number(this.state.updatingNumber);
+        var updatingEquipment = {
+            id: updatingEquipmentId,
+            title: updatingEquipmentTitle,
+            number: updatingEquipmentNumber,
+            roomId: this.props.selectedItem.roomId
+        };
+        $.post("/Data/UpdateEquipment", updatingEquipment, (response) => {
             this.getEquipmentFromObject(response);
         }, "json");
     }
@@ -74,56 +94,6 @@ class OperationField extends React.Component {
             updatingNumber: event.target.value
         });
     }
-    chooseOperation(operation, equipment) {
-        switch (operation) {
-            case "Add":
-                this.addEquipment(equipment);
-                break;
-            case "Delete":
-                this.deleteEquipment(equipment);
-                break;
-            case "Update":
-                this.updateEquipment(equipment);
-                break;
-        }
-    }
-    setUpEquipment(operation) {
-        var equipment;
-        var that = this;
-        switch (operation) {
-            case "Add":
-                {
-                    var newEquipmentRoomId = that.props.selectedItem.roomId;
-                    equipment = {
-                        roomId: newEquipmentRoomId,
-                        title: this.state.addingEquipmentTitle,
-                        number: Number(this.state.addingEquipmentNumber)
-                    };
-                }
-                break;
-            case "Delete":
-                {
-                    equipment = {
-                        id: Number(this.state.deletingId)
-                    };
-                }
-                break;
-            case "Update":
-                {
-                    var updatingEquipmentId = Number(this.state.updatingId);
-                    var updatingEquipmentTitle = this.state.updatingTitle;
-                    var updatingEquipmentNumber = Number(this.state.updatingNumber);
-                    equipment = {
-                        id: updatingEquipmentId,
-                        title: updatingEquipmentTitle,
-                        number: updatingEquipmentNumber,
-                        roomId: this.props.selectedItem.roomId
-                    };
-                }
-                break;
-        }
-        this.chooseOperation(operation, equipment);
-    }
     render() {
         var roomTitle = this.props.selectedItem !== undefined ? this.props.selectedItem.name
             : "";
@@ -146,7 +116,7 @@ class OperationField extends React.Component {
                                 React.createElement("input", { type: "text", required: true, value: this.state.addingEquipmentTitle, onChange: this.handleAddingNodeTitle, className: "form-control", id: "addingNodeName" }),
                                 React.createElement("label", { htmlFor: "addingNodeNumber" }, "\u041A\u043E\u043B\u0438\u0447\u0435\u0441\u0442\u0432\u043E:"),
                                 React.createElement("input", { type: "number", required: true, value: this.state.addingEquipmentNumber, onChange: this.handleAddingNodeNumber, className: "form-control", id: "addingNodeNumber" }),
-                                React.createElement("button", { type: "button", onClick: () => this.setUpEquipment("Add"), className: "btn btn-info" }, "OK"))))),
+                                React.createElement("button", { type: "button", onClick: this.addEquipment, className: "btn btn-info" }, "OK"))))),
                 React.createElement("form", null,
                     React.createElement("div", { className: "panel panel-default" },
                         React.createElement("div", { className: "panel-heading" }, "\u0423\u0434\u0430\u043B\u0438\u0442\u044C:"),
@@ -155,7 +125,7 @@ class OperationField extends React.Component {
                                 React.createElement("div", { className: "form-group" },
                                     React.createElement("label", { htmlFor: "currentEquipmentList" }, "\u0412\u044B\u0431\u0440\u0430\u0442\u044C \u043E\u0431\u043E\u0440\u0443\u0434\u043E\u0432\u0430\u043D\u0438\u0435"),
                                     React.createElement("select", { value: this.state.deletingId, className: "form-control", onChange: this.handleSelectChanged }, roomEquipment))),
-                            React.createElement("button", { type: "button", onClick: () => this.setUpEquipment("Delete"), className: "btn btn-info" }, "OK")))),
+                            React.createElement("button", { type: "button", onClick: this.deleteEquipment, className: "btn btn-info" }, "OK")))),
                 React.createElement("form", null,
                     React.createElement("div", { className: "panel panel-default" },
                         React.createElement("div", { className: "panel-heading" }, "\u0418\u0437\u043C\u0435\u043D\u0438\u0442\u044C:"),
@@ -165,7 +135,7 @@ class OperationField extends React.Component {
                             React.createElement("input", { type: "text", value: this.state.updatingTitle, onChange: (e) => this.handleUpdatingTitle(e), required: true, className: "form-control", id: "updatingNodeTitle" }),
                             React.createElement("label", { htmlFor: "updatingNodeNumber" }, "\u041A\u043E\u043B\u0438\u0447\u0435\u0441\u0442\u0432\u043E:"),
                             React.createElement("input", { type: "number", value: this.state.updatingNumber, onChange: (e) => this.handleUpdatingNumber(e), required: true, className: "form-control", id: "updatingNodeNumber" }),
-                            React.createElement("button", { type: "button", onClick: () => this.setUpEquipment("Update"), className: "btn btn-info" }, "OK")))))));
+                            React.createElement("button", { type: "button", onClick: this.updateEquipment, className: "btn btn-info" }, "OK")))))));
     }
 }
 exports.OperationField = OperationField;

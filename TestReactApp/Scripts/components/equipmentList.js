@@ -6,7 +6,6 @@ class EquipmentList extends React.Component {
     constructor(props) {
         super(props);
         this.props = {};
-        this.state = {};
     }
     render() {
         var equipmentProps = this.props.equipment;

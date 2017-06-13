@@ -10,7 +10,6 @@ namespace TraineeshipWebApp.Models
         public int Id { get; set; }
         public string Title { get; set; }
         public List<Room> Children { get; set; }
-        public bool IsFolder { get; set; }
         public Building()
         {
             Children = new List<Room>();

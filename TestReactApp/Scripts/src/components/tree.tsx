@@ -1,6 +1,6 @@
 ﻿import * as React from "react";
 import { Building } from "./Building";
-import { EquipmentModel, BuildingModel, RoomModel } from "./OrganisationModel"
+import { IEquipmentModel, IBuildingModel, IRoomModel, IOrganizationModel } from "./OrganisationModel"
 
 interface ITreeProps
 {
@@ -40,21 +40,21 @@ export class Tree extends React.Component<ITreeProps, ITreeState>
 
     }
 
-    passSelectedElement(room : RoomModel)
+    passSelectedElement(room : IRoomModel)
     {
         this.props.selectedItemCallback(room)
 
     }
 
-    contentCallback(equipment : EquipmentModel[])
+    contentCallback(equipment : IEquipmentModel[])
     {
         this.props.handle(equipment);
     }
 
     render() {
-        var buildings : BuildingModel[] = this.state.data ? this.state.data.buildings.map
-            ((building: BuildingModel) => <Building id={building.id}
-                name={building.title} key={building.id} rooms={building.rooms} selectedItemCallback={(selectedRoom: RoomModel) => this.passSelectedElement(selectedRoom)} icon="/Content/Images/blue-folder.ico"
+        var buildings : IBuildingModel[] = this.state.data ? this.state.data.buildings.map
+            ((building: IBuildingModel) => <Building id={building.id}
+                name={building.title} key={building.id} rooms={building.rooms} selectedItemCallback={(selectedRoom: IRoomModel) => this.passSelectedElement(selectedRoom)} icon="/Content/Images/blue-folder.ico"
                 handleTree={(allEquipment: any) => this.contentCallback(allEquipment)} />) : null;
         return (
             <div>

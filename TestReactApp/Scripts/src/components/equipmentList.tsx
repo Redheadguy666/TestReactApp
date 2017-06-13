@@ -1,22 +1,17 @@
 ﻿import * as React from "react";
 import { EquipmentElement } from "./EquipmentElement";
-import { EquipmentModel } from "./OrganisationModel"
+import { IEquipmentModel } from "./OrganisationModel"
 
 interface IEquipmentListProps
 {
-    equipment: EquipmentModel[],
-    addingEquipment?: EquipmentModel;
+    equipment: IEquipmentModel[],
+    addingEquipment?: IEquipmentModel;
 }
 
-interface IEquipmentListState
-{
-    
-}
 
 export class EquipmentList extends React.Component<IEquipmentListProps, {}>
 {
     props: IEquipmentListProps = {} as any;
-    state: IEquipmentListState = {} as any;
 
     constructor(props: any) {
         super(props);
@@ -27,7 +22,7 @@ export class EquipmentList extends React.Component<IEquipmentListProps, {}>
     {
         var equipmentProps = this.props.equipment;
         var equipment: JSX.Element[] = equipmentProps ? equipmentProps.map
-            ((equipment_: EquipmentModel) => <EquipmentElement key={equipment_.id} id={equipment_.id}
+            ((equipment_: IEquipmentModel) => <EquipmentElement key={equipment_.id} id={equipment_.id}
                 title={equipment_.title} number={equipment_.number} />) : null;
 
         return (

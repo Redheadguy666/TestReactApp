@@ -38,12 +38,17 @@ namespace TraineeshipWebApp
             if (equipment.Count == 0)
             {
                 factoryContext.Equipment.Add(new Equipment()
-                    { Title = equipmentModel.Title });
+                {
+                    Title = equipmentModel.Title
+                });
 
                 factoryContext.RoomEquipment.Add(new RoomEquipment()
-                    { RoomId = (int)equipmentModel.RoomId, EquipmentId = equipmentModel.Id, EquipmentNumber = equipmentModel.Number });
+                {
+                    RoomId = (int)equipmentModel.RoomId,
+                    EquipmentId = equipmentModel.Id,
+                    EquipmentNumber = equipmentModel.Number
+                });
             }
-
             else
             {
                 var equipmentForRoom = factoryContext.RoomEquipment.Find(equipmentModel.RoomId, equipment[0].Id);

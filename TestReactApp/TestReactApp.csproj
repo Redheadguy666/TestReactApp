@@ -192,6 +192,15 @@
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201706080833366_InitialCreate.cs" />
+    <Compile Include="Migrations\201706080833366_InitialCreate.Designer.cs">
+      <DependentUpon>201706080833366_InitialCreate.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201706130925331_Folder-Migration.cs" />
+    <Compile Include="Migrations\201706130925331_Folder-Migration.Designer.cs">
+      <DependentUpon>201706130925331_Folder-Migration.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\Building.cs" />
     <Compile Include="Models\Equipment.cs" />
     <Compile Include="Models\FactoryContext.cs" />
@@ -493,7 +502,7 @@
     <TypeScriptCompile Include="Scripts\src\components\EquipmentList.tsx" />
     <TypeScriptCompile Include="Scripts\src\components\Header.tsx" />
     <TypeScriptCompile Include="Scripts\src\components\OpearationField.tsx" />
-    <TypeScriptCompile Include="Scripts\src\components\OrganisationModel.tsx" />
+    <TypeScriptCompile Include="Scripts\src\components\OrganisationModel.ts" />
     <TypeScriptCompile Include="Scripts\src\components\Room.tsx" />
     <TypeScriptCompile Include="Scripts\src\components\Tree.tsx" />
     <TypeScriptCompile Include="Scripts\src\components\Building.tsx" />
@@ -502,6 +511,14 @@
   </ItemGroup>
   <ItemGroup>
     <Service Include="{4A0DDDB5-7A95-4FBF-97CC-616D07737A77}" />
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Migrations\201706080833366_InitialCreate.resx">
+      <DependentUpon>201706080833366_InitialCreate.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201706130925331_Folder-Migration.resx">
+      <DependentUpon>201706130925331_Folder-Migration.cs</DependentUpon>
+    </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>

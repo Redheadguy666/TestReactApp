@@ -1,5 +1,5 @@
 ﻿import * as React from "react";
-import { EquipmentModel, RoomModel } from "./OrganisationModel"
+import { IEquipmentModel, IRoomModel } from "./OrganisationModel"
 
 interface IRoomPropes
 {
@@ -9,7 +9,7 @@ interface IRoomPropes
     isCollapsed?: boolean;
     isFolder?: boolean;
     icon?: string; 
-    equipmentInRoom?: EquipmentModel[];  
+    equipmentInRoom?: IEquipmentModel[];  
     buildingCallback?: any;
     selectedItemCallback: any
 }
@@ -42,7 +42,7 @@ export class Room extends React.Component<IRoomPropes, IRoomState>
 
     passSelectedRoom()
     {
-        var room: RoomModel = 
+        var room: IRoomModel = 
         {
             roomId: this.props.id,
             name: this.props.title,

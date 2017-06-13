@@ -1,11 +1,11 @@
 ﻿import * as React from "react";
-import { EquipmentModel } from "./OrganisationModel"
+import { IEquipmentModel } from "./OrganisationModel"
 
 interface IOperationFieldProps
 {
     contentCallback?: any
     selectedItem?: any
-    currentRoomEquipment?: EquipmentModel[]
+    currentRoomEquipment?: IEquipmentModel[]
 }
 
 interface IOperationFieldState
@@ -18,23 +18,33 @@ interface IOperationFieldState
     addingEquipmentNumber: string;
 }
 
-export class OperationField extends React.Component<IOperationFieldProps, {}>
+export class OperationField extends React.Component<IOperationFieldProps, IOperationFieldState>
 {
     props: IOperationFieldProps = {} as any;
     state: IOperationFieldState = {} as any;
 
     constructor(props: any) {
         super(props);
-        this.setUpEquipment = this.setUpEquipment.bind(this);
         this.getEquipmentFromObject = this.getEquipmentFromObject.bind(this);
         this.handleSelectChanged = this.handleSelectChanged.bind(this);
         this.handleAddingNodeTitle = this.handleAddingNodeTitle.bind(this);
         this.handleAddingNodeNumber = this.handleAddingNodeNumber.bind(this);
         this.handleUpdatingSelectChange = this.handleUpdatingSelectChange.bind(this);
+        this.addEquipment = this.addEquipment.bind(this);
+        this.updateEquipment = this.updateEquipment.bind(this);
+        this.deleteEquipment = this.deleteEquipment.bind(this);
     }
 
-    addEquipment(newEquipment: EquipmentModel)
+    addEquipment()
     {
+        var newEquipmentRoomId: number = this.props.selectedItem.roomId;
+
+        var newEquipment: IEquipmentModel = {
+            roomId: newEquipmentRoomId,
+            title: this.state.addingEquipmentTitle,
+            number: Number(this.state.addingEquipmentNumber)
+        }
+
         $.post("/Data/AddEquipment", newEquipment, (response) =>
         {
             this.getEquipmentFromObject(response);
@@ -43,12 +53,12 @@ export class OperationField extends React.Component<IOperationFieldProps, {}>
 
     getEquipmentFromObject(serverResponse: any)
     {
-        var mas: EquipmentModel[] = [];
+        var mas: IEquipmentModel[] = [];
         var that = this;
 
         serverResponse.buildings.forEach(function (building: any) {
             building.rooms.forEach(function (room: any) {
-                room.equipment.forEach(function (eq: EquipmentModel) {
+                room.equipment.forEach(function (eq: IEquipmentModel) {
                     if (room.roomId == that.props.selectedItem.roomId)
                         mas.push(eq);
                 });
@@ -59,16 +69,31 @@ export class OperationField extends React.Component<IOperationFieldProps, {}>
         this.props.contentCallback(mas);
     }
 
-    deleteEquipment(equipment: EquipmentModel)
+    deleteEquipment(equipment: IEquipmentModel)
     {
+        equipment = {
+            id: Number(this.state.deletingId)
+        }
+
         $.post("/Data/DeleteEquipment", equipment, (response) => {
             this.getEquipmentFromObject(response);
         }, "json");
     }
 
-    updateEquipment(equipment: EquipmentModel)
+    updateEquipment()
     {
-        $.post("/Data/UpdateEquipment", equipment, (response) => {
+        var updatingEquipmentId: number = Number(this.state.updatingId);
+        var updatingEquipmentTitle: string = this.state.updatingTitle;
+        var updatingEquipmentNumber: number = Number(this.state.updatingNumber);
+
+        var updatingEquipment: IEquipmentModel  = {
+            id: updatingEquipmentId,
+            title: updatingEquipmentTitle,
+            number: updatingEquipmentNumber,
+            roomId: this.props.selectedItem.roomId
+        }
+
+        $.post("/Data/UpdateEquipment", updatingEquipment, (response) => {
             this.getEquipmentFromObject(response);
         }, "json");
 
@@ -119,58 +144,7 @@ export class OperationField extends React.Component<IOperationFieldProps, {}>
         })
     }
 
-    chooseOperation(operation : string, equipment : EquipmentModel)
-    {
-        switch (operation) {
-            case "Add": this.addEquipment(equipment); break;
-            case "Delete": this.deleteEquipment(equipment); break;
-            case "Update": this.updateEquipment(equipment); break;
-        }
-    }
-
-    setUpEquipment(operation : string)
-    {
-        var equipment: any;
-        var that = this;
-
-        switch (operation) {
-            case "Add":
-            {
-                var newEquipmentRoomId : number = that.props.selectedItem.roomId;
-
-                equipment = {
-                    roomId: newEquipmentRoomId,
-                    title: this.state.addingEquipmentTitle,
-                    number: Number(this.state.addingEquipmentNumber)
-                }
-            }
-            break;
-
-            case "Delete":
-            {
-                equipment = {
-                    id: Number(this.state.deletingId)
-                }
-            }
-            break;
-
-            case "Update":
-            {
-                var updatingEquipmentId : number = Number(this.state.updatingId);
-                var updatingEquipmentTitle : string = this.state.updatingTitle;
-                var updatingEquipmentNumber : number = Number(this.state.updatingNumber);
-
-                equipment = {
-                    id: updatingEquipmentId,
-                    title: updatingEquipmentTitle,
-                    number: updatingEquipmentNumber,
-                    roomId: this.props.selectedItem.roomId
-                }
-            }
-            break;
-        }
-        this.chooseOperation(operation, equipment);
-    }
+   
 
     render()
     {
@@ -195,7 +169,7 @@ export class OperationField extends React.Component<IOperationFieldProps, {}>
                                     <input type="text" required value={this.state.addingEquipmentTitle} onChange={this.handleAddingNodeTitle} className="form-control" id="addingNodeName" />
                                     <label htmlFor="addingNodeNumber">Количество:</label>
                                     <input type="number" required value={this.state.addingEquipmentNumber} onChange={this.handleAddingNodeNumber} className="form-control" id="addingNodeNumber" />
-                                    <button type="button" onClick={() => this.setUpEquipment("Add")} className="btn btn-info">OK</button>
+                                    <button type="button" onClick={this.addEquipment} className="btn btn-info">OK</button>
                                 </div>
                             </div>
                         </div>
@@ -212,7 +186,7 @@ export class OperationField extends React.Component<IOperationFieldProps, {}>
                                         </select>
                                     </div>
                                 </div>
-                                <button type="button" onClick={() => this.setUpEquipment("Delete")} className="btn btn-info">OK</button>
+                                <button type="button" onClick={this.deleteEquipment} className="btn btn-info">OK</button>
                             </div>
                         </div>
                 </form>
@@ -227,7 +201,7 @@ export class OperationField extends React.Component<IOperationFieldProps, {}>
                             <input type="text" value={this.state.updatingTitle} onChange={(e) => this.handleUpdatingTitle(e)} required className="form-control" id="updatingNodeTitle" />
                             <label htmlFor="updatingNodeNumber">Количество:</label>
                             <input type="number" value={this.state.updatingNumber} onChange={(e) => this.handleUpdatingNumber(e)} required className="form-control" id="updatingNodeNumber" />
-                            <button type="button" onClick={() => this.setUpEquipment("Update")} className="btn btn-info">OK</button>
+                            <button type="button" onClick={this.updateEquipment} className="btn btn-info">OK</button>
                         </div>
                     </div>
                 </form>
